@@ -27,37 +27,58 @@ def knowledge_exploitation():
     componenteLLMCommunicator_provisional = ComponenteLLMCommunicator(config['file_path']['provisional_answers_language_model_path'])
     
     # Cargamos el modelo de lenguaje que vamos a utilizar para conseguir las respuestas provisionales
-    componenteLLMCommunicator_provisional.load_model()
+    # componenteLLMCommunicator_provisional.load_model()
     
     # Generar la estructura de datos con la que realizar el proceso de explotación de conocimiento
-    source_information = componenteImporter.generate_data_structure()
+    # source_information = componenteImporter.generate_data_structure()
+    source_information = {}
     
     # Creamos la estructura de datos que guardará el conocimiento que se haya explotado en los modelos de lenguaje, 
     # junto con la información extraída de la(s) fuente(s).
     exploited_information = {}
     
-    # Recorrer el 'source_information', para conseguir frases en las que aparezca la palabra con el gloss
+    # Fase 1: Recorrer el 'source_information' para conseguir por cada entrada un conjunto de frases en la que aparece el word y sense
+    # de un elemento del 'source_information', con sus respectivas traducciones
+    # (Fase 1 completada)
+    # for (offset_word, attributes) in source_information.items():
+    #     llm_extracted_provisional_answers_list = []
+    #     provisional_prompt_list = componenteQuestionMaker.generate_provisional_prompts((offset_word,attributes))
+    #     for prompt in provisional_prompt_list:
+    #         # Realizar la pregunta al modelo de lenguaje 
+    #         llm_answer = componenteLLMCommunicator_provisional.run_the_model(prompt)
+    #         # Extraer la parte de la respuesta para su posterior tratado
+    #         llm_extracted_answer = componenteExtractor.extract_llm_answers(llm_answer)
+    #         # Recorremos las frases
+    #         for phrase in llm_extracted_answer:
+    #             # Traducirla al español
+    #             translated_llm_answer = componenteLLMCommunicator_provisional.run_the_model('Como experto en traducción, necesito una traducción precisa al español de la siguiente frase: "' + phrase +'".')
+    #             # Extraer la parte de la respuesta para su posterior tratado
+    #             translated_llm_extracted_answer = componenteExtractor.extract_llm_answers(translated_llm_answer)
+    #             # Añadirlo a la lista
+    #             llm_extracted_provisional_answers_list.append([phrase, translated_llm_extracted_answer])
+    #     # Añadirlo al source_information
+    #     item_list = [attributes[0], attributes[1], attributes[2], attributes[3], llm_extracted_provisional_answers_list]
+    #     exploited_information[offset_word] = item_list
+    #     source_information[offset_word] = item_list
+    
+    # Fase 2: Recorrer el source_information para obtener la respuesta provisional con las 'provisional_llm_answer's
+    # Ruta del archivo JSON
+    file_path = 'files/examples_to_work_with.json'
+
+    # Leer el archivo JSON y convertirlo a un diccionario
+    with open(file_path, 'r', encoding='utf-8') as file:
+        source_information = json.load(file)
+    
     for (offset_word, attributes) in source_information.items():
-        llm_extracted_provisional_answers_list = []
-        provisional_prompt_list = componenteQuestionMaker.generate_provisional_prompts((offset_word,attributes))
-        for prompt in provisional_prompt_list:
-            # Realizar la pregunta al modelo de lenguaje 
-            llm_answer = componenteLLMCommunicator_provisional.run_the_model(prompt)
-            # Extraer la parte de la respuesta para su posterior tratado
-            llm_extracted_answer = componenteExtractor.extract_llm_answers(llm_answer)
-            # Recorremos las frases
-            for phrase in llm_extracted_answer:
-                # Traducirla al español
-                translated_llm_answer = componenteLLMCommunicator_provisional.run_the_model('Como experto en traducción, necesito una traducción precisa al español de la siguiente frase: "' + phrase +'".')
-                # Extraer la parte de la respuesta para su posterior tratado
-                translated_llm_extracted_answer = componenteExtractor.extract_llm_answers(translated_llm_answer)
-                # Añadirlo a la lista
-                llm_extracted_provisional_answers_list.append([phrase, translated_llm_extracted_answer])
+        # Ahora en forma de pruebas y para ahorrar tiempo llm_extracted_provisional_answers_list se va a coger de attributes
+        llm_extracted_provisional_answers_list = attributes[4]
+        # Conseguir la respuesta provisional en base a lo devuelto por el modelo de lenguaje
+        provisional_answer = componenteExtractor.get_provisional_answer((offset_word,attributes),llm_extracted_provisional_answers_list)
         # Añadirlo al source_information
-        item_list = [attributes[0], attributes[1], attributes[2], attributes[3], llm_extracted_provisional_answers_list]
+        item_list = [attributes[0], attributes[1], attributes[2], attributes[3], llm_extracted_provisional_answers_list, provisional_answer]
         exploited_information[offset_word] = item_list
         source_information[offset_word] = item_list
-    
+         
     # Recorrer el 'source_information', para ver que si no tiene el gloss (está NULL) acceder al de
     # 'source_gloss_structure_eng' y traducirlo
     # for offset_word, element in source_information.items():
@@ -77,8 +98,7 @@ def knowledge_exploitation():
     #         if not spa_gloss.endswith('.'):
     #             spa_gloss += '.'
     #         spa_gloss = spa_gloss.strip().replace('"', '').replace("\"", "").replace('\\', '').replace("\\\"", "").capitalize()
-    #         source_information[offset_word] = [element[0], spa_gloss, element[2], element[3]]
-            
+    #         source_information[offset_word] = [element[0], spa_gloss, element[2], element[3]]            
     
     # Explotar conocimiento (Al parecer da problemas si se cargan dos modelos a la vez, 
     # ya que ocupa demasiada memoria y ralentiza el proceso de forma importante)
