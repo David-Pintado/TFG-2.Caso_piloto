@@ -7,11 +7,11 @@ class ComponenteImporter:
         self.eng_synset_file = eng_synset_file
         self.most_used_words_file = most_used_words_file
 
-    # Método para generar el 'source_information'
+    # Método para generar el 'knowledge_table'
     # Esta estructura será un diccionario, la cual seguirá el siguiente esquema: 
     # Key=offset_word. Value = gloss, sense, part_of_speech, language
     def generate_data_structure(self):
-        source_information = {}
+        knowledge_table = {}
         offsets_glosses_array = {}
         words_dic = {}
         count = 0
@@ -65,7 +65,7 @@ class ComponenteImporter:
         except FileNotFoundError:
             print(f'Archivo "{self.eng_synset_file}" no encontrado. Vuelve a introducir una nueva ruta')
         
-        # Leer el archivo que contiene los variant en inglés y almacenarlo en un diccionario llamado source_information
+        # Leer el archivo que contiene los variant en inglés y almacenarlo en un diccionario llamado knowledge_table
         # El esquema de este es: Key=offset_word. Value = sense, part_of_speech, language
         try:
             # Intentar abrir el archivo que se encuentra en la ruta proporcionada
@@ -94,22 +94,22 @@ class ComponenteImporter:
                     if language == "eng" and part_of_speech == "n" and offset in words_dic.keys():
                         if word in words_dic[offset]:
                             # Añadimos al diccionario: Key=word. Value = [synset, sense, part_of_speech, language]
-                            source_information[offset_word] = [sense, part_of_speech, language]
+                            knowledge_table[offset_word] = [sense, part_of_speech, language]
                             count += 1
-                    if count > 4: 
+                    if count > 99: 
                         break
                         
         except FileNotFoundError:
             print(f'Archivo "{self.eng_variant_file}" no encontrado. Vuelve a introducir una nueva ruta')   
           
-        # Modificar el source_information añadiendo los glosses del offsets_glosses_array
-        # El esquema del source_information será:  Key=offset_word. Value = sense, gloss, part_of_speech, language
-        for word, element in source_information.items(): 
+        # Modificar el knowledge_table añadiendo los glosses del offsets_glosses_array
+        # El esquema del knowledge_table será:  Key=offset_word. Value = sense, gloss, part_of_speech, language
+        for word, element in knowledge_table.items(): 
             item_list = []
             item_list = [element[0], offsets_glosses_array[word.split('_')[0]].replace('_',' '), element[1], element[2]]
-            source_information[word] = item_list
+            knowledge_table[word] = item_list
         
-        return source_information  
+        return knowledge_table  
 
     # Método para guardar un archivo json en la ruta proporcionada
     def save_json(self, file_path, json):

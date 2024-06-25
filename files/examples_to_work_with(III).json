@@ -1,0 +1,430 @@
+{
+  "eng-30-00002684-n_object": [
+    "1",
+    "A tangible and visible entity; an entity that can cast a shadow.",
+    "Un ente tangible y visible; una entidad que puede proyectar sombra.",
+    "n",
+    "eng",
+    [
+      [
+        "The object on the table was a vase made of porcelain.",
+        "El objeto en la mesa era una jarra de porcelana."
+      ],
+      [
+        "The object in the distance appeared to be a tree.",
+        "El objeto en la distancia parecía ser un árbol."
+      ],
+      [
+        "The object under the bed was a suitcase filled with clothes.",
+        "El objeto debajo de la cama era una maleta llena de ropa."
+      ],
+      [
+        "The object in the painting was a woman's face.",
+        "La figura en la pintura era el rostro de una mujer."
+      ],
+      [
+        "The object in the room was a lamp that cast a warm glow on the floor.",
+        "El objeto en la habitación era una lámpara que proyectaba un calido resplandor en el suelo."
+      ]
+    ],
+    "objeto",
+    [
+      [
+        "El libro es un objeto pequeño y delgado.",
+        "The book is a small and thin object."
+      ],
+      [
+        "La escultura de bronce es un objeto valioso.",
+        "The bronze sculpture is a valuable object."
+      ],
+      [
+        "El globo terráqueo es un objeto único en el sistema solar.",
+        "The terrestrial globe is a unique object in the solar system."
+      ],
+      [
+        "El diamante es un objeto precioso que se usa para joyas.",
+        "The diamond is a precious object that is used for jewelry."
+      ],
+      [
+        "El coche es un objeto mecánico complejo y sofisticado.",
+        "The car is a complex and sophisticated mechanical object."
+      ]
+    ]
+  ],
+  "eng-30-00006484-n_cell": [
+    "2",
+    "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+    "Unidad estructural y funcional básica de todas las entidades vivientes; pueden existir como unidades independientes de la vida (como en los monades), o pueden formar colonias o tejidos, como en las plantas y animales superiores..",
+    "n",
+    "eng",
+    [
+      [
+        "The human body contains trillions of cells, each with its own unique function.",
+        "El cuerpo humano contiene trillones de células, cada una con su propia función única."
+      ],
+      [
+        "A single-celled organism, such as a protozoan, is capable of reproducing through binary fission.",
+        "Una célula unicelular, como una protozoo, es capaz de reproducirse por división binaria."
+      ],
+      [
+        "In multicellular organisms, specialized cells work together to form tissues and organs.",
+        "En los organismos multicelulares, las células especializadas trabajan juntas para formar tejidos y órganos."
+      ],
+      [
+        "The cell membrane acts as a barrier between the internal environment of the cell and the external environment.",
+        "La membrana celular actúa como barrera entre el entorno interno de la célula y el exterior."
+      ],
+      [
+        "During cell division, the genetic material is replicated and distributed equally among the daughter cells.",
+        "Durante la división celular, se reproduce y distribuye igualmente la materia genética entre las células hijas."
+      ]
+    ]
+  ],
+  "eng-30-00007347-n_cause": [
+    "4",
+    "Any entity that produces an effect or is responsible for events or results.",
+    "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados.",
+    "n",
+    "eng",
+    [
+      [
+        "The cause of the accident was a malfunctioning brake system.",
+        "La causa del accidente fue un sistema de frenos defectuoso."
+      ],
+      [
+        "The cause of the disease outbreak was contaminated food.",
+        "La causa del brote de enfermedad fue la alimentación contaminada."
+      ],
+      [
+        "The cause of the power outage was a fallen tree branch on the power lines.",
+        "La causa del apagón eléctrico fue una rama de árbol caída sobre las líneas eléctricas."
+      ],
+      [
+        "The cause of the financial crisis was irresponsible lending practices.",
+        "La causa de la crisis financiera fue prácticas de préstamo irresponsables."
+      ],
+      [
+        "The cause of the earthquake was tectonic plate movement.",
+        "La causa del terremoto fue el movimiento de las placas tectónicas."
+      ]
+    ],
+    "causa",
+    [
+      [
+        "La contaminación es una causa de enfermedades respiratorias.",
+        "Contamination is a cause of respiratory diseases."
+      ],
+      [
+        "El consumo excesivo de alcohol es una causa de problemas de salud.",
+        "Excessive consumption of alcohol is a cause of health problems."
+      ],
+      [
+        "La falta de educación es una causa de pobreza.",
+        "The lack of education is a cause of poverty."
+      ],
+      [
+        "El cambio climático es una causa de la desaparición de especies.",
+        "Climate change is a cause of species extinction."
+      ],
+      [
+        "La corrupción es una causa de la falta de confianza en el gobierno.",
+        "Corruption is a cause of lack of trust in government."
+      ]
+    ]
+  ],
+  "eng-30-00007846-n_person": [
+    "1",
+    "A human being.",
+    "Una persona humana or un ser humano.",
+    "n",
+    "eng",
+    [
+      [
+        "The person sitting next to me is reading a book.",
+        "La persona que está sentada al lado mío está leyendo un libro."
+      ],
+      [
+        "The person who helped us yesterday was very kind.",
+        "La persona que nos ayudó ayer fue muy amable."
+      ],
+      [
+        "The person responsible for this mistake will be punished.",
+        "La persona responsable de este error será castigada."
+      ],
+      [
+        "The person in charge of the project is working on it right now.",
+        "La persona encargada del proyecto está trabajando en él en este momento."
+      ],
+      [
+        "The person I met at the party last night was fascinating to talk to.",
+        "La persona que conocí en la fiesta de anoche fue fascinante hablar con ella."
+      ]
+    ],
+    "persona",
+    [
+      [
+        "La persona en la puerta es mi mejor amiga.",
+        "The person at the door is my best friend."
+      ],
+      [
+        "El hombre que pasó por aquí hace dos días es una persona muy importante.",
+        "The man who passed by here two days ago is a very important person."
+      ],
+      [
+        "La mujer que lee el periódico es una persona solitaria.",
+        "The woman who reads the newspaper is a solitary person."
+      ],
+      [
+        "El niño que juega con los otros niños es una persona alegre y divertida.",
+        "The boy who plays with other children is a cheerful and entertaining person."
+      ],
+      [
+        "La persona que está hablando en este momento es un experto en lingüística.",
+        "The person who is speaking at this moment is an expert in linguistics."
+      ]
+    ]
+  ],
+  "eng-30-00015388-n_animal": [
+    "1",
+    "A living organism characterized by voluntary movement.",
+    "Un ser vivo con movimiento voluntario.",
+    "n",
+    "eng",
+    [
+      [
+        "The lion is a majestic animal with a powerful roar.",
+        "El león es un animal majestuoso con un poderoso rugido."
+      ],
+      [
+        "The elephant is the largest land animal on earth.",
+        "El elefante es el mayor animal terrestre del planeta."
+      ],
+      [
+        "The cheetah is the fastest animal in the world.",
+        "La guepardo es el animal más rápido del mundo."
+      ],
+      [
+        "The kangaroo is an herbivorous marsupial found in Australia.",
+        "El kanguro es un mamífero marsupial herbívoro que se encuentra en australia."
+      ],
+      [
+        "The sloth is a slow-moving arboreal mammal native to Central and South America.",
+        "La panda es un mamífero arborícola lento y nativo de américa central y del sur."
+      ]
+    ]
+  ],
+  "eng-30-00017222-n_plant": [
+    "2",
+    "(botany) a living organism lacking the power of locomotion.",
+    "Un ser vivo que no posee la capacidad de movimiento.",
+    "n",
+    "eng",
+    [
+      [
+        "The plant has green leaves and produces flowers.",
+        "La planta tiene hojas verdes y produce flores."
+      ],
+      [
+        "The plant is rooted in the ground and cannot move.",
+        "La planta está arraizada en el suelo y no puede moverse."
+      ],
+      [
+        "The plant absorbs water through its roots and converts it into energy.",
+        "La planta absorbe agua a través de sus raíces y la convierte en energía."
+      ],
+      [
+        "The plant grows in response to sunlight, water, and nutrients.",
+        "La planta crece en respuesta a la luz, el agua y los nutrientes."
+      ],
+      [
+        "The plant's stem supports its leaves and flowers, allowing it to reach for light.",
+        "El tallo de la planta sostiene sus hojas y flores, permitiéndole alcanzar la luz."
+      ]
+    ],
+    "planta",
+    [
+      [
+        "La planta tiene raíces largas y delgadas.",
+        "The plant has long and thin roots."
+      ],
+      [
+        "La planta crece en un ambiente húmedo.",
+        "The plant grows in a humid environment."
+      ],
+      [
+        "La planta tiene hojas verdes y brillantes.",
+        "The plant has green and shiny leaves."
+      ],
+      [
+        "La planta produce frutos pequeños y redondos.",
+        "The plant produces small and round fruits."
+      ],
+      [
+        "La planta se encuentra en una zona de luz insuficiente.",
+        "The plant is located in an area with insufficient light."
+      ]
+    ]
+  ],
+  "eng-30-00019613-n_substance": [
+    "1",
+    "The real physical matter of which a person or thing consists.",
+    "La materia física real de la que consta una persona o cosa.",
+    "n",
+    "eng",
+    [
+      [
+        "The substance of the rock is primarily composed of granite.",
+        "La sustancia de la roca está principalmente compuesta de granito."
+      ],
+      [
+        "The chemical substance of water is H2O.",
+        "La sustancia química del agua es h2o."
+      ],
+      [
+        "The substance of the plant's stem is made up of cellulose and lignin.",
+        "La sustancia del tallo de la planta está compuesta por celulosa y lignina."
+      ],
+      [
+        "The substance of the diamond is carbon, arranged in a crystalline structure.",
+        "La sustancia del diamante es carbono, dispuesto en una estructura cristalina."
+      ],
+      [
+        "The substance of the metal is iron, which can be melted and molded into various shapes.",
+        "La sustancia del metal es el hierro, que se puede fundir y modelar en diferentes formas."
+      ]
+    ],
+    "sustancia",
+    [
+      [
+        "La sustancia del agua es hidrógeno y oxígeno.",
+        "The substance of water is hydrogen and oxygen."
+      ],
+      [
+        "El sustancia del aire está compuesta principalmente por nitrógeno y oxígeno.",
+        "The substance of air is mainly composed of nitrogen and oxygen."
+      ],
+      [
+        "La sustancia del cuerpo humano incluye agua, proteínas, lípidos, carbohidratos y sales minerales.",
+        "The substance of the human body includes water, proteins, lipids, carbohydrates and mineral salts."
+      ],
+      [
+        "La sustancia de la piedra caliza es carbonato de calcio.",
+        "The substance of limestone is calcium carbonate."
+      ],
+      [
+        "El sustancia del vidrio es silicato de oxígeno.",
+        "The substance of glass is silicate of oxygen."
+      ]
+    ]
+  ],
+  "eng-30-00020827-n_matter": [
+    "3",
+    "That which has mass and occupies space.",
+    "Eso que tiene masa y ocupa espacio.",
+    "n",
+    "eng",
+    [
+      [
+        "The matter on the table was a stack of papers.",
+        "La cuestión en la mesa era un montón de papeles."
+      ],
+      [
+        "The matter in the box was a collection of small toys.",
+        "La cuestión en la caja era una colección de juguetes pequeños."
+      ],
+      [
+        "The matter in the air was a thick fog.",
+        "La materia en el aire era una neblina densa."
+      ],
+      [
+        "The matter in the water was a school of fish.",
+        "La materia en el agua era una escuela de peces."
+      ],
+      [
+        "The matter in the soil was rich compost.",
+        "La materia en el suelo era composta rica."
+      ]
+    ]
+  ],
+  "eng-30-00021265-n_food": [
+    "1",
+    "Any substance that can be metabolized by an animal to give energy and build tissue.",
+    "Cualquier sustancia que pueda ser metabolizada por un animal para dar energía y construir tejido.",
+    "n",
+    "eng",
+    [
+      [
+        "The food on the plate looked appetizing.",
+        "La comida en la bandeja parecía delicioso."
+      ],
+      [
+        "The food in the refrigerator was expired.",
+        "La comida en el refrigerador estaba caducada."
+      ],
+      [
+        "The food at the restaurant was delicious.",
+        "La comida en el restaurante fue delicioso."
+      ],
+      [
+        "The food in the pantry needs to be restocked.",
+        "La comida en la pantry necesita ser repoblada."
+      ],
+      [
+        "The food in the wilderness is scarce.",
+        "La comida en el desierto es escasa."
+      ]
+    ],
+    "comida",
+    [
+      [
+        "La comida es una necesidad básica para la supervivencia de los animales.",
+        "Food is a basic necessity for animal survival.."
+      ],
+      [
+        "El zoologista estudió la dieta de los leones en el parque nacional.",
+        "The zoologist studied the diet of lions in the national park."
+      ],
+      [
+        "Los pájaros se alimentan principalmente de insectos y semillas.",
+        "Birds mainly feed on insects and seeds."
+      ],
+      [
+        "La comida es una parte importante de la cultura humana.",
+        "Food is an important part of human culture."
+      ],
+      [
+        "La comida es un tema importante en la literatura infantil.",
+        "Food is an important topic in children's literature.."
+      ]
+    ]
+  ],
+  "eng-30-00023271-n_knowledge": [
+    "1",
+    "The psychological result of perception and learning and reasoning.",
+    "El resultado psicológico de la percepción y el aprendizaje y la razón.",
+    "n",
+    "eng",
+    [
+      [
+        "The acquisition of knowledge is a lifelong process that requires dedication and effort.",
+        "El proceso de adquisición del conocimiento es un proceso vital que exige dedicación y esfuerzo."
+      ],
+      [
+        "Knowledge is power, and those who possess it have an advantage in society.",
+        "El conocimiento es poder y aquellos que lo poseen tienen una ventaja en la sociedad."
+      ],
+      [
+        "The accumulation of knowledge has led to significant advancements in science and technology.",
+        "La acumulación de conocimiento ha llevado a importantes avances en la ciencia y la tecnología."
+      ],
+      [
+        "Knowledge is not always easy to obtain, but it is essential for personal growth and development.",
+        "El conocimiento no siempre es fácil de obtener, pero es esencial para el crecimiento y desarrollo personal."
+      ],
+      [
+        "The dissemination of knowledge through education and communication is crucial for the betterment of humanity.",
+        "La difusión del conocimiento a través de la educación y la comunicación es fundamental para el mejoramiento de la humanidad."
+      ]
+    ]
+  ]
+}

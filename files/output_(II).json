@@ -1,0 +1,406 @@
+{
+  "eng-30-00027167-n_location": [
+    "1",
+    "A point or extent in space.",
+    "Un punto o extensión en el espacio.",
+    "n",
+    "eng",
+    [
+      [
+        "The location of the new store is on Main Street.",
+        "La ubicación de la nueva tienda está en main street."
+      ],
+      [
+        "The exact location of the lost item has not been found yet.",
+        "La ubicación exacta del objeto perdido aún no ha sido encontrada."
+      ],
+      [
+        "The restaurant's location near the park makes it a popular spot for lunch breaks.",
+        "La ubicación del restaurante cerca del parque lo hace un lugar muy solicitado para las comidas de media jornada."
+      ],
+      [
+        "The coordinates provided by the GPS device led us to the correct location.",
+        "Las coordenadas proporcionadas por el dispositivo de gps nos llevaron al lugar correcto."
+      ],
+      [
+        "The location of the accident was on the highway, just past the exit ramp.",
+        "El lugar del accidente estaba en la autopista, a pocos metros de la salida."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00154433-n_support": [
+    "5",
+    "Documentary validation.",
+    "Validación documental.",
+    "n",
+    "eng",
+    [
+      [
+        "The scientific community has provided ample support for the theory through rigorous testing and thorough documentation.",
+        "La comunidad científica ha proporcionado una amplia validación documental de la teoría a través del riguroso ensayo y la documentación exhaustiva."
+      ],
+      [
+        "The research findings have received overwhelming support from various academic journals and reputable publications.",
+        "Los hallazgos de la investigación han recibido un apoyo abrumador de varias revistas académicas y publicaciones respetables."
+      ],
+      [
+        "The empirical evidence presented in the study provides strong support for the hypothesis, as demonstrated by statistical analysis and data visualization.",
+        "La evidencia empírica presentada en el estudio proporciona un fuerte apoyo a la hipótesis, como demuestra el análisis estadístico y la visualización de los datos."
+      ],
+      [
+        "The results of the experiment have been validated through multiple replications and independent verification, providing robust support for the proposed theory.",
+        "Los resultados del experimento han sido validados a través de múltiples replicaciones y verificación independiente, lo que proporciona una fuerte evidencia en apoyo de la teoría propuesta."
+      ],
+      [
+        "The scientific community has consistently supported the findings, with numerous studies confirming their validity and significance in various fields of study.",
+        "La comunidad científica ha apoyado consistentemente los hallazgos, con numerosos estudios que confirman su validez y significancia en distintas áreas de estudio."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 1
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00230475-n_miscarriage": [
+    "2",
+    "A natural loss of the products of conception.",
+    "Una pérdida natural de los productos de la concepción.",
+    "n",
+    "eng",
+    [
+      [
+        "The woman experienced a miscarriage at six weeks into her pregnancy.",
+        "La mujer sufrió un aborto espontáneo a las seis semanas de embarazo."
+      ],
+      [
+        "The doctor confirmed that the patient had suffered a miscarriage due to complications with the placenta.",
+        "El médico confirmó que la paciente había sufrido un aborto espontáneo debido a complicaciones en el placenta."
+      ],
+      [
+        "The couple was devastated by their second miscarriage, which occurred after a routine ultrasound revealed no fetal heartbeat.",
+        "El matrimonio se desmoronó al tener su segundo embarazo abortado, que ocurrió después de una ecografía rutinaria que reveló la ausencia de latido fetal."
+      ],
+      [
+        "The statistics show that approximately 15% of all pregnancies result in a miscarriage.",
+        "Las estadísticas muestran que alrededor del 15% de todas las embarazos terminan en un aborto espontáneo."
+      ],
+      [
+        "The emotional and physical toll of multiple miscarriages can be overwhelming for many couples.",
+        "El impacto emocional y físico de varios embarazos que terminan en aborto espontáneo puede ser excesivamente agotador para muchas parejas."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00239230-n_initiative": [
+    "2",
+    "The first of a series of actions.",
+    "La primera de una serie de acciones.",
+    "n",
+    "eng",
+    [
+      [
+        "The initiative to reduce carbon emissions began with the implementation of energy-efficient technologies in factories",
+        "La iniciativa para reducir las emisiones de carbono comenzó con la implementación de tecnologías energéticamente eficientes en fábricas."
+      ],
+      [
+        "The first step towards improving literacy rates was taken through the establishment of reading programs in schools",
+        "La primera acción para mejorar las tasas de alfabetización se tomó mediante la creación de programas de lectura en las escuelas."
+      ],
+      [
+        "The initiative for sustainable agriculture started with the introduction of crop rotation and natural fertilizers",
+        "La iniciativa para la agricultura sostenible comenzó con la introducción de la rotación de cultivos y los fertilizantes naturales."
+      ],
+      [
+        "The initial move towards reducing plastic waste was made by implementing a ban on single-use plastics in public places",
+        "La primera acción para reducir el desecho de plástico fue implementar una prohibición de los plásticos únicamente en lugares públicos."
+      ],
+      [
+        "The first step towards promoting renewable energy was taken through the installation of solar panels in government buildings.",
+        "La primera acción para promover la energía renovable fue tomada mediante la instalación de paneles solares en edificios gubernamentales."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 3
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00249501-n_progress": [
+    "1",
+    "Gradual improvement or growth or development.",
+    "Mejora o mejoramiento progresivo o crecimiento o desarrollo.",
+    "n",
+    "eng",
+    [
+      [
+        "The progress in technology has led to significant advancements in healthcare.",
+        "El avance en la tecnología ha llevado a importantes avances en la salud."
+      ],
+      [
+        "The steady progress in renewable energy sources is a positive sign for our planet's future.",
+        "El progreso constante en las fuentes de energía renovables es una señal positiva para el futuro de nuestro planeta."
+      ],
+      [
+        "The company's progress in sales over the past year has been impressive, with a growth rate of 25%.",
+        "El progreso de la empresa en ventas durante el último año ha sido impresionante, con un tasa de crecimiento del 25%."
+      ],
+      [
+        "The progress in education reform has resulted in higher graduation rates and improved academic outcomes.",
+        "El progreso en la reforma educativa ha resultado en tasas de graduación más altas y mejores resultados académicos."
+      ],
+      [
+        "The gradual progress in international relations has led to increased cooperation and diplomacy between nations.",
+        "El progreso gradual en las relaciones internacionales ha llevado a una mayor cooperación y diplomacia entre los países."
+      ]
+    ],
+    "progreso",
+    [
+      [
+        "El progreso educativo del estudiante ha sido notable este año.",
+        "The student's academic progress has been remarkable this year."
+      ],
+      [
+        "La tecnología ha facilitado un progreso significativo en la industria.",
+        "The technology has significantly facilitated progress in industry."
+      ],
+      [
+        "El progreso de la investigación científica es una indicación de su calidad.",
+        "The progress of scientific research is a sign of its quality."
+      ],
+      [
+        "El progreso de la economía local ha mejorado considerablemente en los últimos años.",
+        "The progress of the local economy has significantly improved over the past few years."
+      ],
+      [
+        "La educación superior ha ayudado a muchas personas a hacer un progreso profesional significativo.",
+        "Higher education has helped many people to make significant professional progress."
+      ]
+    ],
+    "progreso"
+  ],
+  "eng-30-00328015-n_return": [
+    "5",
+    "The act of going back to a prior location.",
+    "La acción de volver a un lugar anterior.",
+    "n",
+    "eng",
+    [
+      [
+        "The hikers made their way back down the mountain after reaching the summit.",
+        "Los senderistas regresaron por la montaña después de alcanzar el cume."
+      ],
+      [
+        "After a long day at work, she returned home to her family.",
+        "Después de un largo día en el trabajo, ella volvió a su hogar para reunirse con su familia."
+      ],
+      [
+        "The lost item was found and returned to its rightful owner.",
+        "El objeto perdido fue encontrado y devuelto a su dueño legítimo."
+      ],
+      [
+        "The car was towed to the mechanic's shop for repairs and then returned to its owner.",
+        "El coche fue remolcado al taller mecánico para reparaciones y luego devuelto a su dueño."
+      ],
+      [
+        "The package was sent back to the sender due to an incorrect address.",
+        "El paquete fue enviado de vuelta al remitente debido a una dirección incorrecta."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00351638-n_reduction": [
+    "1",
+    "The act of decreasing or reducing something.",
+    "La acción de disminuir o reducir algo.",
+    "n",
+    "eng",
+    [
+      [
+        "The reduction in carbon emissions has been a significant achievement for our country.",
+        "La reducción de las emisiones de carbono ha sido una importante hazaña para nuestro país."
+      ],
+      [
+        "The company implemented a reduction in prices to remain competitive in the market.",
+        "La empresa implementó una reducción de precios para mantenerse competitiva en el mercado."
+      ],
+      [
+        "The government's policy of reduction in taxes has led to an increase in consumer spending.",
+        "La política del gobierno de reducción de impuestos ha llevado a un aumento en el gasto consumidor."
+      ],
+      [
+        "The scientist's experiment resulted in a reduction in the amount of waste produced during the manufacturing process.",
+        "El resultado del experimento del científico fue una reducción en la cantidad de residuos producida durante el proceso de fabricación."
+      ],
+      [
+        "The teacher's strategy for reducing student absenteeism involved implementing a reward system for attendance.",
+        "La estrategia del maestro para reducir la falta de estudiantes consistió en implementar un sistema de recompensas por asistencia."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 1
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00429048-n_entertainment": [
+    "1",
+    "An activity that is diverting and that holds the attention.",
+    "Una actividad divertida y que mantiene la atención.",
+    "n",
+    "eng",
+    [
+      [
+        "The movie was an entertaining experience that kept me on the edge of my seat.",
+        "La película fue una experiencia divertida que mantuvo a mi al borde de mi asiento."
+      ],
+      [
+        "The stand-up comedian provided hours of laughter with his witty jokes and engaging personality.",
+        "El comediante de pie proporcionó horas de risa con sus chistes divertidos y su personalidad encantadora, que mantuvo la atención."
+      ],
+      [
+        "The concert was a fantastic display of musical talent, leaving the audience thoroughly entertained.",
+        "El concierto fue una espectacular exhibición de talento musical, dejando al público completamente entretenido."
+      ],
+      [
+        "The circus performers put on an incredible show that had the crowd gasping in amazement.",
+        "Los artistas del circo hicieron un espectáculo increíble que dejó al público asombrado."
+      ],
+      [
+        "The book was a captivating read that kept me up late into the night.",
+        "La novela fue una lectura encantadora que mantuvo despierto a la hora tardía de la noche."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00609953-n_profession": [
+    "2",
+    "An occupation requiring special education (especially in the liberal arts or sciences).",
+    "Una ocupación que requiere una educación especial (en particular en las artes liberales o las ciencias).",
+    "n",
+    "eng",
+    [
+      [
+        "The profession of medicine demands years of rigorous training and study.",
+        "La profesión de la medicina exige años de formación y estudio riguroso."
+      ],
+      [
+        "A degree in law is necessary for pursuing a career in the legal profession.",
+        "Una licenciatura en derecho es necesaria para seguir una carrera en el ámbito de la profesión jurídica."
+      ],
+      [
+        "The field of engineering requires a strong foundation in mathematics and science.",
+        "La ingeniería es una profesión que exige una sólida base en matemáticas y ciencias."
+      ],
+      [
+        "The liberal arts provide an excellent education for those seeking careers in fields such as journalism, teaching, or politics.",
+        "Las artes liberales proporcionan una excelente educación para aquellos que buscan carreras en campos como la periodismo, la enseñanza o la política."
+      ],
+      [
+        "The scientific profession offers opportunities to conduct research, develop new technologies, and contribute to the advancement of knowledge.",
+        "La profesión científica ofrece oportunidades para realizar investigaciones, desarrollar nuevas tecnologías y contribuir al avance del conocimiento."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 2
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00639556-n_experiment": [
+    "1",
+    "The act of conducting a controlled test or investigation.",
+    "La acción de realizar una prueba o investigación controlada.",
+    "n",
+    "eng",
+    [
+      [
+        "The scientists conducted an experiment to investigate the effects of different levels of light on plant growth.",
+        "Los científicos realizaron un experimento para investigar los efectos de diferentes niveles de luz en el crecimiento de las plantas."
+      ],
+      [
+        "The purpose of the experiment was to determine whether exposure to certain chemicals would have any impact on human behavior.",
+        "El propósito del experimento era determinar si la exposición a ciertos químicos tendría algún efecto en el comportamiento humano."
+      ],
+      [
+        "The results of the experiment were surprising, as they showed that a previously unknown species of fish had been discovered in the deep sea.",
+        "Los resultados de la experiencia fueron sorprendentes, ya que mostraron que se había descubierto una especie desconocida de pez en el fondo del mar."
+      ],
+      [
+        "The experiment involved exposing rats to different levels of noise and measuring their stress responses.",
+        "La investigación implicó expuesto a los ratones a diferentes niveles de ruido y medir sus respuestas al estrés."
+      ],
+      [
+        "The experiment was designed to test the hypothesis that exposure to certain environmental factors would increase the risk of developing cancer.",
+        "La prueba fue diseñada para probar la hipótesis de que la exposición a ciertos factores ambientales aumentaría el riesgo de desarrollar cáncer."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ]
+}

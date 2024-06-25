@@ -1,0 +1,735 @@
+{
+  "eng-30-00039297-n_contact": [
+    "1",
+    "Close interaction.",
+    "Interacción cercana.",
+    "n",
+    "eng",
+    [
+      [
+        "The sales team had frequent contacts with potential clients to close deals.",
+        "La plantilla debe ser una traducción exacta del original en inglés"
+      ],
+      [
+        "The doctor scheduled regular contacts with her patients for follow-up care.",
+        "El médico programó contactos regulares con sus pacientes para seguimiento de la atención."
+      ],
+      [
+        "The project manager maintained constant contact with the team members to ensure progress.",
+        "El gerente del proyecto mantuvo una comunicación constante con los miembros de la equipo para asegurar el avance."
+      ],
+      [
+        "The social media influencer had numerous contacts with her followers through various platforms.",
+        "La influencera de redes sociales tuvo numerosas interacciones cercanas con sus seguidores a través de diferentes plataformas."
+      ],
+      [
+        "The diplomat established close contacts with foreign officials to negotiate treaties and agreements.",
+        "El diplomático estableció relaciones cercanas con funcionarios extranjeros para negociar tratados y acuerdos."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00058743-n_flight": [
+    "4",
+    "The act of escaping physically.",
+    "La acción de huir físicamente.",
+    "n",
+    "eng",
+    [
+      [
+        "The bird took flight from its nest to avoid being caught by predators.",
+        "El pájaro tomó vuelo desde su nido para evitar ser capturado por los depredadores."
+      ],
+      [
+        "The hikers fled into the forest, hoping to escape the wildfire through flight.",
+        "Los senderistas huyeron hacia el bosque, esperando escapar del incendio forestal a través de la huida."
+      ],
+      [
+        "The prisoner broke free and ran as fast as he could, taking flight from his captors.",
+        "El preso se liberó y corrió lo más rápido que pudo, huyendo de sus captores."
+      ],
+      [
+        "The survivors of the shipwreck swam for hours until they finally reached land, their flight from danger complete.",
+        "Los supervivientes de la naufragio nadaron durante horas hasta que finalmente llegaron a tierra, su huida del peligro completa."
+      ],
+      [
+        "The woman sprinted down the street, her heart racing as she tried to outrun the attacker and take flight from his grasp.",
+        "La mujer corrió por la calle, su corazón latía mientras intentaba huir del agresor y lograr la fuga física."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00072473-n_confusion": [
+    "5",
+    "A mistake that results from taking one thing to be another.",
+    "Un error que resulta de confundir una cosa con otra.",
+    "n",
+    "eng",
+    [
+      [
+        "The confusion between there and their led to several grammatical errors in the text.",
+        "La confusión entre allí y sus llevó a varios errores gramaticales en el texto."
+      ],
+      [
+        "The doctor's diagnosis was a case of confusion, mistaking the symptoms for those of a different disease.",
+        "La diagnóstico del médico fue un caso de confusión, al confundir los síntomas con los de una enfermedad diferente."
+      ],
+      [
+        "The student's answer on the math test was an example of confusion, as they had misinterpreted the question.",
+        "La respuesta del estudiante en el examen de matemáticas fue un ejemplo de confusión, ya que habían malinterpretado la pregunta."
+      ],
+      [
+        "The police officer's mistake in identifying the suspect was due to confusion, as they had mistaken one person for another.",
+        "La equivocación del oficial de policía al identificar al sospechoso fue debida a la confusión, ya que se equivocó de una persona por otra."
+      ],
+      [
+        "The author's use of homonyms led to confusion in their writing, as they used words with similar spellings but different meanings.",
+        "El autor utilizó homónimos, lo que llevó a la confusión en su escritura, ya que usó palabras con ortografía similar pero significados diferentes."
+      ]
+    ],
+    "confusión",
+    [
+      [
+        "La confusión entre la palabra suave y dulce es común en inglés.",
+        "The confusion between the words soft and sweet is common in english."
+      ],
+      [
+        "La confusión entre los nombres de las estrellas Vega y Deneb puede ser problemática para los astrónomos.",
+        "The confusion between the names of the stars vega and deneb can be problematic for astronomers."
+      ],
+      [
+        "La confusión entre la palabra principal y principio es frecuente en el idioma español.",
+        "The confusion between the main word and principle is common in the spanish language."
+      ],
+      [
+        "La confusión entre las palabras suelo y sueño puede ser problemática para los estudiantes de inglés.",
+        "The confusion between the words floor and dream can be problematic for english learners."
+      ],
+      [
+        "La confusión entre la palabra principal y principio es una causa común de errores en el idioma español.",
+        "The confusion between the main word and principle is a common cause of errors in the spanish language."
+      ]
+    ],
+    "confusión"
+  ],
+  "eng-30-00081836-n_shopping": [
+    "1",
+    "Searching for or buying goods or services.",
+    "Buscando o comprando bienes o servicios.",
+    "n",
+    "eng",
+    [
+      [
+        "She spent hours shopping for the perfect dress to wear at her sister's wedding.",
+        "Ella pasó horas comprando ropa para el vestido perfecto que llevaría a la boda de su hermana."
+      ],
+      [
+        "The mall was packed with people doing their holiday shopping.",
+        "La tienda estaba llena de gente haciendo sus compras navideñas."
+      ],
+      [
+        "I love going to thrift stores for unique and affordable shopping finds.",
+        "Adoro ir a tiendas de segundamano para encontrar compras únicas y baratas."
+      ],
+      [
+        "Online shopping has become increasingly popular due to its convenience.",
+        "La compra en línea ha aumentado de manera creciente debido a su comodidad."
+      ],
+      [
+        "Shopping for groceries can be a daunting task, especially when you have a long list of items to buy.",
+        "La compra de alimentos puede ser una tarea desafiante, especialmente cuando hay muchas cosas que comprar en la lista."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 2
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00152727-n_diagnosis": [
+    "1",
+    "Identifying the nature or cause of some phenomenon.",
+    "Identificar la naturaleza o causa de algún fenómeno.",
+    "n",
+    "eng",
+    [
+      [
+        "The doctor carefully examined the patient and arrived at a diagnosis of pneumonia.",
+        "El médico examinó cuidadosamente al paciente y llegó a un diagnóstico de neumonía."
+      ],
+      [
+        "After conducting extensive tests, the scientists were able to make a definitive diagnosis of the rare disease.",
+        "Después de realizar pruebas extensas, los científicos pudieron hacer un diagnóstico definitivo de la enfermedad rara."
+      ],
+      [
+        "The forensic team's analysis led them to a clear diagnosis of homicide.",
+        "El equipo de análisis forense llegó a un diagnóstico claro de asesinato."
+      ],
+      [
+        "The meteorologists issued a severe weather warning based on their diagnosis of an impending storm.",
+        "Los meteorólogos emitieron una advertencia de mal tiempo severa basada en su diagnóstico de una tormenta que se avecina."
+      ],
+      [
+        "The linguist's analysis revealed a diagnosis of a previously unknown dialect in the rural community.",
+        "La análisis del lingüista reveló un diagnóstico de una variedad desconocida en la comunidad rural."
+      ]
+    ],
+    "diagnóstico",
+    [
+      [
+        "El diagnóstico médico reveló que la paciente padecía una infección bacteriana.",
+        "The medical diagnosis revealed that the patient was suffering from a bacterial infection."
+      ],
+      [
+        "La investigación científica llevó al diagnóstico de un nuevo elemento químico.",
+        "The scientific research led to the identification of a new chemical element."
+      ],
+      [
+        "El diagnóstico forense concluyó en el asesinato premeditado.",
+        "The autopsy determined that the murder was premeditated."
+      ],
+      [
+        "El diagnóstico psicológico indicó que la persona sufría de depresión clínica.",
+        "The psychological diagnosis indicated that the person was suffering from clinical depression."
+      ],
+      [
+        "La investigación arqueológica llevó al diagnóstico de una antigua ciudad perdida.",
+        "The archaeological investigation led to the identification of an ancient lost city."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
+    }
+  ],
+  "eng-30-00180413-n_acceptance": [
+    "2",
+    "The act of accepting with approval; favorable reception.",
+    "La acción de aceptar con aprobación; la recepción favorable.",
+    "n",
+    "eng",
+    [
+      [
+        "The audience's acceptance of the play was overwhelmingly positive.",
+        "La aceptación del público de la obra fue abrumadoramente positiva."
+      ],
+      [
+        "The committee's decision to accept the proposal was a significant milestone for the project.",
+        "La decisión del comité de aceptar la propuesta fue un hito significativo para el proyecto."
+      ],
+      [
+        "The company's acceptance of the new employee policy has led to increased productivity and job satisfaction.",
+        "La aceptación de la nueva política del empleador ha llevado a un aumento de la productividad y el satisfacimiento en el trabajo."
+      ],
+      [
+        "The jury's acceptance of the defendant's plea of insanity was a surprising turn of events in the trial.",
+        "La aceptación del jurado de la declaración de insanidad del acusado fue una sorprendente vuelta de tuerca en el juicio."
+      ],
+      [
+        "The community's acceptance of the immigrant family has been a source of pride for all involved.",
+        "La aceptación de la comunidad de la familia inmigrante ha sido una fuente de orgullo para todos los implicados."
+      ]
+    ],
+    "aceptación",
+    [
+      [
+        "La aceptación de la propuesta fue unánime.",
+        "The acceptance of the proposal was unanimous."
+      ],
+      [
+        "El libro ha recibido una aceptación positiva entre los lectores.",
+        "The book has received positive acceptance among readers."
+      ],
+      [
+        "La aceptación de la idea por parte del equipo fue inmediata.",
+        "The acceptance of the idea by the team was immediate."
+      ],
+      [
+        "La aceptación de la nueva política ha sido generalizada en la empresa.",
+        "The acceptance of the new policy has been widely adopted within the company."
+      ],
+      [
+        "La aceptación de la propuesta por parte del cliente es crucial para el éxito del negocio.",
+        "The acceptance of the proposal by the customer is critical for the success of the business."
+      ]
+    ],
+    "aceptación"
+  ],
+  "eng-30-00187337-n_goal": [
+    "4",
+    "A successful attempt at scoring.",
+    "Un exitoso intento de marcar.",
+    "n",
+    "eng",
+    [
+      [
+        "The soccer team scored two goals in their victory over the opposing team",
+        "El equipo de fútbol anotó dos goles en su victoria sobre el equipo contrario."
+      ],
+      [
+        "The basketball player made a goal with just seconds left on the clock",
+        "El jugador de baloncesto anotó con solo segundos restantes en el reloj."
+      ],
+      [
+        "The football quarterback threw a long pass that resulted in a touchdown and a goal for his team",
+        "El quarterback de fútbol americano lanzó un pase largo que resultó en una anotación y un gol para su equipo."
+      ],
+      [
+        "The hockey team's center forward scored a hat trick, which is three goals in one game",
+        "La delantera central del equipo de hockey anotó un triplete, que es tres goles en un solo partido."
+      ],
+      [
+        "The tennis player hit an ace to win the set and achieve her goal of winning the match.",
+        "El tenista acertó un as para ganar el set y lograr su objetivo de ganar la partida."
+      ]
+    ],
+    "gol",
+    [
+      [
+        "El delantero anotó un gol en la última jugada.",
+        "The striker scored a goal in the last play."
+      ],
+      [
+        "La pelota entró en la red y se marcó un gol para el equipo local.",
+        "The ball entered the net and scored a goal for the home team."
+      ],
+      [
+        "El arquero falló al bloquear el disparo y se le marcó un gol.",
+        "The goalkeeper failed to block the shot and was credited with a goal against him."
+      ],
+      [
+        "El referee señaló una falta a favor del equipo visitante, y el jugador anotó un gol de tiro libre.",
+        "The referee signaled a foul against the visiting team, and the player scored a goal from a free kick."
+      ],
+      [
+        "La selección nacional logró un gol en la primera mitad del partido.",
+        "The national team managed to score a goal during the first half of the game."
+      ]
+    ],
+    "gol"
+  ],
+  "eng-30-00213903-n_exemption": [
+    "3",
+    "An act exempting someone.",
+    "Una acción que exime a alguien.",
+    "n",
+    "eng",
+    [
+      [
+        "The government granted an exemption to the small business owner from paying taxes for the current year due to financial hardship.",
+        "El gobierno concedió una exención al propietario de la pequeña empresa del pago de impuestos por el año actual debido a dificultades financieras."
+      ],
+      [
+        "The university provided an exemption to the student who had a medical condition that prevented them from attending classes in person.",
+        "La universidad otorgó una exención al estudiante que tenía una condición médica que le impidió asistir a las clases de manera presencial."
+      ],
+      [
+        "The court issued an exemption to the defendant who was deemed mentally unfit to stand trial.",
+        "La corte otorgó una exención al acusado que fue considerado mentalmente incapaz de enfrentar juicio."
+      ],
+      [
+        "The state granted an exemption to the religious organization that refused to provide services for same-sex weddings due to their beliefs.",
+        "El estado concedió una exención a la organización religiosa que se negó a proporcionar servicios para las bodas del mismo sexo debido a sus creencias."
+      ],
+      [
+        "The government provided an exemption to the foreign aid agency that allowed them to bypass certain bureaucratic procedures in order to quickly distribute funds to those affected by a natural disaster.",
+        "El gobierno otorgó una exención al agencia de ayuda extranjera que les permitió evitar ciertos procedimientos burocráticos para poder distribuir rápidamente los fondos a aquellos afectados por un desastre natural."
+      ]
+    ],
+    "exención",
+    [
+      [
+        "La ley otorga una exención fiscal a los veteranos.",
+        "The law grants a tax exemption to veterans."
+      ],
+      [
+        "El tribunal concedió una exención temporal a la acusada.",
+        "The court granted a temporary exemption to the accused."
+      ],
+      [
+        "La universidad ofrece una exención de matrícula para los estudiantes con excelentes calificaciones.",
+        "The university offers a waiver of tuition fees for students with excellent grades."
+      ],
+      [
+        "La ley de inmigración otorga una exención especial a los refugiados.",
+        "The immigration law grants special exemption to refugees."
+      ],
+      [
+        "El sistema legal concede una exención a los testigos que cooperan con la justicia.",
+        "The legal system grants an exemption to witnesses who cooperate with justice."
+      ]
+    ],
+    "exención"
+  ],
+  "eng-30-00312553-n_voyage": [
+    "2",
+    "A journey to some distant place.",
+    "Un viaje a algún lugar lejano.",
+    "n",
+    "eng",
+    [
+      [
+        "The couple embarked on a voyage across the Atlantic Ocean to explore new lands and cultures.",
+        "El pareja emprendió un viaje transatlántico para explorar nuevas tierras y culturas."
+      ],
+      [
+        "The adventurous traveler set out on a voyage to the Amazon rainforest, eager to discover its secrets.",
+        "El aventurero viajero se embarcó en un viaje hacia la selva amazónica, ansioso por descubrir sus secretos."
+      ],
+      [
+        "The ship's captain led his crew on a perilous voyage through treacherous waters, determined to reach their destination.",
+        "El capitán de la nave llevó a su tripulación en un viaje peligroso a través de aguas traicioneras, determinado a llegar a su destino."
+      ],
+      [
+        "The intrepid explorers embarked on a voyage to the Arctic Circle in search of lost treasure and ancient artifacts.",
+        "Los audaces exploradores se embarcaron en un viaje al círculo ártico en busca del tesoro perdido y de artefactos antiguos."
+      ],
+      [
+        "The family took a voyage around the world, visiting exotic destinations and experiencing new cultures along the way.",
+        "La familia realizó un viaje alrededor del mundo, visitando destinos exóticos y experimentando nuevas culturas en el camino."
+      ]
+    ],
+    "viaje",
+    [
+      [
+        "El viaje a la India ha sido una experiencia inolvidable.",
+        "The journey to india has been an unforgettable experience."
+      ],
+      [
+        "Su viaje al Himalaya fue un gran desafío físico y mental.",
+        "His trip to the himalayas was a great physical and mental challenge."
+      ],
+      [
+        "La joven se embarcó en un viaje de descubrimiento por Europa.",
+        "The young woman embarked on a discovery trip through europe."
+      ],
+      [
+        "El viaje a la Antártida es una aventura única que solo los más aventureros pueden soportar.",
+        "The journey to antarctica is a unique adventure that only the most adventurous can endure."
+      ],
+      [
+        "Su viaje al desierto ha cambiado su perspectiva sobre la vida.",
+        "Her trip to the desert has changed her perspective on life."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
+    }
+  ],
+  "eng-30-00315986-n_transfer": [
+    "1",
+    "The act of moving something from one location to another.",
+    "El acto de mover algo desde un lugar al otro.",
+    "n",
+    "eng",
+    [
+      [
+        "The transfer of goods from the warehouse to the delivery truck was completed successfully.",
+        "La transferencia de los bienes desde el almacén hasta la camión de entrega se completó con éxito."
+      ],
+      [
+        "The company has initiated a transfer of its operations to a new facility, which is expected to be completed by next year.",
+        "La empresa ha iniciado la transferencia de sus operaciones a una nueva instalación, que se espera completar en el próximo año."
+      ],
+      [
+        "The patient's medical records were transferred electronically to the hospital for further treatment.",
+        "Los registros médicos del paciente fueron transferidos electrónicamente al hospital para tratamiento adicional."
+      ],
+      [
+        "The transfer of funds from one account to another can be done easily through online banking.",
+        "La transferencia de fondos de una cuenta a otra se puede hacer fácilmente a través del banco en línea."
+      ],
+      [
+        "The transfer of ownership of the property was finalized last week, and the new owner has taken possession of it.",
+        "La transacción de la propiedad se completó la semana pasada, y el nuevo dueño ha tomado posesión de ella."
+      ]
+    ],
+    "transferencia",
+    [
+      [
+        "La transferencia de los documentos electrónicos a la nube es una práctica común hoy en día.",
+        "The transfer of electronic documents to the cloud is a common practice today."
+      ],
+      [
+        "El proceso de transferencia de la información de la base de datos antigua a la nueva puede ser largo y complejo.",
+        "The process of transferring information from the old database to the new one can be long and complex."
+      ],
+      [
+        "La transferencia de los archivos de la oficina al nuevo servidor es una tarea diaria para el administrador de la red.",
+        "The daily task for the network administrator is transferring the office files to the new server."
+      ],
+      [
+        "El acto de transferir la propiedad de la casa a otra persona se llama venta.",
+        "The act of selling property is called a sale."
+      ],
+      [
+        "La transferencia de la responsabilidad de la tarea a otro empleado puede ser necesario en algunas circunstancias.",
+        "The transfer of responsibility for the task to another employee may be necessary in some circumstances."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 1
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
+    }
+  ],
+  "eng-30-00327824-n_swing": [
+    "4",
+    "Changing location by moving back and forth.",
+    "Cambiando de ubicación al moverse de un lado a otro.",
+    "n",
+    "eng",
+    [
+      [
+        "The child enjoyed swinging on the playground set",
+        "El niño disfrutó de colgarse en el conjunto de juegos del parque."
+      ],
+      [
+        "The pendulum swung back and forth, ticking off each second",
+        "El reloj de péndulo osciló de un lado a otro, marcando cada segundo."
+      ],
+      [
+        "The wind chimes hung from a tree branch, swaying gently with the breeze, creating a soothing melody as they swung back and forth",
+        "Las campanas de viento colgaban de una rama del árbol, oscilando suavemente con el viento, creando un melodioso sonido mientras se movían de un lado a otro."
+      ],
+      [
+        "The door creaked open, swinging on its hinges in the gusty wind",
+        "La puerta se abrió con un zumbido, oscilando en sus bisagras ante el viento brusco."
+      ],
+      [
+        "The boat rocked back and forth on the choppy waves, causing the passengers to feel queasy.",
+        "El barco osciló de un lado a otro sobre las olas agitadas, haciendo que los pasajeros se sintieran enfermos."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00331950-n_movement": [
+    "1",
+    "A change of position that does not entail a change of location.",
+    "Un cambio de posición que no implica un cambio de ubicación.",
+    "n",
+    "eng",
+    [
+      [
+        "The movement of the pendulum was caused by the vibration of the clock mechanism.",
+        "El movimiento del péndulo fue causado por la vibración del mecanismo de reloj."
+      ],
+      [
+        "The movement of the water in the river was due to the force of gravity.",
+        "El movimiento del agua en el río se debía al fuerza de la gravedad."
+      ],
+      [
+        "The movement of the leaves on the tree was affected by the wind.",
+        "El movimiento de las hojas del árbol fue afectado por el viento."
+      ],
+      [
+        "The movement of the air molecules in the room was influenced by the temperature.",
+        "El movimiento de las moléculas de aire en la habitación fue influenciado por la temperatura."
+      ],
+      [
+        "The movement of the particles in the gas was caused by collisions with other particles.",
+        "El movimiento de las partículas en el gas fue causado por las colisiones con otras partículas."
+      ]
+    ],
+    "movimiento",
+    [
+      [
+        "El movimiento del sol a través del cielo es una ilusión óptica, ya que la Tierra gira alrededor del Sol.",
+        "The apparent motion of the sun across the sky is an optical illusion, as the earth rotates around the sun."
+      ],
+      [
+        "La luna parece moverse en el cielo debido a la rotación de la Tierra.",
+        "The moon seems to move across the sky due to the earth's rotation."
+      ],
+      [
+        "El movimiento de las nubes en el cielo es solo una ilusión óptica, ya que son las mismas nubes que se desplazan sobre la superficie de la Tierra.",
+        "The apparent movement of clouds in the sky is merely an optical illusion, as they are actually moving across the surface of the earth."
+      ],
+      [
+        "La apariencia de un objeto moverse en la pantalla de un proyector es solo un efecto óptico, ya que el objeto no cambia de posición físicamente.",
+        "The appearance of an object moving on a screen is merely an optical effect, as the object does not physically change its position."
+      ],
+      [
+        "El movimiento de las ondas en el agua es solo una ilusión óptica, ya que son las mismas ondas que se",
+        "The movement of waves in water is only an optical illusion, as it is actually the same waves that are reflected back from the surface."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 2
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
+    }
+  ],
+  "eng-30-00372607-n_storage": [
+    "6",
+    "Depositing in a warehouse.",
+    "Depósito en un almacén.",
+    "n",
+    "eng",
+    [
+      [
+        "The company has allocated a large storage facility for storing their excess inventory.",
+        "La empresa ha reservado un gran almacén para el almacenamiento de sus inventarios en exceso."
+      ],
+      [
+        "The warehouse is equipped with state-of-the-art storage systems to ensure optimal preservation of goods.",
+        "El almacén está equipado con sistemas de almacenamiento de última generación para garantizar la óptima conservación de los bienes."
+      ],
+      [
+        "The storage area is kept clean and organized to prevent any damage or spoilage to the stored items.",
+        "El área de almacenamiento se mantiene limpia y organizada para prevenir cualquier daño o desgaste en los artículos almacenados."
+      ],
+      [
+        "The company's storage capacity has increased by 50% in the past year, allowing them to better meet customer demand.",
+        "La capacidad de almacenamiento de la empresa ha aumentado en un 50% en el último año, lo que les permite mejor atender a las necesidades de los clientes."
+      ],
+      [
+        "The warehouse's storage system includes racks, shelves, and pallets to maximize space utilization and minimize handling time.",
+        "El sistema de almacenamiento del almacén incluye estantes, rejillas y palets para maximizar el uso del espacio y minimizar el tiempo de manejo."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 5
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00397347-n_censorship": [
+    "2",
+    "Deleting parts of publications or correspondence or theatrical performances.",
+    "Eliminación de partes de publicaciones o correspondencia o representaciones teatrales.",
+    "n",
+    "eng",
+    [
+      [
+        "The government's censorship policies have led to the suppression of critical voices and the stifling of dissent",
+        "Las políticas de censura del gobierno han llevado a la supresión de voces críticas y al estrangulamiento de la disidencia, en el sentido de eliminar partes de publicaciones o correspondencia o representaciones teatrales."
+      ],
+      [
+        "The newspaper's editor was forced to censor certain articles due to pressure from the authorities",
+        "El editor del periódico fue obligado a censurar ciertos artículos debido a la presión de las autoridades, en el sentido de eliminar partes de publicaciones o correspondencia o representaciones teatrales."
+      ],
+      [
+        "The playwright's work was heavily censored, with entire scenes being cut or rewritten",
+        "El trabajo del dramaturgo fue fuertemente censurado, con escenas enteras siendo eliminadas o reescritas."
+      ],
+      [
+        "The publisher faced legal action for refusing to censor a book that contained explicit language and imagery",
+        "El editor enfrentó acción legal por negarse a censurar un libro que contenía lenguaje y imágenes explícitas."
+      ],
+      [
+        "The government's censorship of the internet has resulted in the blocking of numerous websites and social media platforms.",
+        "La censura del gobierno ha resultado en el bloqueo de numerosas páginas web y plataformas sociales."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 1
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 3
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ],
+  "eng-30-00418615-n_neglect": [
+    "3",
+    "Willful lack of care and attention.",
+    "Cuidado y atención voluntariamente ausentes.",
+    "n",
+    "eng",
+    [
+      [
+        "The parents' neglect resulted in their child's malnourishment and developmental delays.",
+        "La negligencia de los padres resultó en la desnutrición y retrasos en el desarrollo de su hijo."
+      ],
+      [
+        "The elderly woman's neglect by her family led to her being hospitalized for dehydration and malnutrition.",
+        "La falta de atención y cuidado voluntario de la familia llevó a la anciana mujer a ser hospitalizada por deshidratación y mala nutrición."
+      ],
+      [
+        "The company's neglect of safety protocols caused a catastrophic explosion that injured dozens of workers.",
+        "La negligencia de la empresa en cuestión de protocolos de seguridad causó una explosión catastrófica que dejó heridos a varios trabajadores."
+      ],
+      [
+        "The teacher's neglect of her students' needs resulted in low test scores and a high dropout rate.",
+        "La negligencia del profesor en las necesidades de sus estudiantes resultó en bajas calificaciones en los exámenes y una alta tasa de abandono escolar."
+      ],
+      [
+        "The government's neglect of its citizens' basic human rights led to widespread protests and unrest.",
+        "El despreocupo del gobierno por los derechos básicos humanos de sus ciudadanos llevó a manifestaciones y disturbios generalizados."
+      ]
+    ],
+    "NULL",
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    }
+  ]
+}

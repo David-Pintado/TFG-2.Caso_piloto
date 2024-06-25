@@ -14,11 +14,21 @@ class ComponenteExporter:
                 offset_word_splitted = offset_word.split('_')
                 offset = offset_word_splitted[0]
                 word = offset_word_splitted[1]
+                # Ontenemos el sense
                 sense = attributes[0]
-                gloss = attributes[1]
-                part_of_speech = attributes[2]
-                language = attributes[3]
-                knowledge = attributes[4]
+                # Obtenemos el gloss en español
+                gloss = attributes[2]
+                # Obtenemos el part of speech
+                part_of_speech = attributes[3]
+                # Obtenemos el idioma
+                language = "spa"
+                # Obtenemos la respuesta final / concimiento explotado
+                knowledge = ""
+                if attributes[6] == "NULL":
+                    knowledge = "NULL"
+                else:
+                    knowledge = attributes[8]
+                # Creamos el elemento final de cada línea, como separador
                 final_element = "------"
                 
                 # Almacenar los valores entre comillas en una lista

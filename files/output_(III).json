@@ -1,0 +1,746 @@
+{
+    "eng-30-00002684-n_object": [
+      "1",
+      "A tangible and visible entity; an entity that can cast a shadow.",
+      "Un ente tangible y visible; una entidad que puede proyectar sombra.",
+      "n",
+      "eng",
+      [
+        [
+          "The object on the table was a vase made of porcelain",
+          "El objeto en la mesa era una jarra hecha de porcelana."
+        ],
+        [
+          "Its intricate design caught the eye of every passerby",
+          "Su compleja diseño atrajo la atención de cada paso que lo recorrió."
+        ],
+        [
+          "The object in the corner of the room was a large, wooden chest",
+          "El objeto en la esquina de la habitación era una gran caja de madera."
+        ],
+        [
+          "It had been passed down through generations and held secrets that were yet to be uncovered",
+          "Had sido transmitido de generación en generación y contenía secretos que aún no habían sido descubiertos."
+        ],
+        [
+          "The object in the garden was a statue of a woman holding a lily",
+          "El objeto en el jardín era una estatua de una mujer sosteniendo una lila."
+        ],
+        [
+          "It was a gift from the artist's wife on their wedding day",
+          "Fue un regalo del esposo de la artista en el día de su boda, que era una entidad tangible y visible, capaz de proyectar sombras."
+        ],
+        [
+          "The object in the museum was an ancient Egyptian sarcophagus",
+          "El objeto en el museo era una sarcófago egipcia antigua."
+        ],
+        [
+          "Its hieroglyphics told stories of long-forgotten pharaohs and their reigns",
+          "Sus jeroglíficos contaban historias de faraones olvidados y sus reinados."
+        ],
+        [
+          "The object in the art gallery was a painting by Van Gogh",
+          "El objeto en la galería de arte era una pintura de van gogh."
+        ],
+        [
+          "It depicted a starry night sky, and its vibrant colors seemed to dance off the canvas.",
+          "Se mostraba una noche estrellada pintada, y sus vivaces colores parecían bailar fuera del lienzo."
+        ]
+      ],
+      "objeto",
+      [
+        [
+          "El objeto en la mesa es un libro.",
+          "The object on the table is a book."
+        ],
+        [
+          "La luna es un objeto celestial.",
+          "The moon is a celestial object."
+        ],
+        [
+          "El coche es un objeto mecánico.",
+          "The car is a mechanical object."
+        ],
+        [
+          "El árbol es un objeto natural.",
+          "The tree is a natural object."
+        ],
+        [
+          "El globo terráqueo es un objeto geográfico.",
+          "The terrestrial globe is a geographical object."
+        ]
+      ],
+      "objeto"
+    ],
+    "eng-30-00006484-n_cell": [
+      "2",
+      "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+      "Unidad estructural y funcional básica de todas las entidades vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+      "n",
+      "eng",
+      [
+        [
+          "The cell is a fundamental building block of living organisms, providing structure and facilitating essential functions such as metabolism and reproduction.",
+          "La celda es un bloque fundamental de construcción en los seres vivos, proporcionando estructura y facilitando funciones esenciales como la metabolización y la reproducción."
+        ],
+        [
+          "In multicellular organisms, cells work together to form complex tissues and organs, allowing for specialized functions and greater overall efficiency.",
+          "En organismos multicelulares, las células trabajan juntas para formar tejidos complejos y órganos, permitiendo funciones especializadas y mayor eficiencia en general."
+        ],
+        [
+          "Cells are surrounded by a membrane that regulates the exchange of materials between the cell and its environment, maintaining homeostasis and protecting against external threats.",
+          "Las células están rodeadas de una membrana que regula el intercambio de materiales entre la celda y su entorno, manteniendo homeostasia y protegiendo contra amenazas externas."
+        ],
+        [
+          "The study of cell biology has led to significant advances in medicine, including the development of new treatments for diseases such as cancer and HIV/AIDS.",
+          "El estudio de la biología celular ha llevado a importantes avances en la medicina, incluyendo el desarrollo de nuevas terapias para enfermedades como el cáncer y el vih/sida."
+        ],
+        [
+          "The human body contains trillions of cells, each with a unique set of functions and characteristics that contribute to overall health and wellbeing.",
+          "El cuerpo humano contiene trillones de células, cada una con un conjunto único de funciones y características que contribuyen a la salud y bienestar general."
+        ]
+      ],
+      "NULL",
+      {
+        "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 1
+      },
+      {
+        "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+      },
+      {
+        "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+      }
+    ],
+    "eng-30-00050037-n_registration": [
+      "1",
+      "The act of enrolling.",
+      "El acto de inscribirse.",
+      "n",
+      "eng",
+      [
+        [
+          "The process of registering for college courses is a crucial step in securing a degree.",
+          "El proceso de registrarse para cursos universitarios es una etapa fundamental para obtener un título."
+        ],
+        [
+          "Registration for the upcoming semester will begin on Monday, August 3rd.",
+          "La inscripción para el próximo semestre comienza el lunes, 3 de agosto."
+        ],
+        [
+          "Students must complete their registration before the deadline to avoid late fees.",
+          "Los estudiantes deben completar su registro antes del plazo para evitar las tarifas de pago tardío."
+        ],
+        [
+          "The university's online registration system allows students to easily enroll in classes from anywhere with an internet connection.",
+          "El sistema de registro en línea de la universidad permite a los estudiantes registrarse fácilmente en clases desde cualquier lugar con una conexión a internet."
+        ],
+        [
+          "The registration process involves filling out a form and paying a fee to secure a spot in a particular class or program.",
+          "El proceso de registro implica llenar una forma y pagar una tarifa para garantizar un lugar en una clase o programa concreto."
+        ]
+      ],
+      "NULL",
+      {
+        "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 2
+      },
+      {
+        "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 1
+      },
+      {
+        "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+      }
+    ],
+    "eng-30-00072473-n_confusion": [
+      "5",
+      "A mistake that results from taking one thing to be another.",
+      "Un error que resulta de confundir una cosa con otra.",
+      "n",
+      "eng",
+      [
+        [
+          "The confusion between there and their led to several grammatical errors in the text.",
+          "La confusión entre allí y sus llevó a varios errores gramaticales en el texto."
+        ],
+        [
+          "The doctor's diagnosis was a case of confusion, mistaking the symptoms for those of a different disease.",
+          "La diagnóstico del médico fue un caso de confusión, al confundir los síntomas con los de una enfermedad distinta."
+        ],
+        [
+          "The student's confusion about the difference between its and it's resulted in an incorrect answer on the exam.",
+          "La confusión del estudiante sobre la diferencia entre sus y se ha traducido en una respuesta incorrecta en el examen."
+        ],
+        [
+          "The police officer's confusion over which suspect to arrest led to a delay in solving the case.",
+          "La confusión del oficial de policía sobre cuál sospechoso detener llevó a un retraso en la resolución del caso."
+        ],
+        [
+          "The scientist's confusion regarding the chemical properties of the substance caused them to misinterpret their results.",
+          "La confusión del científico sobre las propiedades químicas de la sustancia le hizo interpretar incorrectamente sus resultados."
+        ]
+      ],
+      "confusión",
+      [
+        [
+          "La confusión entre la palabra suave y dulce ha causado muchos problemas en la industria alimentaria.",
+          "The confusion between the words soft and sweet has caused many problems in the food industry."
+        ],
+        [
+          "La confusión entre los nombres de las dos personas con el mismo nombre ha resultado en muchos problemas legales.",
+          "The confusion between the names of the two people with the same name has caused many legal problems."
+        ],
+        [
+          "La confusión entre la palabra suelo y piso es común en la construcción, especialmente en los países angloparlantes.",
+          "The confusion between the word floor and ground is common in construction, particularly in english-speaking countries."
+        ],
+        [
+          "La confusión entre la palabra principal y principio ha causado muchos problemas en el mundo académico.",
+          "The confusion between the main word and principle has caused many problems in the academic world."
+        ],
+        [
+          "La confusión entre la palabra suelo y piedra es común en la construcción, especialmente en los países de habla hispana.",
+          "The confusion between the word floor and stone is common in construction, particularly in spanish-speaking countries."
+        ]
+      ],
+      "confusión"
+    ],
+    "eng-30-00213694-n_release": [
+      "11",
+      "A formal written statement of relinquishment.",
+      "Una declaración escrita de renuncia formulada.",
+      "n",
+      "eng",
+      [
+        [
+          "The prisoner signed a release form, officially surrendering his right to appeal his sentence.",
+          "El preso firmó un documento de liberación, oficialmente entregando su derecho a apelar la sentencia."
+        ],
+        [
+          "The company issued a press release, announcing their decision to discontinue production of the product.",
+          "La empresa emitió un comunicado de prensa anunciando su decisión de detener la producción del producto."
+        ],
+        [
+          "The patient's family submitted a medical release form, allowing doctors to share information about her condition with other healthcare providers.",
+          "La familia del paciente presentó una forma de autorización médica, permitiendo a los médicos compartir información sobre su condición con otros proveedores de atención médica."
+        ],
+        [
+          "The author published a statement of release, acknowledging that any resemblance to real persons or events was purely coincidental.",
+          "El autor publicó un comunicado de renuncia, reconociendo que cualquier semejanza con personas o eventos reales era solo casual."
+        ],
+        [
+          "The court issued a legal release, absolving the defendant of all criminal charges.",
+          "La corte emitió un documento jurídico de exoneración, absolviendo al acusado de todas las acusaciones penales."
+        ]
+      ],
+      "NULL",
+      {
+        "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 2
+      },
+      {
+        "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+      },
+      {
+        "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+      }
+    ],
+    "eng-30-00249501-n_progress": [
+      "1",
+      "Gradual improvement or growth or development.",
+      "Mejora gradual o mejoramiento progresivo o desarrollo progresivo.",
+      "n",
+      "eng",
+      [
+        [
+          "The progress in technology has led to significant advancements in healthcare.",
+          "El avance en la tecnología ha llevado a importantes avances en la salud."
+        ],
+        [
+          "The steady progress in renewable energy sources is a positive sign for the environment.",
+          "El progreso constante en las fuentes de energía renovables es una señal positiva para el medio ambiente."
+        ],
+        [
+          "The progress in education has resulted in higher literacy rates and better job opportunities.",
+          "El progreso en la educación ha resultado en tasas de alfabetización más altas y mejores oportunidades laborales."
+        ],
+        [
+          "The gradual progress in infrastructure development has improved connectivity and accessibility to remote areas.",
+          "El progreso gradual en el desarrollo de la infraestructura ha mejorado la conectividad y la accesibilidad a las áreas remotas."
+        ],
+        [
+          "The slow but steady progress in scientific research has led to groundbreaking discoveries and breakthroughs.",
+          "El lento pero constante avance en la investigación científica ha llevado a descubrimientos revolucionarios y avances significativos."
+        ]
+      ],
+      "NULL",
+      {
+        "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+      },
+      {
+        "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+      },
+      {
+        "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+      }
+    ],
+    "eng-30-00315986-n_transfer": [
+      "1",
+      "The act of moving something from one location to another.",
+      "La acción de mover algo de un lugar al otro.",
+      "n",
+      "eng",
+      [
+        [
+          "The transfer of goods from the warehouse to the delivery truck was completed successfully.",
+          "La transferencia de los bienes desde el almacén hasta la camión de entrega se completó con éxito."
+        ],
+        [
+          "The transfer of funds from one bank account to another can be done online or at a branch.",
+          "La transferencia de fondos desde una cuenta bancaria a otra se puede hacer en línea o en una sucursal."
+        ],
+        [
+          "The transfer of data between computers is essential for network communication.",
+          "La transferencia de datos entre computadoras es esencial para la comunicación en red."
+        ],
+        [
+          "The transfer of patients from the emergency room to their hospital rooms is a critical process in healthcare.",
+          "La transferencia de pacientes desde la sala de emergencias hasta sus habitaciones del hospital es un proceso crítico en la atención médica."
+        ],
+        [
+          "The transfer of knowledge and skills from experienced workers to apprentices is an important part of vocational training.",
+          "La transferencia del conocimiento y las habilidades de los trabajadores experimentados a los aprendices es una parte importante de la formación profesional."
+        ]
+      ],
+      "transferencia",
+      [
+        [
+          "La transferencia de los documentos electrónicos desde la oficina central a la sucursal local es una tarea diaria.",
+          "The daily task of transferring electronic documents from the central office to the local branch is..."
+        ],
+        [
+          "El proceso de transferencia de datos entre el ordenador y la impresora es muy rápido.",
+          "The data transfer process between the computer and the printer is very fast."
+        ],
+        [
+          "La transferencia de la información de la base de datos al sistema de gestión de clientes es un proceso automático.",
+          "The transfer of data from the database to the customer management system is an automatic process."
+        ],
+        [
+          "La transferencia de los archivos desde el servidor remoto al equipo local se realiza con una velocidad de 10 megabytes por segundo.",
+          "The transfer of files from the remote server to the local computer is performed at a speed of 10 megabytes per second."
+        ],
+        [
+          "El proceso de transferencia de la información de la red a la memoria del ordenador es muy eficiente.",
+          "The process of transferring information from the network to the computer's memory is very efficient."
+        ]
+      ],
+      "NULL",
+      {
+        "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+      },
+      {
+        "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
+      },
+      {
+        "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
+      }
+    ],
+    "eng-30-00362103-n_discount": [
+      "1",
+      "The act of reducing the selling price of merchandise.",
+      "La acción de rebajar el precio de venta de los productos.",
+      "n",
+      "eng",
+      [
+        [
+          "The department store offered a discount on all clothing items during their annual sale.",
+          "El departamento de ventas ofreció un descuento en todas las prendas durante su venta anual."
+        ],
+        [
+          "The grocery store provided a discount to customers who brought their own reusable bags.",
+          "La tienda de alimentos otorgó una descuento a los clientes que llevaron sus propias bolsas reutilizables."
+        ],
+        [
+          "The electronics retailer offered a discount for purchasing multiple items at once.",
+          "El minorista de electrónica ofreció un descuento por la compra simultánea de varios artículos."
+        ],
+        [
+          "The car dealership gave a discount to first-time buyers as part of their promotional campaign.",
+          "La concesionaria de coches les dio un descuento a los compradores primeros veces como parte de su campaña promocional."
+        ],
+        [
+          "The online retailer offered a discount code that could be used during checkout to receive a percentage off the total purchase price.",
+          "El vendedor en línea ofreció un código de descuento que se podía usar durante la compra para obtener una reducción del precio total."
+        ]
+      ],
+      "descuento",
+      [
+        [
+          "El descuento de la compañía es del 20%.",
+          "The company's discount is 20%."
+        ],
+        [
+          "Los clientes reciben un descuento de $50 si compran más de cinco artículos.",
+          "The customers receive a discount of $50 if they buy more than five items."
+        ],
+        [
+          "La tienda ofrece descuentos para los estudiantes.",
+          "The store offers discounts for students."
+        ],
+        [
+          "El descuento de la venta de productos de temporada es del 10%.",
+          "The sale discount for seasonal products is 10%."
+        ],
+        [
+          "El descuento de la empresa se aplicará en el próximo mes.",
+          "The company's discount will be applied next month."
+        ]
+      ],
+      "descuento"
+    ],
+    "eng-30-00401783-n_recreation": [
+      "2",
+      "Activity that refreshes and recreates; activity that renews your health and spirits by enjoyment and relaxation.",
+      "Actividad que refresca y recrea; actividad que renueva tu salud y espíritu al disfrutar y relajarte.",
+      "n",
+      "eng",
+      [
+        [
+          "The hiking trail through the forest provided an excellent opportunity for recreation, allowing us to escape from the stresses of daily life and immerse ourselves in nature's beauty.",
+          "El camino de senderismo a través del bosque nos proporcionó una excelente oportunidad para la recreación, permitiéndonos escapar de las estrés de la vida diaria y sumernos en la belleza de la naturaleza."
+        ],
+        [
+          "After a long day at work, I found solace in my favorite form of recreation - reading a good book by the fireplace with a cup of hot tea.",
+          "Después de un largo día en el trabajo, encontré consolación en mi actividad favorita de ocio - leer un buen libro cerca del fuego con una taza de té caliente."
+        ],
+        [
+          "The park's playground was a hub for children's recreation, providing them with a safe and fun environment to run around, climb, and swing.",
+          "El parque tenía un jueguito para niños que era el centro de la recreación infantil, proporcionándoles un entorno seguro y divertido en el que correr, escalar y volar."
+        ],
+        [
+          "A weekend camping trip in the mountains offered us ample opportunities for recreation - hiking, fishing, and stargazing under the clear night sky.",
+          "Un fin de semana de camping en las montañas nos ofreció abundantes oportunidades para la recreación - caminar, pescar y contemplar las estrellas bajo el cielo claro de la noche."
+        ],
+        [
+          "The yoga class at the community center was an excellent form of recreation, allowing me to stretch my body, calm my mind, and rejuvenate my spirit.",
+          "La clase de yoga en el centro comunitario fue una excelente forma de recreación, permitiéndome estirar mi cuerpo, calmar mi mente y rejuvenecer mi espíritu."
+        ]
+      ],
+      "recreación",
+      [
+        [
+          "La montaña es una excelente opción para la recreación, ya que ofrece una variedad de actividades que refrescan y recreatan.",
+          "The mountain is an excellent option for recreation, as it offers a variety of activities that refresh and recreate."
+        ],
+        [
+          "El parque es un lugar ideal para la recreación, ya que cuenta con una gran variedad de juegos y actividades deportivas que ayudan a mejorar tu salud y espíritu.",
+          "The park is an ideal place for recreation, as it offers a wide variety of games and sports activities that help improve your health and spirit."
+        ],
+        [
+          "La piscina es una excelente opción para la recreación en verano, ya que te permite disfrutar del agua mientras relajas y refrescas tu cuerpo y mente.",
+          "The swimming pool is an excellent option for summer recreation, as it allows you to enjoy water while relaxing and refreshing your body and mind."
+        ],
+        [
+          "El jardín de flores es un lugar ideal para la recreación, ya que ofrece una variedad de actividades que ayudan a mejorar tu salud y espíritu, como caminar, meditar o simplemente dis",
+          "The garden of flowers is an ideal place for recreation, as it offers a variety of activities that help improve your health and spirit, such as walking, meditating or simply enjoying and relaxing."
+        ]
+      ],
+      "recreación"
+    ],
+    "eng-30-00550771-n_performance": [
+      "2",
+      "The act of presenting a play or a piece of music or other entertainment.",
+      "La acción de presentar una obra teatral o una pieza musical o cualquier otra entretenimiento.",
+      "n",
+      "eng",
+      [
+        [
+          "The theater company put on an outstanding performance of Shakespeare's Hamlet.  The lead singer's powerful voice carried the audience through a stunning performance of classic rock hits",
+          "La compañía de teatro presentó una espectacular interpretación de la obra de shakespeare, hamlet."
+        ],
+        [
+          "The ballet troupe delivered a breathtaking performance that left the audience spellbound",
+          "La compañía de ballet presentó una espectacular interpretación que dejó al público encantado."
+        ],
+        [
+          "The jazz quartet's improvisational skills shone in their electrifying performance at the local club",
+          "Las habilidades improvisatorias del cuarteto de jazz brillaron en su espectacular presentación en el club local."
+        ],
+        [
+          "The symphony orchestra's masterful rendition of Beethoven's Symphony No",
+          "La magnífica interpretación de la orquesta sinfónica de la sinfonía número de beethoven."
+        ],
+        [
+          "9 was a true feast for the ears.",
+          "El número 9 fue una verdadera fiesta para los oídos en la presentación de su performance."
+        ]
+      ],
+      "NULL",
+      {
+        "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+      },
+      {
+        "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 2
+      },
+      {
+        "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+      }
+    ],
+    "eng-30-00609953-n_profession": [
+      "2",
+      "An occupation requiring special education (especially in the liberal arts or sciences).",
+      "Una ocupación que requiere una educación especial (en particular en las artes liberales o las ciencias).",
+      "n",
+      "eng",
+      [
+        [
+          "The profession of medicine requires years of rigorous training and study.",
+          "La profesión de la medicina exige años de formación y estudio riguroso."
+        ],
+        [
+          "A degree in law is necessary for pursuing a career as a lawyer, which is a highly respected profession.",
+          "Una licenciatura en derecho es necesaria para seguir una carrera como abogado, que es una profesión altamente respetada."
+        ],
+        [
+          "The field of engineering is a challenging and rewarding profession that demands creativity and problem-solving skills.",
+          "La ingeniería es una profesión desafiante y recompensadora que exige creatividad y habilidades de solución de problemas."
+        ],
+        [
+          "The liberal arts provide an excellent foundation for many professions, including teaching, journalism, and public relations.",
+          "Las artes liberales proporcionan una excelente base para muchas profesiones, incluyendo la enseñanza, el periodismo y las relaciones públicas."
+        ],
+        [
+          "A career in the sciences, such as biology or physics, offers opportunities to conduct groundbreaking research and make significant contributions to society.",
+          "Una carrera en las ciencias, como la biología o la física, ofrece oportunidades para realizar investigaciones pioneras y hacer contribuciones significativas a la sociedad."
+        ]
+      ],
+      "profesión",
+      [
+        [
+          "La profesión médica exige una larga y rigurosa formación académica.",
+          "The medical profession demands a long and rigorous academic training."
+        ],
+        [
+          "El ejercicio de la profesión de arquitecto es muy demandante, tanto en términos de educación como de experiencia práctica.",
+          "The practice of the profession of architecture is very demanding, both in terms of education and practical experience."
+        ],
+        [
+          "La profesión de ingeniero civil es una ocupación que requiere una sólida base en matemáticas y ciencias naturales.",
+          "The profession of civil engineer is an occupation that requires a solid foundation in mathematics and natural sciences."
+        ],
+        [
+          "La profesión de abogado exige un conocimiento profundo de la ley y una habilidad para argumentar con claridad y persuasión.",
+          "The legal profession demands a deep knowledge of the law and a skill for arguing with clarity and persuasion."
+        ],
+        [
+          "La profesión de periodista es una ocupación que requiere una excelente formación en comunicación y una gran capacidad para escribir claramente y concisamente.",
+          "The profession of journalist is a job that requires excellent training in communication and a great ability to write clearly and concisely."
+        ]
+      ],
+      "profesión"
+    ],
+    "eng-30-00637810-n_inquest": [
+      "1",
+      "An inquiry into the cause of an unexpected death.",
+      "Una investigación sobre la causa de una muerte inesperada.",
+      "n",
+      "eng",
+      [
+        [
+          "The coroner's office has launched an inquest into the sudden and unexplained death of a 35-year-old man found dead in his apartment",
+          "La oficina del coronero ha abierto una investigación sobre la muerte súbita e inexplicable de un hombre de 35 años encontrado muerto en su apartamento."
+        ],
+        [
+          "The inquest will examine the circumstances surrounding the death, including any potential foul play or medical issues that may have contributed to the man's passing",
+          "La investigación preliminar examinará las circunstancias que rodean la muerte, incluyendo cualquier posible falta de respeto o problemas médicos que pudieron haber contribuido a la muerte del hombre."
+        ],
+        [
+          "The family of a young woman who died suddenly while on vacation has requested an inquest into her death.",
+          "La familia de la joven mujer que murió repentinamente mientras se encontraba en vacaciones ha solicitado una investigación sobre su muerte."
+        ],
+        [
+          "The inquiry will investigate the cause and manner of the woman's death, as well as any possible factors that may have led to her untimely demise",
+          "La investigación examinará la causa y la forma de la muerte de la mujer, así como cualquier posible factor que pudiera haber contribuido a su prematura muerte."
+        ],
+        [
+          "Following a tragic car accident that claimed the lives of two young children, their parents have demanded an inquest into the incident",
+          "Después de un terrible accidente automovilístico que reclamó la vida a dos niños pequeños, sus padres han exigido una investigación sobre el incidente."
+        ],
+        [
+          "The inquiry will seek to determine the cause of the crash and whether any negligence or other wrongdoing played a role in the deaths of the innocent victims",
+          "La investigación buscará determinar la causa del accidente y si hubo negligencia o otra falta de cuidado que contribuyó a las muertes de las víctimas inocentes."
+        ],
+        [
+          "The family of a man who died suddenly while undergoing surgery has",
+          "La familia de un hombre que murió repentinamente mientras se sometía a una cirugía tiene iniciado un proceso de investigación para determinar la causa de su muerte inesperada."
+        ]
+      ],
+      "NULL",
+      {
+        "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+      },
+      {
+        "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 3
+      },
+      {
+        "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+      }
+    ],
+    "eng-30-00786195-n_effort": [
+      "1",
+      "Earnest and conscientious activity intended to do or accomplish something.",
+      "Actividad enérgica y concienzuda destinada a hacer o lograr algo.",
+      "n",
+      "eng",
+      [
+        [
+          "The athlete put forth an immense amount of effort during the race, pushing herself to her limits.",
+          "El atleta puso una gran cantidad de esfuerzo durante la carrera, empujándose hasta los límites."
+        ],
+        [
+          "The student devoted a significant amount of effort to studying for the exam, resulting in a high grade.",
+          "El estudiante dedicó una gran cantidad de esfuerzo al estudio para la prueba, lo que resultó en una buena calificación."
+        ],
+        [
+          "The construction crew exerted tremendous effort to complete the project on time and within budget.",
+          "La tripulación de construcción realizó un esfuerzo tremendamente intenso para completar el proyecto a tiempo y dentro del presupuesto."
+        ],
+        [
+          "The musician put forth an incredible amount of effort into perfecting their craft, resulting in a stunning performance.",
+          "El músico puso una gran cantidad de esfuerzo en perfeccionar su arte, lo que resultó en un asombroso desempeño."
+        ],
+        [
+          "The volunteer group made a concerted effort to clean up the park, leaving it looking better than ever before.",
+          "El grupo de voluntarios realizó un esfuerzo concertado para limpiar el parque, dejando que se vea mejor que nunca antes."
+        ]
+      ],
+      "esfuerzo",
+      [
+        [
+          "El esfuerzo necesario para escalar la montaña fue extenuante, pero al final se sintió muy orgulloso de haberlo logrado.",
+          "The effort required to climb the mountain was exhausting, but at the end he felt very proud of having achieved it."
+        ],
+        [
+          "La enseñanza del idioma requiere un gran esfuerzo, pero es una habilidad muy valiosa que ayuda a los estudiantes a comunicarse con personas de otros países.",
+          "The teaching of the language requires a great effort, but it is a very valuable skill that helps students communicate with people from other countries."
+        ],
+        [
+          "El esfuerzo de la madre para cuidar a su hijo enfermo fue increíblemente emocionante y gratificante, ya que ella pudo verlo sanar y volver a jugar.",
+          "The mother's effort to care for her sick child was incredibly moving and rewarding, as she witnessed him recover and return to playing."
+        ],
+        [
+          "La investigación científica requiere un gran esfuerzo, pero los resultados son muy interesantes y pueden ayudar a mejorar la salud de las personas.",
+          "Scientific research requires a great deal of effort, but the results are very interesting and can help improve people's health."
+        ],
+        [
+          "El esfuerzo de los voluntarios para limpiar",
+          "The effort of volunteers to clean up."
+        ]
+      ],
+      "esfuerzo"
+    ],
+    "eng-30-00817680-n_protection": [
+      "1",
+      "The activity of protecting someone or something.",
+      "La actividad de proteger a alguien o algo.",
+      "n",
+      "eng",
+      [
+        [
+          "The government implemented measures to ensure the protection of endangered species.",
+          "El gobierno implementó medidas para garantizar la protección de las especies en peligro."
+        ],
+        [
+          "The security guards provided protection for the VIP guests during their visit.",
+          "Las guardias de seguridad proporcionaron protección a los invitados vip durante su visita."
+        ],
+        [
+          "The police officers were on duty to protect the citizens from any potential harm.",
+          "Los oficiales de policía estaban en servicio para proteger a los ciudadanos de cualquier posible daño."
+        ],
+        [
+          "The firefighters worked tirelessly to protect the town from the raging wildfire.",
+          "Los bomberos trabajaron con esfuerzo inmensa para proteger la ciudad de la furiosa y devastadora hoguera silvestre."
+        ],
+        [
+          "The parents installed a fence around their backyard to protect their children from wandering off.",
+          "Los padres instalaron una reja alrededor de su patio trasero para proteger a sus hijos de que se desviaran."
+        ]
+      ],
+      "protección",
+      [
+        [
+          "La policía ofreció una protección a los testigos clave del crimen.",
+          "The police offered protection to the key witnesses in the crime."
+        ],
+        [
+          "El ejército proporcionó protección a la ciudad durante el conflicto.",
+          "The army provided protection to the city during the conflict."
+        ],
+        [
+          "Los guardaespaldas de la celebridad brindaron protección a su familia en la playa.",
+          "The bodyguards of the celebrity provided protection to their family at the beach."
+        ],
+        [
+          "La organización de derechos humanos ofreció protección a los refugiados.",
+          "The human rights organization offered protection to the refugees."
+        ],
+        [
+          "El sistema de seguridad electrónica proporciona una protección efectiva contra el robo.",
+          "The electronic security system provides effective protection against theft."
+        ]
+      ],
+      "protección"
+    ],
+    "eng-30-00916464-n_agriculture": [
+      "2",
+      "The practice of cultivating the land or raising stock.",
+      "La práctica de cultivo de la tierra o cría de ganado.",
+      "n",
+      "eng",
+      [
+        [
+          "The farmer's fields were filled with crops as a result of his dedication to agriculture.",
+          "Los campos del agricultor estaban llenos de cosechas como resultado de su dedicación a la agricultura."
+        ],
+        [
+          "The government implemented policies to support sustainable agriculture and reduce greenhouse gas emissions.",
+          "El gobierno implementó políticas para apoyar la agricultura sostenible y reducir las emisiones de gases de efecto invernadero."
+        ],
+        [
+          "Agriculture has been an essential part of human civilization for thousands of years, providing food, fiber, and fuel.",
+          "La agricultura ha sido una parte esencial de la civilización humana durante miles de años, proporcionando alimentos, fibra y combustible."
+        ],
+        [
+          "The agricultural industry is facing challenges due to climate change, pests, and diseases.",
+          "La industria agrícola enfrenta desafíos debido al cambio climático, plagas y enfermedades."
+        ],
+        [
+          "The rural community relies heavily on agriculture as a source of income and employment.",
+          "La comunidad rural se basa en gran medida en la agricultura como fuente de ingresos y empleo."
+        ]
+      ],
+      "agricultura",
+      [
+        [
+          "La agricultura es una actividad fundamental para la supervivencia humana.",
+          "Agriculture is a fundamental activity for human survival."
+        ],
+        [
+          "El desarrollo sostenible de la agricultura es crucial para la seguridad alimentaria mundial.",
+          "The sustainable development of agriculture is crucial for global food security."
+        ],
+        [
+          "Los métodos modernos de agricultura han revolucionado el campo en los últimos siglos.",
+          "The modern methods of agriculture have revolutionized the countryside over the last few centuries."
+        ],
+        [
+          "La agricultura tradicional sigue siendo una importante fuente de ingresos y empleo en muchas partes del mundo.",
+          "Traditional agriculture remains an important source of income and employment in many parts of the world."
+        ],
+        [
+          "La agricultura orgánica es un movimiento creciente que busca mejorar la calidad de la tierra y los productos agrícolas sin usar químicos sintéticos.",
+          "Organic agriculture is a growing movement that aims to improve the quality of the soil and agricultural products without using synthetic chemicals."
+        ]
+      ],
+      "agricultura"
+    ]
+  }

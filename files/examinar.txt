@@ -1,0 +1,893 @@
+llama_print_timings:      sample time =       7.16 ms /    16 runs   (    0.45 ms per token,  2234.32 tokens per second)
+llama_print_timings: prompt eval time =    9279.20 ms /    40 tokens (  231.98 ms per token,     4.31 tokens per second)
+llama_print_timings:        eval time =    3769.89 ms /    15 runs   (  251.33 ms per token,     3.98 tokens per second)
+llama_print_timings:       total time =   13071.41 ms /    55 tokens
+{
+  "id": "cmpl-b3af1b31-41a9-4eaf-be8d-c5fdea9fa1c7",
+  "object": "text_completion",
+  "created": 1717278346,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La resolución del juez fue clara y concisa.\", where the noun \"resolution\" appears in the sense \"A decision to do something or to behave in a certain manner.\". Answer: The judge's decision was clear and concise.\n\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 67,
+    "completion_tokens": 16,
+    "total_tokens": 83
+  }
+}
+The judge's decision was clear and concise.
+The judge's decision was clear and concise.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       7.85 ms /    17 runs   (    0.46 ms per token,  2164.50 tokens per second)
+llama_print_timings: prompt eval time =    8459.00 ms /    50 tokens (  169.18 ms per token,     5.91 tokens per second)
+llama_print_timings:        eval time =    4042.97 ms /    16 runs   (  252.69 ms per token,     3.96 tokens per second)
+llama_print_timings:       total time =   12528.74 ms /    66 tokens
+{
+  "id": "cmpl-7aa91c26-2fe4-459e-a220-b5514a67aae7",
+  "object": "text_completion",
+  "created": 1717278359,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La resolución de la comunidad es de trabajar juntos para mejorar nuestra calidad de vida.\", where the noun \"resolution\" appears in the sense \"A decision to do something or to behave in a certain manner.\". Answer: The community's resolution is to work together to improve our quality of life.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 16,
+    "total_tokens": 93
+  }
+}
+The community's resolution is to work together to improve our quality of life.
+The community's resolution is to work together to improve our quality of life.
+Un exitoso intento de marcar.
+gol
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      56.19 ms /   128 runs   (    0.44 ms per token,  2278.07 tokens per second)
+llama_print_timings: prompt eval time =    8415.15 ms /    49 tokens (  171.74 ms per token,     5.82 tokens per second)
+llama_print_timings:        eval time =   32256.94 ms /   127 runs   (  253.99 ms per token,     3.94 tokens per second)
+llama_print_timings:       total time =   40928.96 ms /   176 tokens
+{
+  "id": "cmpl-63c42c46-3675-4810-a935-7d3705172e7d",
+  "object": "text_completion",
+  "created": 1717278372,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'gol' aparezca en el sentido de 'Un exitoso intento de marcar.'. Answer: 1. El delantero anotó un gol en la última jugada.\n2. La pelota entró en la red y se marcó un gol para el equipo local.\n3. El arquero falló al bloquear el disparo, y el gol fue anotado por el rival.\n4. El golazo de la derecha fue perfectamente ejecutado y terminó en la red.\n5. La jugada de esa noche fue una verdadera obra de arte, y el gol resultante fue un ejemplo de perfección.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 52,
+    "completion_tokens": 127,
+    "total_tokens": 179
+  }
+}
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       7.10 ms /    16 runs   (    0.44 ms per token,  2252.57 tokens per second)
+llama_print_timings: prompt eval time =    9890.38 ms /    58 tokens (  170.52 ms per token,     5.86 tokens per second)
+llama_print_timings:        eval time =    3797.56 ms /    15 runs   (  253.17 ms per token,     3.95 tokens per second)
+llama_print_timings:       total time =   13721.34 ms /    73 tokens
+{
+  "id": "cmpl-7a844e46-3323-45aa-b836-82b2a1f8cd9a",
+  "object": "text_completion",
+  "created": 1717278413,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El delantero anotó un gol en la última jugada.\", where the noun \"goal\" appears in the sense \"A successful attempt at scoring.\". Answer: The striker scored a goal in the last play.\n\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 61,
+    "completion_tokens": 16,
+    "total_tokens": 77
+  }
+}
+The striker scored a goal in the last play.
+The striker scored a goal in the last play.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       6.62 ms /    15 runs   (    0.44 ms per token,  2265.52 tokens per second)
+llama_print_timings: prompt eval time =    7933.40 ms /    42 tokens (  188.89 ms per token,     5.29 tokens per second)
+llama_print_timings:        eval time =    3601.05 ms /    14 runs   (  257.22 ms per token,     3.89 tokens per second)
+llama_print_timings:       total time =   11555.02 ms /    56 tokens
+{
+  "id": "cmpl-1463388d-8cc7-4928-8f73-37e042326539",
+  "object": "text_completion",
+  "created": 1717278426,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La pelota entró en la red y se marcó un gol para el equipo local.\", where the noun \"goal\" appears in the sense \"A successful attempt at scoring.\". Answer: The ball entered the net and scored a goal for the home team.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 65,
+    "completion_tokens": 14,
+    "total_tokens": 79
+  }
+}
+The ball entered the net and scored a goal for the home team.
+The ball entered the net and scored a goal for the home team.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       8.94 ms /    18 runs   (    0.50 ms per token,  2014.55 tokens per second)
+llama_print_timings: prompt eval time =    9962.26 ms /    46 tokens (  216.57 ms per token,     4.62 tokens per second)
+llama_print_timings:        eval time =    4460.69 ms /    17 runs   (  262.39 ms per token,     3.81 tokens per second)
+llama_print_timings:       total time =   14451.83 ms /    63 tokens
+{
+  "id": "cmpl-386501b5-bfe6-4a7c-bd93-4ce06213267c",
+  "object": "text_completion",
+  "created": 1717278438,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El arquero falló al bloquear el disparo, y el gol fue anotado por el rival.\", where the noun \"goal\" appears in the sense \"A successful attempt at scoring.\". Answer: The goalkeeper failed to block the shot, and it was scored by the opponent.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 17,
+    "total_tokens": 86
+  }
+}
+The goalkeeper failed to block the shot, and it was scored by the opponent.
+The goalkeeper failed to block the shot, and it was scored by the opponent.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       9.15 ms /    21 runs   (    0.44 ms per token,  2295.08 tokens per second)
+llama_print_timings: prompt eval time =    7909.48 ms /    42 tokens (  188.32 ms per token,     5.31 tokens per second)
+llama_print_timings:        eval time =    5072.33 ms /    20 runs   (  253.62 ms per token,     3.94 tokens per second)
+llama_print_timings:       total time =   13009.67 ms /    62 tokens
+{
+  "id": "cmpl-aa8ab244-cb3d-4816-8666-7e2b937d4834",
+  "object": "text_completion",
+  "created": 1717278452,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El golazo de la derecha fue perfectamente ejecutado y terminó en la red.\", where the noun \"goal\" appears in the sense \"A successful attempt at scoring.\". Answer: The well-executed shot from the right side ended up in the net.\n\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 66,
+    "completion_tokens": 21,
+    "total_tokens": 87
+  }
+}
+The well-executed shot from the right side ended up in the net.
+The well-executed shot from the right side ended up in the net.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      14.02 ms /    24 runs   (    0.58 ms per token,  1711.47 tokens per second)
+llama_print_timings: prompt eval time =    8935.60 ms /    53 tokens (  168.60 ms per token,     5.93 tokens per second)
+llama_print_timings:        eval time =    6951.21 ms /    23 runs   (  302.23 ms per token,     3.31 tokens per second)
+llama_print_timings:       total time =   15931.05 ms /    76 tokens
+{
+  "id": "cmpl-0d2fcd3a-f451-4f13-bd5a-e49e0522362c",
+  "object": "text_completion",
+  "created": 1717278465,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La jugada de esa noche fue una verdadera obra de arte, y el gol resultante fue un ejemplo de perfección.\", where the noun \"goal\" appears in the sense \"A successful attempt at scoring.\". Answer: \"The play of that night was a true work of art, and the resulting goal was an example of perfection.\"",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 23,
+    "total_tokens": 99
+  }
+}
+"The play of that night was a true work of art, and the resulting goal was an example of perfection."
+The play of that night was a true work of art, and the resulting goal was an example of perfection.
+Enfriamiento o contracción de una parte o órgano (en particular de un músculo o fibras musculares).
+contracción
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      57.52 ms /   150 runs   (    0.38 ms per token,  2607.92 tokens per second)
+llama_print_timings: prompt eval time =   10097.96 ms /    74 tokens (  136.46 ms per token,     7.33 tokens per second)
+llama_print_timings:        eval time =   32868.57 ms /   149 runs   (  220.59 ms per token,     4.53 tokens per second)
+llama_print_timings:       total time =   43207.91 ms /   223 tokens
+{
+  "id": "cmpl-cd453605-1615-48c0-a225-4a653642ab98",
+  "object": "text_completion",
+  "created": 1717278481,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'contracción' aparezca en el sentido de 'Enfriamiento o contracción de una parte o órgano (en particular de un músculo o fibras musculares).'. Answer: 1. La contracción del músculo abdominal causó la flexión de la espina dorsal.\n2. El enfriamiento de los músculos en el pie provocó una contracción dolorosa.\n3. La contracción muscular en la parte superior del pie resultó en un aumento de la presión sanguínea.\n4. La contracción de las fibras musculares en la rodilla causó una flexión de la rodilla.\n5. El enfriamiento y la contracción de los músculos en el pie resultaron en un dolor agudo en la parte inferior del pie.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 149,
+    "total_tokens": 226
+  }
+}
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       7.15 ms /    18 runs   (    0.40 ms per token,  2518.19 tokens per second)
+llama_print_timings: prompt eval time =   11550.91 ms /    85 tokens (  135.89 ms per token,     7.36 tokens per second)
+llama_print_timings:        eval time =    3726.53 ms /    17 runs   (  219.21 ms per token,     4.56 tokens per second)
+llama_print_timings:       total time =   15298.84 ms /   102 tokens
+{
+  "id": "cmpl-c3652e72-c0d4-425d-a167-71fe8763d430",
+  "object": "text_completion",
+  "created": 1717278525,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La contracción del músculo abdominal causó la flexión de la espina dorsal.\", where the noun \"contraction\" appears in the sense \"(physiology) a shortening or tensing of a part or organ (especially of a muscle or muscle fiber).\". Answer: The contraction of the abdominal muscle caused the flexion of the spine.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 88,
+    "completion_tokens": 17,
+    "total_tokens": 105
+  }
+}
+The contraction of the abdominal muscle caused the flexion of the spine.
+The contraction of the abdominal muscle caused the flexion of the spine.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       6.05 ms /    15 runs   (    0.40 ms per token,  2480.98 tokens per second)
+llama_print_timings: prompt eval time =    7596.64 ms /    63 tokens (  120.58 ms per token,     8.29 tokens per second)
+llama_print_timings:        eval time =    3066.50 ms /    14 runs   (  219.04 ms per token,     4.57 tokens per second)
+llama_print_timings:       total time =   10680.78 ms /    77 tokens
+{
+  "id": "cmpl-635e264e-9a48-4e3b-a505-bee66e63e4db",
+  "object": "text_completion",
+  "created": 1717278540,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El enfriamiento de los músculos en el pie provocó una contracción dolorosa.\", where the noun \"contraction\" appears in the sense \"(physiology) a shortening or tensing of a part or organ (especially of a muscle or muscle fiber).\". Answer: The cooling of the muscles in the foot caused a painful spasm.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 14,
+    "total_tokens": 100
+  }
+}
+The cooling of the muscles in the foot caused a painful spasm.
+The cooling of the muscles in the foot caused a painful spasm.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       8.05 ms /    20 runs   (    0.40 ms per token,  2484.78 tokens per second)
+llama_print_timings: prompt eval time =    8400.25 ms /    67 tokens (  125.38 ms per token,     7.98 tokens per second)
+llama_print_timings:        eval time =    4110.09 ms /    19 runs   (  216.32 ms per token,     4.62 tokens per second)
+llama_print_timings:       total time =   12535.05 ms /    86 tokens
+{
+  "id": "cmpl-3bff49d2-9491-48bf-9b18-095657667bcc",
+  "object": "text_completion",
+  "created": 1717278551,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La contracción muscular en la parte superior del pie resultó en un aumento de la presión sanguínea.\", where the noun \"contraction\" appears in the sense \"(physiology) a shortening or tensing of a part or organ (especially of a muscle or muscle fiber).\". Answer: The muscular contraction at the top of the foot led to an increase in blood pressure.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 90,
+    "completion_tokens": 19,
+    "total_tokens": 109
+  }
+}
+The muscular contraction at the top of the foot led to an increase in blood pressure.
+The muscular contraction at the top of the foot led to an increase in blood pressure.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       8.16 ms /    21 runs   (    0.39 ms per token,  2574.79 tokens per second)
+llama_print_timings: prompt eval time =    7411.35 ms /    62 tokens (  119.54 ms per token,     8.37 tokens per second)
+llama_print_timings:        eval time =    4416.46 ms /    20 runs   (  220.82 ms per token,     4.53 tokens per second)
+llama_print_timings:       total time =   11853.19 ms /    82 tokens
+{
+  "id": "cmpl-167492f8-417f-4a0d-92b0-54f5eba939d1",
+  "object": "text_completion",
+  "created": 1717278563,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La contracción de las fibras musculares en la rodilla causó una flexión de la rodilla.\", where the noun \"contraction\" appears in the sense \"(physiology) a shortening or tensing of a part or organ (especially of a muscle or muscle fiber).\". Answer: The contraction of the muscle fibers in the knee joint caused a flexion of the knee.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 89,
+    "completion_tokens": 20,
+    "total_tokens": 109
+  }
+}
+The contraction of the muscle fibers in the knee joint caused a flexion of the knee.
+The contraction of the muscle fibers in the knee joint caused a flexion of the knee.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       9.89 ms /    25 runs   (    0.40 ms per token,  2527.81 tokens per second)
+llama_print_timings: prompt eval time =    8720.64 ms /    73 tokens (  119.46 ms per token,     8.37 tokens per second)
+llama_print_timings:        eval time =    5247.57 ms /    24 runs   (  218.65 ms per token,     4.57 tokens per second)
+llama_print_timings:       total time =   13998.00 ms /    97 tokens
+{
+  "id": "cmpl-2458dd3b-9195-43dd-aa3f-75ba4143510d",
+  "object": "text_completion",
+  "created": 1717278575,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El enfriamiento y la contracción de los músculos en el pie resultaron en un dolor agudo en la parte inferior del pie.\", where the noun \"contraction\" appears in the sense \"(physiology) a shortening or tensing of a part or organ (especially of a muscle or muscle fiber).\". Answer: The cooling and contraction of the muscles in the foot resulted in a sharp pain in the lower part of the foot.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 96,
+    "completion_tokens": 24,
+    "total_tokens": 120
+  }
+}
+The cooling and contraction of the muscles in the foot resulted in a sharp pain in the lower part of the foot.
+The cooling and contraction of the muscles in the foot resulted in a sharp pain in the lower part of the foot.
+La práctica de colaborar.
+colaboración
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      47.60 ms /   124 runs   (    0.38 ms per token,  2604.88 tokens per second)
+llama_print_timings: prompt eval time =    6412.88 ms /    50 tokens (  128.26 ms per token,     7.80 tokens per second)
+llama_print_timings:        eval time =   27227.85 ms /   123 runs   (  221.36 ms per token,     4.52 tokens per second)
+llama_print_timings:       total time =   33828.99 ms /   173 tokens
+{
+  "id": "cmpl-d14835ce-4a08-4959-a8b0-aa92ba907281",
+  "object": "text_completion",
+  "created": 1717278589,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'colaboración' aparezca en el sentido de 'La práctica de colaborar.'. Answer: 1. La colaboración entre los estudiantes y los profesores es fundamental para la educación.\n2. El equipo de investigación ha establecido una colaboración con la empresa para desarrollar un nuevo producto.\n3. La colaboración en el trabajo es esencial para lograr objetivos comunes.\n4. La colaboración entre los países es crucial para resolver problemas globales.\n5. La colaboración en proyectos creativos puede llevar a resultados sorprendentes y únicos.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 123,
+    "total_tokens": 176
+  }
+}
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       4.83 ms /    12 runs   (    0.40 ms per token,  2482.42 tokens per second)
+llama_print_timings: prompt eval time =    7410.61 ms /    62 tokens (  119.53 ms per token,     8.37 tokens per second)
+llama_print_timings:        eval time =    2474.82 ms /    11 runs   (  224.98 ms per token,     4.44 tokens per second)
+llama_print_timings:       total time =    9899.26 ms /    73 tokens
+{
+  "id": "cmpl-b6042129-74cf-4972-b638-65827236447a",
+  "object": "text_completion",
+  "created": 1717278623,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La colaboración entre los estudiantes y los profesores es fundamental para la educación.\", where the noun \"cooperation\" appears in the sense \"The practice of cooperating.\". Answer: The collaboration between students and teachers is essential for education.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 65,
+    "completion_tokens": 11,
+    "total_tokens": 76
+  }
+}
+The collaboration between students and teachers is essential for education.
+The collaboration between students and teachers is essential for education.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       7.13 ms /    17 runs   (    0.42 ms per token,  2383.29 tokens per second)
+llama_print_timings: prompt eval time =    5621.30 ms /    47 tokens (  119.60 ms per token,     8.36 tokens per second)
+llama_print_timings:        eval time =    3471.09 ms /    16 runs   (  216.94 ms per token,     4.61 tokens per second)
+llama_print_timings:       total time =    9112.89 ms /    63 tokens
+{
+  "id": "cmpl-014f83c1-fc25-462f-b1c7-00c764fd853f",
+  "object": "text_completion",
+  "created": 1717278633,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El equipo de investigación ha establecido una colaboración con la empresa para desarrollar un nuevo producto.\", where the noun \"cooperation\" appears in the sense \"The practice of cooperating.\". Answer: The research team has established a collaboration with the company to develop a new product.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 16,
+    "total_tokens": 86
+  }
+}
+The research team has established a collaboration with the company to develop a new product.
+The research team has established a collaboration with the company to develop a new product.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       5.86 ms /    14 runs   (    0.42 ms per token,  2390.30 tokens per second)
+llama_print_timings: prompt eval time =    4954.01 ms /    41 tokens (  120.83 ms per token,     8.28 tokens per second)
+llama_print_timings:        eval time =    2866.56 ms /    13 runs   (  220.50 ms per token,     4.54 tokens per second)
+llama_print_timings:       total time =    7838.38 ms /    54 tokens
+{
+  "id": "cmpl-b35c0bdc-0985-4992-b4a6-0a4d2af137fa",
+  "object": "text_completion",
+  "created": 1717278642,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La colaboración en el trabajo es esencial para lograr objetivos comunes.\", where the noun \"cooperation\" appears in the sense \"The practice of cooperating.\". Answer: \"Collaboration in work is essential for achieving common goals.\"",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 64,
+    "completion_tokens": 13,
+    "total_tokens": 77
+  }
+}
+"Collaboration in work is essential for achieving common goals."
+Collaboration in work is essential for achieving common goals.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       4.82 ms /    12 runs   (    0.40 ms per token,  2489.11 tokens per second)
+llama_print_timings: prompt eval time =    4381.11 ms /    36 tokens (  121.70 ms per token,     8.22 tokens per second)
+llama_print_timings:        eval time =    2427.37 ms /    11 runs   (  220.67 ms per token,     4.53 tokens per second)
+llama_print_timings:       total time =    6823.63 ms /    47 tokens
+{
+  "id": "cmpl-7e8fb7e3-18f7-4483-85db-12a624ca9dae",
+  "object": "text_completion",
+  "created": 1717278650,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La colaboración entre los países es crucial para resolver problemas globales.\", where the noun \"cooperation\" appears in the sense \"The practice of cooperating.\". Answer: The collaboration between countries is essential for solving global problems.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 11,
+    "total_tokens": 74
+  }
+}
+The collaboration between countries is essential for solving global problems.
+The collaboration between countries is essential for solving global problems.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       6.75 ms /    16 runs   (    0.42 ms per token,  2370.02 tokens per second)
+llama_print_timings: prompt eval time =    8302.51 ms /    44 tokens (  188.69 ms per token,     5.30 tokens per second)
+llama_print_timings:        eval time =    3314.87 ms /    15 runs   (  220.99 ms per token,     4.53 tokens per second)
+llama_print_timings:       total time =   11637.44 ms /    59 tokens
+{
+  "id": "cmpl-6a4376c0-da24-4b03-962f-8be2250ad5cb",
+  "object": "text_completion",
+  "created": 1717278656,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La colaboración en proyectos creativos puede llevar a resultados sorprendentes y únicos.\", where the noun \"cooperation\" appears in the sense \"The practice of cooperating.\". Answer: \"Collaboration on creative projects can lead to surprising and unique results.\"",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 15,
+    "total_tokens": 86
+  }
+}
+"Collaboration on creative projects can lead to surprising and unique results."
+Collaboration on creative projects can lead to surprising and unique results.
+Un esfuerzo que es molesto.
+dificultad
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      55.41 ms /   146 runs   (    0.38 ms per token,  2635.14 tokens per second)
+llama_print_timings: prompt eval time =    6213.49 ms /    52 tokens (  119.49 ms per token,     8.37 tokens per second)
+llama_print_timings:        eval time =   31668.05 ms /   145 runs   (  218.40 ms per token,     4.58 tokens per second)
+llama_print_timings:       total time =   38086.71 ms /   197 tokens
+{
+  "id": "cmpl-409979ba-4306-4911-a8db-23fef1acc300",
+  "object": "text_completion",
+  "created": 1717278668,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'dificultad' aparezca en el sentido de 'Un esfuerzo que es molesto.'. Answer: 1. La dificultad de levantar pesas es una actividad desagradable para mí.\n2. El proceso de aprender un nuevo idioma es una verdadera dificultad.\n3. La comprensión de la matemática es una dificultad que me causa mucha frustración.\n4. La tarea de escribir un ensayo en inglés es una verdadera dificultad para mí.\n5. El proceso de aprender a tocar el piano es una verdadera dificultad, pero también es muy gratificante cuando se logra algo.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 55,
+    "completion_tokens": 145,
+    "total_tokens": 200
+  }
+}
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       6.15 ms /    14 runs   (    0.44 ms per token,  2276.79 tokens per second)
+llama_print_timings: prompt eval time =    8265.99 ms /    69 tokens (  119.80 ms per token,     8.35 tokens per second)
+llama_print_timings:        eval time =    2862.36 ms /    13 runs   (  220.18 ms per token,     4.54 tokens per second)
+llama_print_timings:       total time =   11145.95 ms /    82 tokens
+{
+  "id": "cmpl-a34e6ebc-9e4d-4f76-9dc3-413342a705ac",
+  "object": "text_completion",
+  "created": 1717278706,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La dificultad de levantar pesas es una actividad desagradable para mí.\", where the noun \"difficulty\" appears in the sense \"An effort that is inconvenient.\". Answer: The difficulty of lifting weights is an unpleasant activity for me.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 72,
+    "completion_tokens": 13,
+    "total_tokens": 85
+  }
+}
+The difficulty of lifting weights is an unpleasant activity for me.
+The difficulty of lifting weights is an unpleasant activity for me.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       8.06 ms /    17 runs   (    0.47 ms per token,  2108.40 tokens per second)
+llama_print_timings: prompt eval time =    5564.71 ms /    45 tokens (  123.66 ms per token,     8.09 tokens per second)
+llama_print_timings:        eval time =    3711.32 ms /    16 runs   (  231.96 ms per token,     4.31 tokens per second)
+llama_print_timings:       total time =    9300.39 ms /    61 tokens
+{
+  "id": "cmpl-5c913193-4fb5-4542-8404-afdf2c3ca7d2",
+  "object": "text_completion",
+  "created": 1717278717,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El proceso de aprender un nuevo idioma es una verdadera dificultad.\", where the noun \"difficulty\" appears in the sense \"An effort that is inconvenient.\". Answer: The process of learning a new language is a real challenge.\n\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 68,
+    "completion_tokens": 17,
+    "total_tokens": 85
+  }
+}
+The process of learning a new language is a real challenge.
+The process of learning a new language is a real challenge.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       7.82 ms /    19 runs   (    0.41 ms per token,  2430.29 tokens per second)
+llama_print_timings: prompt eval time =    6789.57 ms /    49 tokens (  138.56 ms per token,     7.22 tokens per second)
+llama_print_timings:        eval time =    3913.09 ms /    18 runs   (  217.39 ms per token,     4.60 tokens per second)
+llama_print_timings:       total time =   10726.09 ms /    67 tokens
+{
+  "id": "cmpl-6b8b1b66-3f7f-4037-9633-e226459007b2",
+  "object": "text_completion",
+  "created": 1717278727,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La comprensión de la matemática es una dificultad que me causa mucha frustración.\", where the noun \"difficulty\" appears in the sense \"An effort that is inconvenient.\". Answer: The understanding of mathematics is a challenge that causes me great frustration.\n\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 72,
+    "completion_tokens": 19,
+    "total_tokens": 91
+  }
+}
+The understanding of mathematics is a challenge that causes me great frustration.
+The understanding of mathematics is a challenge that causes me great frustration.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =       7.09 ms /    17 runs   (    0.42 ms per token,  2396.05 tokens per second)
+llama_print_timings: prompt eval time =    6299.76 ms /    52 tokens (  121.15 ms per token,     8.25 tokens per second)
+llama_print_timings:        eval time =    3524.31 ms /    16 runs   (  220.27 ms per token,     4.54 tokens per second)
+llama_print_timings:       total time =    9844.58 ms /    68 tokens
+{
+  "id": "cmpl-9d65c536-4326-4668-9b00-473a7e96e6ec",
+  "object": "text_completion",
+  "created": 1717278737,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La tarea de escribir un ensayo en inglés es una verdadera dificultad para mí.\", where the noun \"difficulty\" appears in the sense \"An effort that is inconvenient.\". Answer: \"The task of writing an essay in English is a real challenge for me.\"",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 16,
+    "total_tokens": 92
+  }
+}
+"The task of writing an essay in English is a real challenge for me."
+The task of writing an essay in english is a real challenge for me.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      11.12 ms /    27 runs   (    0.41 ms per token,  2427.40 tokens per second)
+llama_print_timings: prompt eval time =    7052.99 ms /    59 tokens (  119.54 ms per token,     8.37 tokens per second)
+llama_print_timings:        eval time =    5706.72 ms /    26 runs   (  219.49 ms per token,     4.56 tokens per second)
+llama_print_timings:       total time =   12792.75 ms /    85 tokens
+{
+  "id": "cmpl-456ea908-27d4-4ea2-9ecf-728b8287d637",
+  "object": "text_completion",
+  "created": 1717278747,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El proceso de aprender a tocar el piano es una verdadera dificultad, pero también es muy gratificante cuando se logra algo.\", where the noun \"difficulty\" appears in the sense \"An effort that is inconvenient.\". Answer: The process of learning to play the piano is a true challenge, but it's also very rewarding when you achieve something.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 26,
+    "total_tokens": 108
+  }
+}
+The process of learning to play the piano is a true challenge, but it's also very rewarding when you achieve something.
+The process of learning to play the piano is a true challenge, but it's also very rewarding when you achieve something.
+Una serie de técnicas para explorar motivos subyacentes y un método de tratamiento de diversos trastornos mentales basado en las teorías de sigmund freud.
+análisis
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      82.54 ms /   200 runs   (    0.41 ms per token,  2423.04 tokens per second)
+llama_print_timings: prompt eval time =   10635.20 ms /    89 tokens (  119.50 ms per token,     8.37 tokens per second)
+llama_print_timings:        eval time =   44478.49 ms /   199 runs   (  223.51 ms per token,     4.47 tokens per second)
+llama_print_timings:       total time =   55449.73 ms /   288 tokens
+{
+  "id": "cmpl-4fcf30da-fbff-4f37-8fa8-3709425f2870",
+  "object": "text_completion",
+  "created": 1717278760,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'análisis' aparezca en el sentido de 'Una serie de técnicas para explorar motivos subyacentes y un método de tratamiento de diversos trastornos mentales basado en las teorías de sigmund freud.'. Answer: 1. El análisis psicoanalítico es una serie de técnicas utilizadas para explorar los motivos subyacentes y tratar diversos trastornos mentales basados en las teorías de Sigmund Freud.\n2. La terapia psicodinámica se basa en el análisis psicoanalítico, que es una serie de técnicas utilizadas para explorar los motivos subyacentes y tratar diversos trastornos mentales basados en las teorías de Sigmund Freud.\n3. El análisis psicoanalítico es un método de tratamiento que se basa en la teoría de Sigmund Freud, que consiste en una serie de técnicas utilizadas para explorar los motivos subyacentes y tratar diversos trastornos mentales.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 92,
+    "completion_tokens": 200,
+    "total_tokens": 292
+  }
+}
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      13.40 ms /    33 runs   (    0.41 ms per token,  2463.24 tokens per second)
+llama_print_timings: prompt eval time =   14173.95 ms /   117 tokens (  121.14 ms per token,     8.25 tokens per second)
+llama_print_timings:        eval time =    7312.02 ms /    32 runs   (  228.50 ms per token,     4.38 tokens per second)
+llama_print_timings:       total time =   21539.55 ms /   149 tokens
+{
+  "id": "cmpl-9f25bb7b-a25c-446e-b8d8-bfe136fc0d55",
+  "object": "text_completion",
+  "created": 1717278816,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El análisis psicoanalítico es una serie de técnicas utilizadas para explorar los motivos subyacentes y tratar diversos trastornos mentales basados en las teorías de Sigmund Freud.\", where the noun \"analysis\" appears in the sense \"A set of techniques for exploring underlying motives and a method of treating various mental disorders; based on the theories of sigmund freud.\". Answer: The psychoanalytic analysis is a series of techniques used to explore underlying motives and treat various mental disorders based on the theories of Sigmund Freud.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 120,
+    "completion_tokens": 32,
+    "total_tokens": 152
+  }
+}
+The psychoanalytic analysis is a series of techniques used to explore underlying motives and treat various mental disorders based on the theories of Sigmund Freud.
+The psychoanalytic analysis is a series of techniques used to explore underlying motives and treat various mental disorders based on the theories of sigmund freud.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      18.30 ms /    41 runs   (    0.45 ms per token,  2239.83 tokens per second)
+llama_print_timings: prompt eval time =   15208.98 ms /   113 tokens (  134.59 ms per token,     7.43 tokens per second)
+llama_print_timings:        eval time =    9972.41 ms /    40 runs   (  249.31 ms per token,     4.01 tokens per second)
+llama_print_timings:       total time =   25241.95 ms /   153 tokens
+{
+  "id": "cmpl-5042149a-a2d2-433a-8c20-1e7b02f9adab",
+  "object": "text_completion",
+  "created": 1717278837,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"La terapia psicodinámica se basa en el análisis psicoanalítico, que es una serie de técnicas utilizadas para explorar los motivos subyacentes y tratar diversos trastornos mentales basados en las teorías de Sigmund Freud.\", where the noun \"analysis\" appears in the sense \"A set of techniques for exploring underlying motives and a method of treating various mental disorders; based on the theories of sigmund freud.\". Answer: Psychodynamic therapy is based on psychoanalytic analysis, which is a series of techniques used to explore underlying motives and treat various mental disorders based on the theories of Sigmund Freud.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 136,
+    "completion_tokens": 40,
+    "total_tokens": 176
+  }
+}
+Psychodynamic therapy is based on psychoanalytic analysis, which is a series of techniques used to explore underlying motives and treat various mental disorders based on the theories of Sigmund Freud.
+Psychodynamic therapy is based on psychoanalytic analysis, which is a series of techniques used to explore underlying motives and treat various mental disorders based on the theories of sigmund freud.
+Running model...
+Llama.generate: prefix-match hit
+
+llama_print_timings:        load time =   14649.86 ms
+llama_print_timings:      sample time =      16.59 ms /    42 runs   (    0.40 ms per token,  2531.49 tokens per second)
+llama_print_timings: prompt eval time =   13314.20 ms /   110 tokens (  121.04 ms per token,     8.26 tokens per second)
+llama_print_timings:        eval time =    8892.01 ms /    41 runs   (  216.88 ms per token,     4.61 tokens per second)
+llama_print_timings:       total time =   22259.12 ms /   151 tokens
+{
+  "id": "cmpl-6c0fe4c0-224c-4011-a1b7-39e506a48482",
+  "object": "text_completion",
+  "created": 1717278862,
+  "model": "../models/zephyr-7b-alpha.Q4_K_M.gguf",
+  "choices": [
+    {
+      "text": "Question: As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence \"El análisis psicoanalítico es un método de tratamiento que se basa en la teoría de Sigmund Freud, que consiste en una serie de técnicas utilizadas para explorar los motivos subyacentes y tratar diversos trastornos mentales.\", where the noun \"analysis\" appears in the sense \"A set of techniques for exploring underlying motives and a method of treating various mental disorders; based on the theories of sigmund freud.\". Answer: The psychoanalytic analysis is a treatment method that is based on the theory of Sigmund Freud, which consists of a series of techniques used to explore underlying motives and treat various mental disorders.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 133,
+    "completion_tokens": 41,
+    "total_tokens": 174
+  }
+}
+The psychoanalytic analysis is a treatment method that is based on the theory of Sigmund Freud, which consists of a series of techniques used to explore underlying motives and treat various mental disorders.
+The psychoanalytic analysis is a treatment method that is based on the theory of sigmund freud, which consists of a series of techniques used to explore underlying motives and treat various mental disorders.
+[['El objeto en la mesa es un libro.', 'The object on the table is a book.'], ['La luna es un objeto celestial.', 'The moon is a celestial object.'], ['El coche es un objeto mecánico.', 'The car is a mechanical object.'], ['El árbol es un objeto natural.', 'The tree is a natural object.'], ['El globo terráqueo es un objeto geográfico.', 'The terrestrial globe is a geographical object.']]
+2024-06-01 23:55:19,702 - simalign.simalign - INFO - Initialized the EmbeddingLoader with model: bert-base-multilingual-cased
+['el objeto en la mesa es un libro.', 'the object on the table is a book.']
+['la luna es un objeto celestial.', 'the moon is a celestial object.']
+['el coche es un objeto mecánico.', 'the car is a mechanical object.']
+['el árbol es un objeto natural.', 'the tree is a natural object.']
+['el globo terráqueo es un objeto geográfico.', 'the terrestrial globe is a geographical object.']
+[['La motivación es una fuerza interna que impulsa al ser humano a lograr sus objetivos.', 'The internal force that drives human beings to achieve their goals is motivation.'], ['El éxito en cualquier actividad depende en gran medida de la motivación del individuo.', "The success in any activity largely depends on the individual's motivation."], ['La falta de motivación puede ser el principal obstáculo para la realización de los objetivos.', 'The lack of motivation can be the main obstacle for achieving goals.'], ['La motivación es una característica psicológica fundamental que permite al ser humano adaptarse a su entorno y superar las dificultades.', 'The motivation is a fundamental psychological characteristic that allows human beings to adapt to their environment and overcome difficulties.'], ['La motivación es un factor clave en el desarrollo personal y profesional, ya que la gente se mueve hacia lo que desea y evita lo que no desea.', "Motivation is a key factor in personal and professional development, as people move towards what they want and avoid what they don't want."]]
+2024-06-01 23:55:52,691 - simalign.simalign - INFO - Initialized the EmbeddingLoader with model: bert-base-multilingual-cased
+['la motivación es una fuerza interna que impulsa al ser humano a lograr sus objetivos.', 'the internal force that drives human beings to achieve their goals is motivation.']
+['el éxito en cualquier actividad depende en gran medida de la motivación del individuo.', "the success in any activity largely depends on the individual's motivation."]
+['la falta de motivación puede ser el principal obstáculo para la realización de los objetivos.', 'the lack of motivation can be the main obstacle for achieving goals.']
+['la motivación es una característica psicológica fundamental que permite al ser humano adaptarse a su entorno y superar las dificultades.', 'the motivation is a fundamental psychological characteristic that allows human beings to adapt to their environment and overcome difficulties.']    
+['la motivación es un factor clave en el desarrollo personal y profesional, ya que la gente se mueve hacia lo que desea y evita lo que no desea.', "motivation is a key factor in personal and professional development, as people move towards what they want and avoid what they don't want."]  
+[['El récord de velocidad en la pista de atletismo es de 9,58 segundos, establecido por Usain Bolt.', ['58 seconds, set by Usain Bolt.']], ['La maratón más rápida jamás corrida fue en el año 2014 por Dennis Kimetto, con un tiempo de 2 horas y 2 minutos y 52 segundos.', 'The fastest marathon ever run was in the year 2014 by dennis kimetto, with a time of 2 hours and 2 minutes and 52 seconds.'], ['El récord mundial de salto de altura es de 2,45 metros, establecido por Javier Sotomayor en el año', ['45 meters, set by Javier Sotomayor in the year.']], ['', 'Registro récord is translated as record-breaking performance.'], ['La velocidad más rápida jamás alcanzada por un hombre en tierra es de 768 millas por hora (', 'The fastest speed ever achieved by a human on land is 768 miles per hour.'], ['237 km/h), establecida por Andy Green en el año', 'At a speed of 237 kilometers per hour (km/h), set by andy green in the year,.'], ['', 'A record-breaking achievement; the best (or worst) performance ever recorded (in a sport).'], ['El récord', 'The record.']]
+2024-06-01 23:56:24,845 - simalign.simalign - INFO - Initialized the EmbeddingLoader with model: bert-base-multilingual-cased
+Traceback (most recent call last):
+  File "/mnt/c/Users/david/Escritorio/INGENIERIAINFORMATICA/TFG/Casos_piloto/TFG-2.Caso_piloto/componenteManager.py", line 175, in <module>      
+    knowledge_exploitation_process()
+  File "/mnt/c/Users/david/Escritorio/INGENIERIAINFORMATICA/TFG/Casos_piloto/TFG-2.Caso_piloto/componenteManager.py", line 163, in knowledge_exploitation_process
+    exploited_information = knowledge_exploitation()
+  File "/mnt/c/Users/david/Escritorio/INGENIERIAINFORMATICA/TFG/Casos_piloto/TFG-2.Caso_piloto/componenteManager.py", line 138, in knowledge_exploitation
+    final_result = componenteValidator.get_final_result((offset_word,attributes), llm_extracted_validation_answers_list, provisional_result)     
+  File "/mnt/c/Users/david/Escritorio/INGENIERIAINFORMATICA/TFG/Casos_piloto/TFG-2.Caso_piloto/componenteValidator.py", line 76, in get_final_result
+    translated_original_phrase = phrase[1].lower()
+AttributeError: 'list' object has no attribute 'lower'
+david@LAPTOP-N4CLHE77:/mnt/c/Users/david/Escritorio/INGENIERIAINFORMATICA/TFG/Casos_piloto/TFG-2.Caso_piloto$ 
