@@ -93,54 +93,16 @@ Using fallback chat format: llama-2
 Model loaded.
 Running model...
 
-llama_print_timings:        load time =   58101.31 ms
-llama_print_timings:      sample time =      79.69 ms /   101 runs   (    0.79 ms per token,  1267.35 tokens per second)
-llama_print_timings: prompt eval time =   58101.04 ms /    49 tokens ( 1185.74 ms per token,     0.84 tokens per second)
-llama_print_timings:        eval time =  169096.17 ms /   100 runs   ( 1690.96 ms per token,     0.59 tokens per second)
-llama_print_timings:       total time =  227743.90 ms /   149 tokens
-{
-  "id": "cmpl-34d6b213-a77a-4cdc-9e78-abaf470c8cb2",
-  "object": "text_completion",
-  "created": 1717783266,
-  "model": "../../models/zephyr-7b-alpha.Q4_K_M.gguf",
-  "choices": [
-    {
-      "text": "Question: As a linguistics expert, provide five sentences where the noun 'paper' appears in the sense of 'A material made of cellulose pulp derived mainly from wood or rags or certain grasses.'. Answer: 1. The paper was smooth and glossy, perfect for printing high-quality images.\n2. She carefully folded the paper into a neat square before placing it in the envelope.\n3. The paper was thin and delicate, almost translucent when held up to the light.\n4. He stacked the papers on his desk, ready to begin his research project.\n5. The paper rustled as she turned each page, reading through the old book with care.",
-      "index": 0,
-      "logprobs": null,
-      "finish_reason": "stop"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 49,
-    "completion_tokens": 100,
-    "total_tokens": 149
-  }
-}
+llama_print_timings:        load time =   48363.55 ms
+llama_print_timings:      sample time =      66.73 ms /   106 runs   (    0.63 ms per token,  1588.56 tokens per second)
+llama_print_timings: prompt eval time =   48360.00 ms /    49 tokens (  986.94 ms per token,     1.01 tokens per second)
+llama_print_timings:        eval time =   57942.84 ms /   105 runs   (  551.84 ms per token,     1.81 tokens per second)
+llama_print_timings:       total time =  106748.94 ms /   154 tokens
 Running model...
 Llama.generate: prefix-match hit
 
-llama_print_timings:        load time =   58101.31 ms
-llama_print_timings:      sample time =      89.43 ms /   155 runs   (    0.58 ms per token,  1733.12 tokens per second)
-llama_print_timings: prompt eval time =   49123.58 ms /    29 tokens ( 1693.92 ms per token,     0.59 tokens per second)
-llama_print_timings:        eval time =  180839.18 ms /   154 runs   ( 1174.28 ms per token,     0.85 tokens per second)
-llama_print_timings:       total time =  230453.64 ms /   183 tokens
-{
-  "id": "cmpl-35f28290-ee58-4204-ba6e-4efe889b39a3",
-  "object": "text_completion",
-  "created": 1717783493,
-  "model": "../../models/zephyr-7b-alpha.Q4_K_M.gguf",
-  "choices": [
-    {
-      "text": "Question: As a linguistics expert, provide five sentences where the noun 'year' appears in the sense of 'A period of time containing 365 (or 366) days.'. Answer: The year 2021 has been marked by significant events such as the COVID-19 pandemic, the US presidential election, and the Tokyo Olympics. In 2020, the world experienced a global health crisis that affected every aspect of life. The year 1963 was a pivotal moment in history, with the assassination of President John F. Kennedy and the signing of the Civil Rights Act. The year 1815 witnessed the Battle of Waterloo, which marked the end of Napoleon Bonaparte's reign as Emperor of France. In 2030, experts predict that we will see significant advancements in technology, including the widespread use of autonomous vehicles and the development of quantum computing.",
-      "index": 0,
-      "logprobs": null,
-      "finish_reason": "stop"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 46,
-    "completion_tokens": 154,
-    "total_tokens": 200
-  }
-}
+llama_print_timings:        load time =   48363.55 ms
+llama_print_timings:      sample time =      59.25 ms /   127 runs   (    0.47 ms per token,  2143.60 tokens per second)
+llama_print_timings: prompt eval time =   12220.14 ms /    29 tokens (  421.38 ms per token,     2.37 tokens per second)
+llama_print_timings:        eval time =   46162.93 ms /   126 runs   (  366.37 ms per token,     2.73 tokens per second)
+llama_print_timings:       total time =   58862.12 ms /   155 tokens

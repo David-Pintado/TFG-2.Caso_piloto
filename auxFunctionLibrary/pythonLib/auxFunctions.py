@@ -16,6 +16,20 @@ nlp_es = spacy.load("es_core_news_sm")
 nlp_en = spacy.load("en_core_web_sm")
 
 def validation_find_element_with_difference(lst, plural_list, difference):
+    
+    """
+    Método para encontrar un 'Value' en una lista de tuplas de tipo [Value, num], donde 'num' ha de superar o igualar la 
+    diferencia, y donde 'num' deberá tener el valor más alto en la lista. En caso de haber un empate tiene prioridad
+    el elemento cuyo 'Value' se encuentre en 'plural_list'. Si no se encuentra ninguno, se elige uno al azar.
+
+        Parámetros:
+            - lst (List[Tuple[Any, int]]): Lista de tuplas donde cada tupla contiene un elemento y un valor entero.
+            - difference (int): Diferencia mínima requerida para el segundo valor de las tuplas.
+
+        Retorna:
+            - element (Tuple[Any, int]): Un elemento de 'lst' que cumple con los requisitos.
+    """
+    
     if not lst:
         return []
 
@@ -39,6 +53,19 @@ def validation_find_element_with_difference(lst, plural_list, difference):
     return random.choice(max_elements)
 
 def find_element_with_difference(lst, difference):
+    
+    """
+    Método para encontrar un 'Value' en una lista de tuplas de tipo [Value, num], donde 'num' ha de superar o igualar la 
+    diferencia, y donde 'num' deberá tener el valor más alto en la lista. En caso de haber un empate se elige uno al azar.
+
+        Parámetros:
+            - lst (List[Tuple[Any, int]]): Lista de tuplas donde cada tupla contiene un elemento y un valor entero.
+            - difference (int): Diferencia mínima requerida para el segundo valor de las tuplas.
+
+        Retorna:
+            - element (Tuple[Any, int]): Un elemento de 'lst' que cumple con los requisitos.
+    """
+    
     if not lst:
         return []
 
@@ -58,6 +85,19 @@ def find_element_with_difference(lst, difference):
     return random.choice(max_elements)
 
 def normalize_list_english(lista):
+    
+    """
+    Método para normalizar una lista de palabras en inglés, combinando el número de apariciones de las palabras
+    y sus formas plurales.
+
+        Parámetros:
+            - lista (List[Tuple[str, int]]): Lista de tuplas donde cada tupla contiene una palabra en inglés
+                                            y su número de apariciones correspondiente.
+        Retorna:
+            - lista_normalizada (List[Tuple[str, int]]): Lista de tuplas donde los número de apariciones de las palabras y
+                                                        sus formas plurales se han combinado.
+    """
+    
     # Convertir la lista a un conjunto para buscar palabras de manera eficiente
     palabras_set = set(palabra for palabra, _ in lista)
     # Lista para almacenar los plurales que se eliminarán
@@ -82,6 +122,19 @@ def normalize_list_english(lista):
     return lista_normalizada
 
 def normalize_list_spanish(lista):
+    
+    """
+    Método para normalizar una lista de palabras en castellano, combinando el número de apariciones de las palabras
+    y sus formas plurales.
+
+        Parámetros:
+            - lista (List[Tuple[str, int]]): Lista de tuplas donde cada tupla contiene una palabra en castellano
+                                            y su número de apariciones correspondiente.
+        Retorna:
+            - lista_normalizada (List[Tuple[str, int]]): Lista de tuplas donde los número de apariciones de las palabras y
+                                                        sus formas plurales se han combinado.
+    """
+    
     # Convertir la lista a un conjunto para buscar palabras de manera eficiente
     palabras_set = set(palabra for palabra, _ in lista)
     # Lista para almacenar los plurales que se eliminarán
@@ -106,18 +159,17 @@ def normalize_list_spanish(lista):
     return lista_normalizada
 
 def pluralize_word_spanish(word):
-    """Función para obtener la forma plural de una palabra (En el caso de que esta sea plural, devolverá su plural)
-       En el caso de que la palabra sea compuesta, devolverá las permutaciones plurales de esa palabra en español
-       
-       Parámetros:
-        - word (string)= Palabra a pluralizar (Puede ser simple o compuesta)
-        
-       Retorna:
-        - pluralize_words_list (Array<string>)
-                - Si la palabra es simple la lista contendrá solo un elemento
-                - Si la palabra es compuesta la lista contendrá las permutaciones plurales de la palabra
-                    () 
+
     """
+    Método para obtener la forma plural de una palabra en castellano. Si word es una palabra compuesta,
+    devuelve las permutaciones plurales de esa palabra.
+    
+        Parámetros:
+            - word (str): Palabra en castellano a pluralizar
+        Retorna:
+            - pluralize_words_list (List[str]): Lista de plurales de la palabra. Incluye la forma singular
+    """
+
     # Lista de sufijos comunes para la formación del plural en español
     suffixes = {
         'z': 'ces',
@@ -163,18 +215,17 @@ def pluralize_word_spanish(word):
 from itertools import product
 
 def pluralize_word_english(word):
+
     """
-    Función para obtener la forma plural de una palabra en inglés (En el caso de que esta sea plural, devolverá su plural).
-    En el caso de que la palabra sea compuesta, devolverá las permutaciones plurales de esa palabra en inglés.
+    Método para obtener la forma plural de una palabra en inglés. Si word es una palabra compuesta,
+    devuelve las permutaciones plurales de esa palabra.
     
-    Parámetros:
-        - word (string): Palabra a pluralizar (Puede ser simple o compuesta)
-        
-    Retorna:
-        - pluralize_words_list (Array<string>):
-            - Si la palabra es simple la lista contendrá solo un elemento
-            - Si la palabra es compuesta la lista contendrá las permutaciones plurales de la palabra
+        Parámetros:
+            - word (str): Palabra en inglés a pluralizar
+        Retorna:
+            - pluralize_words_list (List[str]): Lista de plurales de la palabra. Incluye la forma singular
     """
+
     # Lista de preposiciones en inglés que no se pluralizan
     prepositions = ["of", "in", "to", "for", "with", "on", "at", "by", "about", "as", "into", "like", "through", "after", "over", "between", "out", "against", "during", "without", "before", "under", "around", "among"]
 
@@ -247,15 +298,15 @@ def pluralize_word_english(word):
     return pluralize_words_list
 
 def extract_nouns_with_positions_english(sentence):
+
     """
-    Extrae los sustantivos de una frase junto con sus posiciones, excluyendo los que son parte de compuestos.
-
-    Args:
-    sentence (str): La frase de la que se extraerán los sustantivos.
-
-    Returns:
-    List[Tuple[str, int, str, str]]: Una lista de tuplas que contiene el sustantivo, su posición,
-                                     su dependencia y la palabra cabeza.
+    Método que extrae los sustantivos de una frase en inglés junto con sus posiciones.
+    
+        Parámetros:
+            - sentence (str): Oración en inglés sobre la que extraer los sustantivos
+        Retorna:
+            - nouns_with_positions (List[Tuple[str, int]]): Lista de tuplas que contienen el sustantivo junto a su posición 
+                                                            en la frase 'sentence' tokenizada
     """
     
     # Procesar la frase
@@ -267,15 +318,15 @@ def extract_nouns_with_positions_english(sentence):
     return nouns_with_positions
 
 def extract_nouns_with_positions_spanish(sentence):
+
     """
-    Extrae los sustantivos de una frase junto con sus posiciones, excluyendo los que son parte de compuestos.
-
-    Args:
-    sentence (str): La frase de la que se extraerán los sustantivos.
-
-    Returns:
-    List[Tuple[str, int, str, str]]: Una lista de tuplas que contiene el sustantivo, su posición,
-                                     su dependencia y la palabra cabeza.
+    Método que extrae los sustantivos de una frase en castellano junto con sus posiciones.
+    
+        Parámetros:
+            - sentence (str): Oración en castellano sobre la que extraer los sustantivos
+        Retorna:
+            - nouns_with_positions (List[Tuple[str, int]]): Lista de tuplas que contienen el sustantivo junto a su posición 
+                                                            en la frase 'sentence' tokenizada
     """
     
     # Procesar la frase
@@ -287,7 +338,17 @@ def extract_nouns_with_positions_spanish(sentence):
     return nouns_with_positions
 
 def destokenize(original_tokens, new_tokens):
-    """Reconstruye una oración a partir de una lista de tokens, manejando contracciones y posesivos."""
+
+    """
+    Método que reconstruye una oración a partir de una lista de tokens, manejando contracciones y posesivos.
+    
+        Parámetros:
+            - original_tokens (List[str]): Lista de tokens de la oración completa. Necesaria para saber información sobre cada token
+            - new_tokens (List[str]): Sublista de tokens de original_tokens.
+        Retorna:
+            - sentence (str): Oración resultante de la correcta unión de los tokens    
+    """
+    
     sentence = ''
     for i, token in enumerate(new_tokens):
         # Check if the current token is a possessive
@@ -320,7 +381,18 @@ def destokenize(original_tokens, new_tokens):
     return sentence.strip()  # Remove leading/trailing spaces
 
 def is_possessive(tokens, index):
-    """Determina si la palabra en el índice dado es un posesivo."""
+
+    """
+    Método para determinar si una palabra correspondiente al índice de una lista de tokens es un posesivo.
+    
+        Parámetros:
+            - tokens (List[str]): Lista de tokens
+            - index (number): Índice
+        Retorna:
+            - Valor booleano (True/False)
+            
+    """
+    
     # Etiquetar las partes de la oración
     pos_tags = nltk.pos_tag(tokens)
     
@@ -333,3 +405,91 @@ def is_possessive(tokens, index):
                 return True
     
     return False
+
+def extract_llm_answers_translation(llm_answer):
+    
+    """
+    Método para extraer la respuesta del LLM.
+    
+        Parámetros:
+            - llm_answer (str): Respuesta del LLM sin tratar. Contiene una única frase
+        Retorna:
+            - llm_extracted_answer (str): Respuesta del LLM extraída. 
+            
+    """
+    
+    # Eliminar los saltos de linea
+    llm_extracted_answer = llm_answer.replace('\n',' ').replace('\n\n',' ').strip()
+    # Si es una traducción tratarla
+    if type(llm_extracted_answer) is list:
+        if len(llm_extracted_answer) > 0:
+            llm_extracted_answer = llm_extracted_answer[0]
+        elif len(llm_extracted_answer) == 0:
+            llm_extracted_answer = ""
+    llm_extracted_answer = llm_extracted_answer.split(". ")[0].strip()
+    llm_extracted_answer = llm_extracted_answer.strip("'")
+    llm_extracted_answer = llm_extracted_answer.strip().replace('"', '').replace("\"", "").replace('\\', '').replace("\\\"", "").replace("?", "").replace("¿", "").capitalize()
+    if not llm_extracted_answer.endswith('.'):
+        llm_extracted_answer += '.'
+    return llm_extracted_answer
+
+
+def extract_llm_answers_set_of_phrases(llm_answer):
+    
+    """
+    Método para extraer la respuesta del LLM.
+    
+        Parámetros:
+            - llm_answer (str): Respuesta del LLM sin tratar. Contiene separadores de oraciones 
+        Retorna:
+            - llm_extracted_answer (List[str]): Respuesta del LLM extraída. Se forma una lista con las frases.
+            
+    """
+
+    # Eliminar los saltos de línea
+    llm_extracted_answer = llm_answer.replace('\n', ' ').replace('\n\n', ' ').strip()
+    # Comprobar si tiene separadores de frases.
+    if re.split(r'\d+\)|\d+\.', llm_extracted_answer)[1:] != [] and len(re.split(r'\d+\)|\d+\.', llm_extracted_answer)) >= 4:    
+        # Dividir el texto en frases utilizando cualquier secuencia de un número seguido de un punto o paréntesis como criterio de separación
+        llm_extracted_answer = re.split(r'\d+\)|\d+\.', llm_extracted_answer)[1:]
+        # Quitar los espacios blancos del principio y final de las frases y asegurarse de que cada frase termine con un punto
+        llm_extracted_answer = [answer.strip() + '.' if not answer.strip().endswith('.') else answer.strip() for answer in llm_extracted_answer]
+        # Quitar las comillas y barras de las frases
+        llm_extracted_answer = [answer.replace('"', '').replace("'", "").replace('\\', '') for answer in llm_extracted_answer]
+        return llm_extracted_answer
+    # Comprobar si tiene más de una frase separada por un punto seguido de un espacio
+    elif len(llm_extracted_answer.split('. ')) >= 4:
+        # Dividir el texto en frases utilizando el punto seguido de un espacio como criterio de separación
+        llm_extracted_answer = [phrase for phrase in llm_extracted_answer.split('. ')]
+        # Quitar los espacios blancos del principio y final de las frases y asegurarse de que cada frase termine con un punto
+        llm_extracted_answer = [answer.strip() + '.' if not answer.strip().endswith('.') else answer.strip() for answer in llm_extracted_answer]
+        # Quitar las comillas y barras de las frases
+        llm_extracted_answer = [answer.replace('"', '').replace("'", "").replace('\\', '') for answer in llm_extracted_answer]
+        return llm_extracted_answer
+    # Comprobar si tiene más de una frase separada por un punto y coma seguido de un espacio
+    elif len(llm_extracted_answer.split('; ')) >= 4:
+        # Dividir el texto en frases utilizando el punto y coma seguido de un espacio como criterio de separación
+        llm_extracted_answer = [phrase for phrase in llm_extracted_answer.split('; ')]
+        # Quitar los espacios blancos del principio y final de las frases y asegurarse de que cada frase termine con un punto
+        llm_extracted_answer = [answer.strip() + '.' if not answer.strip().endswith('.') else answer.strip() for answer in llm_extracted_answer]
+        # Quitar las comillas y barras de las frases
+        llm_extracted_answer = [answer.replace('"', '').replace("'", "").replace('\\', '') for answer in llm_extracted_answer]
+        return llm_extracted_answer
+    # Si no cumple ninguna de las condiciones anteriores, devolver la respuesta sin tratar
+    return llm_extracted_answer
+
+def save_json(file_path, json):
+    
+    """
+    Método para guardar datos JSON en un archivo en la ruta proporcionada.
+
+        Parámetros:
+            - file_path (str): Ruta completa donde se guarda el archivo JSON.
+            - json_data (str): Datos JSON que se escriben en el archivo.
+
+        Retorna:
+            - None
+    """
+    
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(json)

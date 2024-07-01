@@ -3,14 +3,13 @@ import re
 def extract_values(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         content = file.read()
-        print(content)
 
     values = {
         'entradas_totales': int(re.search(r'Entradas totales: (\d+)', content).group(1)),
         'conocimiento': int(re.search(r'Cantidad de conocimiento obtenido: (\d+)', content).group(1)),
         'null': int(re.search(r"Cantidad de casos sin clasificar \('NULL'\) obtenidos: (\d+)", content).group(1)),
-        'null_extraccion': int(re.search(r"Cantidad de casos sin clasificar \('NULL'\) obtenidos en la fase de extracción del resultado provisional: (\d+)", content).group(1)),
-        'null_validacion': int(re.search(r"Cantidad de casos sin clasificar \('NULL'\) obtenidos en la fase de validación del resultado provisional: (\d+)", content).group(1)),
+        'null_extraccion': int(re.search(r"Cantidad de casos sin clasificar \('NULL'\) obtenidos en la fase de extracción: (\d+)", content).group(1)),
+        'null_validacion': int(re.search(r"Cantidad de casos sin clasificar \('NULL'\) obtenidos en la fase de validación: (\d+)", content).group(1)),
         'total_frases': int(re.search(r"Total de frases analizadas de casos sin clasificar \('NULL'\): (\d+)", content).group(1)),
         'correctas': int(re.search(r'Correctas: (\d+)', content).group(1)),
         'incorrectas_1': int(re.search(r'Incorrectas de tipo 1 \(Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.\): (\d+)', content).group(1)),
@@ -22,8 +21,8 @@ def calculate_percentage(part, whole):
     return (part / whole) * 100 if whole > 0 else 0
 
 # Paths to the input files
-file1_path = './resultados_experimentaciones_finales_(III)/experimentacion_1/resultados.txt'
-file2_path = './resultados_experimentaciones_finales_(III)/experimentacion_2/resultados.txt'
+file1_path = './resultados.txt'
+file2_path = './resultados.txt'
 
 # Extract values from the files
 values1 = extract_values(file1_path)
@@ -51,8 +50,8 @@ with open(output_path, 'w', encoding='utf-8') as result_file:
     result_file.write(f"Entradas totales: {combined_values['entradas_totales']} ({combined_percentages['entradas_totales']:.2f}%)\n")
     result_file.write(f"Cantidad de conocimiento obtenido: {combined_values['conocimiento']} ({combined_percentages['conocimiento']:.2f}%)\n")
     result_file.write(f"Cantidad de casos sin clasificar ('NULL') obtenidos: {combined_values['null']} ({combined_percentages['null']:.2f}%)\n")
-    result_file.write(f"Cantidad de casos sin clasificar ('NULL') obtenidos en la fase de extracción del resultado provisional: {combined_values['null_extraccion']} ({combined_percentages['null_extraccion']:.2f}%)\n")
-    result_file.write(f"Cantidad de casos sin clasificar ('NULL') obtenidos en la fase de validación del resultado provisional: {combined_values['null_validacion']} ({combined_percentages['null_validacion']:.2f}%)\n")
+    result_file.write(f"Cantidad de casos sin clasificar ('NULL') obtenidos en la fase de extracción: {combined_values['null_extraccion']} ({combined_percentages['null_extraccion']:.2f}%)\n")
+    result_file.write(f"Cantidad de casos sin clasificar ('NULL') obtenidos en la fase de validación: {combined_values['null_validacion']} ({combined_percentages['null_validacion']:.2f}%)\n")
     result_file.write(f"Total de frases analizadas de casos sin clasificar ('NULL'): {combined_values['total_frases']}\n")
     result_file.write(f"Correctas: {combined_values['correctas']} ({combined_percentages['correctas']:.2f}%)\n")
     result_file.write(f"Incorrectas de tipo 1 (Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.): {combined_values['incorrectas_1']} ({combined_percentages['incorrectas_1']:.2f}%)\n")

@@ -1,4 +1,7 @@
 import json
+import sys
+sys.path.append("./auxFunctionLibrary")
+from pythonLib import auxFunctions
 
 class ComponenteImporter:
     
@@ -7,10 +10,21 @@ class ComponenteImporter:
         self.eng_synset_file = eng_synset_file
         self.most_used_words_file = most_used_words_file
 
-    # Método para generar el 'knowledge_table'
-    # Esta estructura será un diccionario, la cual seguirá el siguiente esquema: 
-    # Key=offset_word. Value = gloss, sense, part_of_speech, language
     def generate_data_structure(self):
+        
+        """
+        Método para generar una estructura de datos del WordNet en inglés.
+           
+            Parámetros:
+                - self: instancia de la clase que contiene este método.
+
+            Retorna:
+                - knowledge_table (dict): Un diccionario que contiene los datos necesarios del WordNet en castellano
+                                          para llevar a cabo el proceso de explotación de conocimiento en LLMs
+                        - key: offset_word
+                        - attributes: [sense, gloss, part_of_speech, language]
+        """
+        
         knowledge_table = {}
         offsets_glosses_array = {}
         words_dic = {}
@@ -36,13 +50,13 @@ class ComponenteImporter:
                     else:
                         # Si el offset no está en el diccionario, crear una nueva lista con la palabra
                         words_dic[offset] = [word]
-            self.save_json('words.json', json.dumps(words_dic, indent=2, ensure_ascii=False))
+            auxFunctions.save_json('words.json', json.dumps(words_dic, indent=2, ensure_ascii=False))
                 
         except FileNotFoundError:
             print(f'Archivo "{self.most_used_words_file}" no encontrado. Vuelve a introducir una nueva ruta')
             
-        # Leer el archivo que contiene los synset en inglés y almacenarlo en un diccionario llamado offsets_glosses_array
-        # El esquema de este es: Key=offset. Value = gloss
+        # Leer el archivo que contiene los synset en inglés y almacenarlo en un diccionario auxiliar
+        # llamado offsets_glosses_array. El esquema de este es: Key=offset. Value = [gloss]
         try:
             # Intentar abrir el archivo que se encuentra en la ruta proporcionada
             with open(self.eng_synset_file, 'r', encoding="utf-8") as archivo:
@@ -66,7 +80,7 @@ class ComponenteImporter:
             print(f'Archivo "{self.eng_synset_file}" no encontrado. Vuelve a introducir una nueva ruta')
         
         # Leer el archivo que contiene los variant en inglés y almacenarlo en un diccionario llamado knowledge_table
-        # El esquema de este es: Key=offset_word. Value = sense, part_of_speech, language
+        # El esquema que sigue es: Key=offset_word. Value = [sense, part_of_speech, language]
         try:
             # Intentar abrir el archivo que se encuentra en la ruta proporcionada
             with open(self.eng_variant_file, 'r', encoding="utf-8") as archivo:
@@ -96,23 +110,17 @@ class ComponenteImporter:
                             # Añadimos al diccionario: Key=word. Value = [synset, sense, part_of_speech, language]
                             knowledge_table[offset_word] = [sense, part_of_speech, language]
                             count += 1
-                    if count > 99: 
+                    if count > 4: 
                         break
                         
         except FileNotFoundError:
             print(f'Archivo "{self.eng_variant_file}" no encontrado. Vuelve a introducir una nueva ruta')   
           
         # Modificar el knowledge_table añadiendo los glosses del offsets_glosses_array
-        # El esquema del knowledge_table será:  Key=offset_word. Value = sense, gloss, part_of_speech, language
+        # Sigue el siguiente esquema:  Key=offset_word. Value= [sense, gloss, part_of_speech, language]
         for word, element in knowledge_table.items(): 
             item_list = []
             item_list = [element[0], offsets_glosses_array[word.split('_')[0]].replace('_',' '), element[1], element[2]]
             knowledge_table[word] = item_list
         
-        return knowledge_table  
-
-    # Método para guardar un archivo json en la ruta proporcionada
-    def save_json(self, file_path, json):
-        
-        with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(json)
+        return knowledge_table

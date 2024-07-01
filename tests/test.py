@@ -9,10 +9,16 @@ sys.path.append('..')  # Agrega la carpeta superior al sys.path
 sys.path.append("../auxFunctionLibrary") #Agrega la carpeta superior al sys.path
 from pythonLib import auxFunctions
 from componenteImporter import ComponenteImporter
-import componenteQuestionMaker
+import componenteQuestionMaker_extraccion
+import componenteQuestionMaker_validacion
+import componenteQuestionMaker_traduccionGlosa
+import componenteQuestionMaker_traduccionInglesEspañol
+import componenteQuestionMaker_traduccionEspañolIngles
 from componenteLLMCommunicator import ComponenteLLMCommunicator
-import componenteExtractor
-import componenteValidator
+import componenteExtractor_faseExtraccion
+import componenteExtractor_conjuntoFrases
+import componenteExtractor_traduccion
+import componenteExtractor_faseValidacion
 from componenteExporter import ComponenteExporter
 
 
@@ -110,23 +116,211 @@ def component_importer_test():
     # print the output
     # print(json.dumps(knowledge_table, indent=2, ensure_ascii=False))
     
-def component_question_maker_test():
+    
+def component_question_maker_traduccion_glosa_test():
      
     # Elementos de prueba
-    element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","Material elaborado a partir de pulpa de celulosa derivada principalmente de la madera o de trapos o de ciertas hierbas.","n","eng"])
-    element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","Un período de tiempo que contiene 365 (o 366) días.","n","eng"])
+    element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","n","eng"])
+    element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","n","eng"])
     
-    provisional_prompts_paper = componenteQuestionMaker.generate_provisional_prompts(element_paper)
-    provisional_prompts_year = componenteQuestionMaker.generate_provisional_prompts(element_year)
-    assert provisional_prompts_paper == ["As a linguistics expert, provide five sentences where the noun 'paper' appears in the sense of 'A material made of cellulose pulp derived mainly from wood or rags or certain grasses.'."], "Shold be true"
-    assert provisional_prompts_year == ["As a linguistics expert, provide five sentences where the noun 'year' appears in the sense of 'A period of time containing 365 (or 366) days.'."], "Shold be true"
-        
+    prompts_paper = componenteQuestionMaker_traduccionGlosa.generate_prompts(element_paper)
+    prompts_year = componenteQuestionMaker_traduccionGlosa.generate_prompts(element_year)
     
-    validation_prompts_paper = componenteQuestionMaker.generate_validation_prompts(element_paper, "papel")
-    validation_prompts_year = componenteQuestionMaker.generate_validation_prompts(element_year, "año")
+    assert prompts_paper == ["As a translation expert, I need an accurate translation into Spanish of the following phrase: 'A material made of cellulose pulp derived mainly from wood or rags or certain grasses.'."], "Shold be true"
+    assert prompts_year == ["As a translation expert, I need an accurate translation into Spanish of the following phrase: 'A period of time containing 365 (or 366) days.'."], "Shold be true"
+ 
+def component_question_maker_traduccion_ingles_español_test():
+     
+    # Elementos de prueba
+    element_plant = ("eng-30-00017222-n_plant", [
+        "2",
+        "(botany) a living organism lacking the power of locomotion.",
+        "n",
+        "eng",
+        [
+            " 1. The plant, with its green leaves and sturdy stem, stood tall amidst the barren landscape.\n2. The botanist carefully examined the plant's intricate structure, noting the arrangement of its roots and branches.\n3. The plant's delicate petals opened to reveal a vibrant array of colors, attracting bees and butterflies alike.\n4. The plant's leaves, once lush and green, now wilted under the scorching sun, a victim of drought and neglect.\n5. The plant's seeds, carefully nurtured in the soil, sprouted into a new life, a testament to the power of nature and the cycle of life.",
+            [
+                "The plant, with its green leaves and sturdy stem, stood tall amidst the barren landscape.",
+                "The botanist carefully examined the plant's intricate structure, noting the arrangement of its roots and branches.",
+                "The plant's delicate petals opened to reveal a vibrant array of colors, attracting bees and butterflies alike.",
+                "The plant's leaves, once lush and green, now wilted under the scorching sun, a victim of drought and neglect.",
+                "The plant's seeds, carefully nurtured in the soil, sprouted into a new life, a testament to the power of nature and the cycle of life."
+            ]
+        ]
+    ])
     
-    assert validation_prompts_paper == ["Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'papel' aparezca en el sentido de 'Material elaborado a partir de pulpa de celulosa derivada principalmente de la madera o de trapos o de ciertas hierbas.'."], "Shold be true"
-    assert validation_prompts_year == ["Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'año' aparezca en el sentido de 'Un período de tiempo que contiene 365 (o 366) días.'."], "Shold be true"
+    elemet_substance = ("eng-30-00019613-n_substance", [
+        "1",
+        "The real physical matter of which a person or thing consists.",
+        "n",
+        "eng",
+        [
+            " 1. The substance of the rock is primarily composed of granite.\n2. The chemical substance of water is H2O.\n3. The substance of the human body is made up of various organs and tissues.\n4. The substance of the diamond is carbon, arranged in a crystalline structure.\n5. The substance of the air we breathe is primarily composed of nitrogen, oxygen, and trace amounts of other gases.",
+            [
+                "The substance of the rock is primarily composed of granite.",
+                "The chemical substance of water is H2O.",
+                "The substance of the human body is made up of various organs and tissues.",
+                "The substance of the diamond is carbon, arranged in a crystalline structure.",
+                "The substance of the air we breathe is primarily composed of nitrogen, oxygen, and trace amounts of other gases."
+            ]
+        ]
+    ])
+    
+    prompts_plant = componenteQuestionMaker_traduccionInglesEspañol.generate_prompts(element_plant)
+    prompts_substance = componenteQuestionMaker_traduccionInglesEspañol.generate_prompts(elemet_substance)
+    
+    assert prompts_plant == ["As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The plant, with its green leaves and sturdy stem, stood tall amidst the barren landscape.', where the noun 'plant' appears in the sense of '(botany) a living organism lacking the power of locomotion.'.",
+                             "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The botanist carefully examined the plant's intricate structure, noting the arrangement of its roots and branches.', where the noun 'plant' appears in the sense of '(botany) a living organism lacking the power of locomotion.'.",
+                             "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The plant's delicate petals opened to reveal a vibrant array of colors, attracting bees and butterflies alike.', where the noun 'plant' appears in the sense of '(botany) a living organism lacking the power of locomotion.'.",
+                             "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The plant's leaves, once lush and green, now wilted under the scorching sun, a victim of drought and neglect.', where the noun 'plant' appears in the sense of '(botany) a living organism lacking the power of locomotion.'.",
+                             "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The plant's seeds, carefully nurtured in the soil, sprouted into a new life, a testament to the power of nature and the cycle of life.', where the noun 'plant' appears in the sense of '(botany) a living organism lacking the power of locomotion.'."                      
+                            ], "Shold be true"
+    
+    assert prompts_substance == ["As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The substance of the rock is primarily composed of granite.', where the noun 'substance' appears in the sense of 'The real physical matter of which a person or thing consists.'.",
+                                 "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The chemical substance of water is H2O.', where the noun 'substance' appears in the sense of 'The real physical matter of which a person or thing consists.'.",
+                                 "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The substance of the human body is made up of various organs and tissues.', where the noun 'substance' appears in the sense of 'The real physical matter of which a person or thing consists.'.",
+                                 "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The substance of the diamond is carbon, arranged in a crystalline structure.', where the noun 'substance' appears in the sense of 'The real physical matter of which a person or thing consists.'.",
+                                 "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The substance of the air we breathe is primarily composed of nitrogen, oxygen, and trace amounts of other gases.', where the noun 'substance' appears in the sense of 'The real physical matter of which a person or thing consists.'."                      
+                                ], "Shold be true"
+    
+def component_question_maker_traduccion_españolingles_test():
+    
+    # Elementos de prueba
+    elemet_animal = ("eng-30-00015388-n_animal", [
+        "1",
+        "A living organism characterized by voluntary movement.",
+        "Un ser vivo con capacidad de movimiento voluntario.",
+        "n",
+        "eng",
+        [
+            " 1. The lion is a majestic animal that roams the African savannah.\n2. The elephant is the largest land animal and can weigh up to six tons.\n3. The cheetah is the fastest animal on land, capable of reaching speeds of over 70 miles per hour.\n4. The monkey is a primate animal that lives in trees and has opposable thumbs.\n5. The shark is a predatory animal that inhabits oceans around the world and can grow up to 30 feet long.",
+            [
+                " El león es un animal majestuoso que pasea por las praderas africanas.",
+                " El elefante es el mayor animal terrestre y puede pesar hasta seis toneladas.",
+                " La gueparda es el animal más rápido en tierra, capaz de alcanzar velocidades superiores a los 110 km/h.",
+                " El mono es un animal primate que vive en árboles y tiene dedos opuestos.",
+                " El tiburón es un animal depredador que habita los océanos en todo el mundo y puede alcanzar una longitud de hasta 30 pies."
+            ]
+        ],
+        "animal",
+        [
+            " 1. El leopardo es un animal grande y poderoso.\n2. La jirafa es un animal herbívoro que puede alcanzar alturas de hasta 5,5 metros.\n3. El elefante es un animal inteligente y social que vive en grupos.\n4. El tigre es un animal carnívoro que habita en las selvas tropicales.\n5. La ballena es un animal marino gigante que puede pesar hasta 180 toneladas.",
+            [
+               "El leopardo es un animal grande y poderoso.",
+               "La jirafa es un animal herbívoro que puede alcanzar alturas de hasta 5,5 metros.",
+               "El elefante es un animal inteligente y social que vive en grupos.",
+               "El tigre es un animal carnívoro que habita en las selvas tropicales.",
+               "La ballena es un animal marino gigante que puede pesar hasta 180 toneladas."
+            ]
+        ]
+    ])
+    
+    element_cell = ("eng-30-00006484-n_cell", [
+        "2",
+        "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+        "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+        "n",
+        "eng",
+        [
+            " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
+            [
+                " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
+                " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
+                " Las células son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
+                " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
+                " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
+            ]
+        ],
+        "célula",
+        [
+            " 1. Las células son el bloque básico de la vida.\n2. La división celular es un proceso fundamental para la reproducción y el crecimiento.\n3. Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.\n4. Las células especializadas tienen funciones específicas en los organismos multicelulares.\n5. La investigación de las células ha revelado muchas verdades sobre la biología y la medicina.",
+            [
+                "Las células son el bloque básico de la vida.",
+                "La división celular es un proceso fundamental para la reproducción y el crecimiento.",
+                "Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.",
+                "Las células especializadas tienen funciones específicas en los organismos multicelulares.",
+                "La investigación de las células ha revelado muchas verdades sobre la biología y la medicina."
+            ]
+        ],
+        "célula"
+    ])
+    
+    prompts_animal = componenteQuestionMaker_traduccionEspañolIngles.generate_prompts(elemet_animal)
+    
+    assert prompts_animal == ["As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'El leopardo es un animal grande y poderoso.', where the noun 'animal' appears in the sense of 'Un ser vivo con capacidad de movimiento voluntario.'.",
+                              "As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'La jirafa es un animal herbívoro que puede alcanzar alturas de hasta 5,5 metros.', where the noun 'animal' appears in the sense of 'Un ser vivo con capacidad de movimiento voluntario.'.",
+                              "As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'El elefante es un animal inteligente y social que vive en grupos.', where the noun 'animal' appears in the sense of 'Un ser vivo con capacidad de movimiento voluntario.'.",
+                              "As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'El tigre es un animal carnívoro que habita en las selvas tropicales.', where the noun 'animal' appears in the sense of 'Un ser vivo con capacidad de movimiento voluntario.'.",
+                              "As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'La ballena es un animal marino gigante que puede pesar hasta 180 toneladas.', where the noun 'animal' appears in the sense of 'Un ser vivo con capacidad de movimiento voluntario.'."                      
+                             ], "Shold be true"
+    
+    prompts_cell = componenteQuestionMaker_traduccionEspañolIngles.generate_prompts(element_cell)
+    
+    assert prompts_cell == ["As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'Las células son el bloque básico de la vida.', where the noun 'célula' appears in the sense of '(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.'.",
+                              "As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'La división celular es un proceso fundamental para la reproducción y el crecimiento.', where the noun 'célula' appears in the sense of '(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.'.",
+                              "As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.', where the noun 'célula' appears in the sense of '(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.'.",
+                              "As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'Las células especializadas tienen funciones específicas en los organismos multicelulares.', where the noun 'célula' appears in the sense of '(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.'.",
+                              "As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'La investigación de las células ha revelado muchas verdades sobre la biología y la medicina.', where the noun 'célula' appears in the sense of '(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.'."                      
+                             ], "Shold be true"
+    
+def component_question_maker_extraccion_test():
+     
+    # Elementos de prueba
+    element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","n","eng"])
+    element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","n","eng"])
+    
+    prompts_paper = componenteQuestionMaker_extraccion.generate_prompts(element_paper)
+    prompts_year = componenteQuestionMaker_extraccion.generate_prompts(element_year)
+    
+    assert prompts_paper == ["As a linguistics expert, provide five sentences where the noun 'paper' appears in the sense of 'A material made of cellulose pulp derived mainly from wood or rags or certain grasses.'."], "Shold be true"
+    assert prompts_year == ["As a linguistics expert, provide five sentences where the noun 'year' appears in the sense of 'A period of time containing 365 (or 366) days.'."], "Shold be true"
+   
+def component_question_maker_validacion_test():
+    
+    # Elementos de prueba
+    element_plant = ("eng-30-00017222-n_plant", [
+        "2",
+        "(botany) a living organism lacking the power of locomotion.",
+        "(botánica) una entidad viviente que no posee la capacidad de movimiento.",
+        "n",
+        "eng",
+        [
+            " 1. The plant, with its green leaves and sturdy stem, stood tall amidst the barren landscape.\n2. The botanist carefully examined the plant's intricate structure, noting the arrangement of its roots and branches.\n3. The plant's delicate petals opened to reveal a vibrant array of colors, attracting bees and butterflies alike.\n4. The plant's leaves, once lush and green, now wilted under the scorching sun, a victim of drought and neglect.\n5. The plant's seeds, carefully nurtured in the soil, sprouted into a new life, a testament to the power of nature and the cycle of life.",
+            [
+                " La planta, con sus hojas verdes y su tronco firme, se erguía en medio del paisaje árido.",
+                " El botánico examinó cuidadosamente la estructura intrincada de la planta, notando la disposición de sus raíces y ramas.",
+                " Las delicadas pétalos de la planta se abrieron para revelar un espectacular arreglo de colores, atraendo a las abejas y mariposas igualmente.",
+                " Las hojas de la planta, que una vez eran vives y verdes, ahora están marchitando bajo el sol ardiente, víctima de la sequía y la negligencia.",
+                " Las semillas de la planta, cuidadosamente nutridas en el suelo, brotaron en una nueva vida, un testimonio del poder de la naturaleza y el ciclo de la vida.",      
+            ]
+        ],
+        "planta"
+    ])
+    
+    elemet_substance = ("eng-30-00019613-n_substance", [
+        "1",
+        "The real physical matter of which a person or thing consists.",
+        "La materia física real de la que consta una persona o cosa.",
+        "n",
+        "eng",
+        [
+            " 1. The substance of the rock is primarily composed of granite.\n2. The chemical substance of water is H2O.\n3. The substance of the human body is made up of various organs and tissues.\n4. The substance of the diamond is carbon, arranged in a crystalline structure.\n5. The substance of the air we breathe is primarily composed of nitrogen, oxygen, and trace amounts of other gases.",
+            [
+                " La sustancia de la roca está principalmente compuesta de granito.",
+                " La sustancia química del agua es H2O.",
+                " La sustancia del cuerpo humano está compuesta por varios órganos y tejidos.",
+                " La sustancia del diamante es carbono, dispuesto en una estructura cristalina.",
+                " La sustancia principal del aire que respiramos está compuesta por nitrógeno, oxígeno y pequeñas cantidades de otros gases.",
+            ]
+        ],
+        "sustancia"
+    ])
+     
+    prompts_plant = componenteQuestionMaker_validacion.generate_prompts(element_plant)
+    prompts_substance = componenteQuestionMaker_validacion.generate_prompts(elemet_substance)
+    
+    assert prompts_plant == ["Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'planta' aparezca en el sentido de '(botánica) una entidad viviente que no posee la capacidad de movimiento.'."], "Shold be true"
+    assert prompts_substance == ["Como experto en lingüística, proporciona cinco frases en las que el sustantivo 'sustancia' aparezca en el sentido de 'La materia física real de la que consta una persona o cosa.'."], "Shold be true"
         
     
 def component_llm_communicator_test():
@@ -144,7 +338,7 @@ def component_llm_communicator_test():
     sys.stdout = archivo_salida
 
     # Si el path del modelo no es correcto no debe dar error, si no indicar el motivo por consola
-    componenteLLMCommunicator_test = ComponenteLLMCommunicator(config['file_path']['provisional_results_language_model_path_test']) 
+    componenteLLMCommunicator_test = ComponenteLLMCommunicator(config['file_path']['language_model_path_test']) 
     componenteLLMCommunicator_test.load_model()
 
     # Cierra el archivo
@@ -187,21 +381,21 @@ def component_llm_communicator_test():
         sys.stderr = archivo_salida
         
         # Inicializamos el componenteLLMCommunicator con el llm que vamos a utilizar para conseguir las respuestas provisionales
-        componenteLLMCommunicator = ComponenteLLMCommunicator(config['file_path']['provisional_results_language_model_path'])
+        componenteLLMCommunicator = ComponenteLLMCommunicator(config['file_path']['language_model_path'])
         
         # Cargamos el modelo de lenguaje que vamos a utilizar para conseguir las respuestas provisionales
         componenteLLMCommunicator.load_model()
         
         # Elementos de prueba
-        element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","Material elaborado a partir de pulpa de celulosa derivada principalmente de la madera o de trapos o de ciertas hierbas.","n","eng"])
-        element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","Un período de tiempo que contiene 365 (o 366) días.","n","eng"])
+        element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","n","eng"])
+        element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","n","eng"])
     
         # Pruebas de preguntas
-        provisional_prompts_paper = componenteQuestionMaker.generate_provisional_prompts(element_paper)
-        provisional_prompts_year = componenteQuestionMaker.generate_provisional_prompts(element_year)
-        for element in provisional_prompts_paper:
+        prompts_paper = componenteQuestionMaker_extraccion.generate_prompts(element_paper)
+        prompts_year = componenteQuestionMaker_extraccion.generate_prompts(element_year)
+        for element in prompts_paper:
             componenteLLMCommunicator.run_the_model(element) 
-        for element in provisional_prompts_year:
+        for element in prompts_year:
             componenteLLMCommunicator.run_the_model(element) 
         
         # Lee todas las líneas del archivo
@@ -244,966 +438,292 @@ def component_llm_communicator_test():
 
 def component_extractor_test():
     
-    # Tests de extracción de respuestas ----------------------------------------
-    
-    # elemento de prueba (Respuesta recibida por el LLM)
-    elemento_prueba_paper = {
-                                        "id": "cmpl-b62c2c10-da98-45bf-913b-bc1f678e5297",
-                                        "object": "text_completion",
-                                        "created": 1717590089,
-                                        "model": "../../models/zephyr-7b-alpha.Q4_K_M.gguf",
-                                        "choices": [
-                                            {
-                                            "text": "Question: As a linguistics expert, provide five sentences where the noun 'paper' appears in the sense of 'A material made of cellulose pulp derived mainly from wood or rags or certain grasses.'. Answer: 1. The paper is an essential component for printing books and newspapers.\n\n2. The printer uses high-quality paper to ensure that the text looks crisp and clear.\n\n3. The artist used handmade paper to create a unique texture in her artwork.\n\n4. The recycling center collects old paper to be repurposed into new products.\n\n5. The paper mill produces large quantities of paper for commercial use, such as office supplies and packaging materials.",
-                                            "index": 0,
-                                            "logprobs": "null",
-                                            "finish_reason": "stop"
-                                            }
-                                        ],
-                                        "usage": {
-                                            "prompt_tokens": 49,
-                                            "completion_tokens": 101,
-                                            "total_tokens": 150
-                                        }
-                                        }
-    expected_output_paper = ["The paper is an essential component for printing books and newspapers.",
-                                "The printer uses high-quality paper to ensure that the text looks crisp and clear.",
-                                "The artist used handmade paper to create a unique texture in her artwork.",
-                                "The recycling center collects old paper to be repurposed into new products.",
-                                "The paper mill produces large quantities of paper for commercial use, such as office supplies and packaging materials."]
-    assert expected_output_paper == componenteExtractor.extract_llm_answers(elemento_prueba_paper), "Should be true"
-    
-    elemento_prueba_year = {
-                            "id": "cmpl-b2bcc46d-c66a-4787-968d-b355d91185b1",
-                            "object": "text_completion",
-                            "created": 1717590123,
-                            "model": "../../models/zephyr-7b-alpha.Q4_K_M.gguf",
-                            "choices": [
-                                {
-                                "text": "Question: As a linguistics expert, provide five sentences where the noun 'year' appears in the sense of 'A period of time containing 365 (or 366) days.'. Answer: The year 2021 has been marked by significant events such as the COVID-19 pandemic and the US presidential election. In 2020, the world witnessed a global economic downturn due to the pandemic's impact on businesses and industries. The year 2019 was a historic one for climate change activism, with protests and strikes taking place around the world. The year 2018 saw major political developments, including the US midterm elections and Brexit negotiations. In 2017, there were significant events such as the inauguration of President Trump and the devastating hurricane season in the Caribbean and Gulf Coast regions.",
-                                "index": 0,
-                                "logprobs": "null",
-                                "finish_reason": "stop"
-                                }
-                            ],
-                            "usage": {
-                                "prompt_tokens": 46,
-                                "completion_tokens": 138,
-                                "total_tokens": 184
-                            }
-                            }
-
-    expected_output_year = ["The year 2021 has been marked by significant events such as the COVID-19 pandemic and the US presidential election.",
-                            "In 2020, the world witnessed a global economic downturn due to the pandemic's impact on businesses and industries.",
-                            "The year 2019 was a historic one for climate change activism, with protests and strikes taking place around the world.",
-                            "The year 2018 saw major political developments, including the US midterm elections and Brexit negotiations.",
-                            "In 2017, there were significant events such as the inauguration of President Trump and the devastating hurricane season in the Caribbean and Gulf Coast regions."]
-    assert expected_output_year == componenteExtractor.extract_llm_answers(elemento_prueba_year), "Should be true"
-    
-    phrase = "A material made of cellulose pulp derived mainly from wood or rags or certain grasses."
-    elemento_prueba_traducción = {
-                                    "id": "cmpl-cf7c52ee-ac4c-4709-bc4a-6aa5523f4ed0",
-                                    "object": "text_completion",
-                                    "created": 1714754403,
-                                    "model": "./models/zephyr-7b-alpha.Q4_K_M.gguf",
-                                    "choices": [
-                                        {
-                                        "text": 'Question: As a translation expert, I need an accurate translation into Spanish of the following phrase: "' + phrase +'". Answer: Material elaborado a partir de pulpa de celulosa derivada principalmente de la madera o de trapos o de ciertas hierbas.',
-                                        "index": 0,
-                                        "logprobs": "null",
-                                        "finish_reason": "stop"
-                                        }
-                                    ],
-                                    "usage": {
-                                        "prompt_tokens": 58,
-                                        "completion_tokens": 20,
-                                        "total_tokens": 78
-                                    }
-                                   }
-    
-    expected_output_traduccion = "Material elaborado a partir de pulpa de celulosa derivada principalmente de la madera o de trapos o de ciertas hierbas."
-    assert expected_output_traduccion == componenteExtractor.extract_llm_answers(elemento_prueba_traducción), "Should be true"
-    
-    # Tests de obtener el provisional answer -----------------------------------
-    
     # --------------------------------------   Prueba 1   -------------------------------------------
         
     # Elementos de prueba
-    element_tree = (  "eng-30-13104059-n_tree", [
-                        "1",
-                        "A tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
-                        "Una planta arbórea perenne de gran altura que tiene un tronco principal y ramas formando una corona distintiva en elevación, incluye tanto a las gimnospermas como a las angiospermas.",
-                        "n",
-                        "eng",
-                        [
-                            [
-                                "She spent hours shopping for the perfect dress to wear at her sister's wedding.",
-                                "Ella pasó horas comprando ropa para el vestido perfecto que llevaría a la boda de su hermana."
-                            ],
-                            [
-                                "The mall was packed with people doing their holiday shopping.",
-                                "La tienda estaba llena de gente haciendo sus compras navideñas."
-                            ],
-                            [
-                                "I love going to thrift stores for unique and affordable shopping finds.",
-                                "Adoro ir a tiendas de segundamano para encontrar compras únicas y baratas."
-                            ],
-                            [
-                                "Online shopping has become increasingly popular due to its convenience.",
-                                "La compra en línea ha aumentado de manera creciente debido a su comodidad."
-                            ],
-                            [
-                                "Shopping for groceries can be a daunting task, especially when you have a long list of items to buy.",
-                                "La compra de alimentos puede ser una tarea desafiante, especialmente cuando hay muchas cosas que comprar en la lista."
-                            ]
-                            ]
-                        ]
-                    )
-    output_tree = [
-      [
-        "The towering oak tree provided shade for the picnic on a hot summer day.",
-        "El árbol de roble alto proporcionó sombra para la cena en un caluroso día de verano."
-      ],
-      [
-        "The maple tree in the front yard boasted vibrant red leaves during autumn.",
-        "La árbol de roble en el jardín delantero exhibió hojas rojas brillantes durante la otoño."
-      ],
-      [
-        "The evergreen pine tree stood tall amidst the snowy landscape of winter.",
-        "El árbol de pino siempreverde se erguía alto en medio del paisaje nevado de invierno."
-      ],
-      [
-        "The birch tree's white bark contrasted beautifully against the lush green forest floor.",
-        "La corteza blanca del árbol de betulá contrastó hermosamente contra el suelo verde y fértil del bosque."
-      ],
-      [
-        "The willow tree's branches dipped gracefully into the tranquil pond, creating a serene atmosphere for the nearby wildlife.",
-        "La rama del árbol de sauce se inclinó con gracia hacia el tranquilo estanque, creando una atmósfera serena para la fauna cercana."
-      ]
-    ]
+    element_cell = ("eng-30-00006484-n_cell", [
+        "2",
+        "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+        "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+        "n",
+        "eng",
+        [
+            " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
+            [
+                " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
+                " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
+                " Las células son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
+                " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
+                " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
+            ]
+        ]
+    ])
     
-    provisional_result = componenteExtractor.get_provisional_result(element_tree, output_tree)
+    llm_answer_list_1 = [
+            " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
+            [
+                " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
+                " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
+                " Las células son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
+                " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
+                " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
+            ]
+        ]
     
-    assert provisional_result == ['árbol'], "Should be ['árbol']"
+    result_cell = componenteExtractor_faseExtraccion.get_result(element_cell, llm_answer_list_1)
+    
+    assert result_cell == ['célula'], "Should be ['célula']"
     
     # --------------------------------------   Prueba 2   -------------------------------------------
    
     # Elementos de prueba
-    element_paper = ( "eng-30-14974264-n_paper", [
-                "1",
-                "A material made of cellulose pulp derived mainly from wood or rags or certain grasses.",
-                "Un material hecho de pulpa de celulosa derivada principalmente del madera o los paños o ciertas hierbas..",
-                "n",
-                "eng",
-                [
-                    [
-                        "The paper was smooth and glossy, perfect for printing high-quality images.",
-                        "El papel era suave y brillante, perfecto para imprimir imágenes de alta calidad."
-                    ],
-                    [
-                        "The paper mill produced thousands of tons of paper every day, using a combination of wood and recycled materials.",
-                        "La fábrica de papel produjo miles de toneladas de papel cada día, utilizando una combinación de madera y materiales reciclados."
-                    ],
-                    [
-                        "The artist used handmade paper to create intricate sculptures that were both beautiful and functional.",
-                        "El artista utilizó papel hecho a mano para crear esculturas complejas que eran al mismo tiempo bellas y funcionales."
-                    ],
-                    [
-                        "The paper was acid-free and archival quality, ensuring that the documents would last for centuries.",
-                        "El papel era ácido libre y de calidad arquivística, lo que garantizaba que los documentos duraran siglos."
-                    ],
-                    [
-                        "The paper mill had been in operation for over a century, providing employment opportunities for generations of families in the area.",
-                        "La fábrica de papel había estado en funcionamiento durante más de un siglo, proporcionando oportunidades de empleo a generaciones de familias en la zona."
-                    ]
-                ],
-        ]
-    )
-    
-    
-    output_paper = [
-                [
-                    "The paper was smooth and glossy, perfect for printing high-quality images.",
-                    "El papel era suave y brillante, perfecto para imprimir imágenes de alta calidad."
-                ],
-                [
-                    "The paper mill produced thousands of tons of paper every day, using a combination of wood and recycled materials.",
-                    "La fábrica de papel produjo miles de toneladas de papel cada día, utilizando una combinación de madera y materiales reciclados."
-                ],
-                [
-                    "The artist used handmade paper to create intricate sculptures that were both beautiful and functional.",
-                    "El artista utilizó papel hecho a mano para crear esculturas complejas que eran al mismo tiempo bellas y funcionales."
-                ],
-                [
-                    "The paper was acid-free and archival quality, ensuring that the documents would last for centuries.",
-                    "El papel era ácido libre y de calidad arquivística, lo que garantizaba que los documentos duraran siglos."
-                ],
-                [
-                    "The paper mill had been in operation for over a century, providing employment opportunities for generations of families in the area.",
-                    "La fábrica de papel había estado en funcionamiento durante más de un siglo, proporcionando oportunidades de empleo a generaciones de familias en la zona."
-                ]
+    element_cause = ("eng-30-00007347-n_cause", [
+        "4",
+        "Any entity that produces an effect or is responsible for events or results.",
+        "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
+        "n",
+        "eng",
+        [
+            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
+            [
+                " La causa del accidente fue un sistema de frenos defectuoso.",
+                " La falta de lluvias es la causa principal de la sequía.",
+                " La causa de la salida de la enfermedad se puede rastrear hasta la comida contaminada.",
+                " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación relajada.",
+                " La causa de la explosión fue una fuga de gas en el conducto."
             ]
-
-    provisional_result_2 = componenteExtractor.get_provisional_result(element_paper, output_paper)
+        ]
+    ])
     
-    assert provisional_result_2 == ['papel'], "Should be ['papel']"
+    llm_answer_list_2 = [
+            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
+            [
+                " La causa del accidente fue un sistema de frenos defectuoso.",
+                " La falta de lluvias es la causa principal de la sequía.",
+                " La causa de la salida de la enfermedad se puede rastrear hasta la comida contaminada.",
+                " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación relajada.",
+                " La causa de la explosión fue una fuga de gas en el conducto."
+            ]
+        ]
+
+    result_cause = componenteExtractor_faseExtraccion.get_result(element_cause, llm_answer_list_2)
+    
+    assert result_cause == ['causa'], "Should be ['causa']"
+    
+    # --------------------------------------   Prueba 3   -------------------------------------------
+    
+    llm_answer_list_3 =     llm_answer_list_1 = [
+            " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
+            [
+                " La célula procariota es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
+                " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
+                " Las células procariotas son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
+                " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
+                " Las células procariotas contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
+            ]
+        ]
+    
+    result_cell_2 = componenteExtractor_faseExtraccion.get_result(element_cause, llm_answer_list_3)
+    
+    assert result_cell_2 == ['NULL', {'Correctas.': 0}, {'Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.': 0}, {'Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.': 5}, {'Mensaje de información': 'La entrada ha terminado su ejecución en la extracción del resultado provisional.'}], "Should be true"
      
-    # # --------------------------------------   Prueba 3   -------------------------------------------
-    
-        # Elementos de prueba
-    element_shopping = (  "eng-30-00081836-n_shopping", [
-                    "1",
-                    "Searching for or buying goods or services.",
-                    "Buscando o comprando bienes o servicios.",
-                    "n",
-                    "eng",
-                    [
-                        [
-                            "She spent hours shopping for the perfect dress to wear at her sister's wedding.",
-                            "Ella pasó horas comprando ropa para el vestido perfecto que llevaría a la boda de su hermana."
-                        ],
-                        [
-                            "The mall was packed with people doing their holiday shopping.",
-                            "La tienda estaba llena de gente haciendo sus compras navideñas."
-                        ],
-                        [
-                            "I love going to thrift stores for unique and affordable shopping finds.",
-                            "Adoro ir a tiendas de segundamano para encontrar compras únicas y baratas."
-                        ],
-                        [
-                            "Online shopping has become increasingly popular due to its convenience.",
-                            "La compra en línea ha aumentado de manera creciente debido a su comodidad."
-                        ],
-                        [
-                            "Shopping for groceries can be a daunting task, especially when you have a long list of items to buy.",
-                            "La compra de alimentos puede ser una tarea desafiante, especialmente cuando hay muchas cosas que comprar en la lista."
-                        ]
-                    ],
-             ],
-    )
-    
-    output_shopping =  [
-                        [
-                            "She spent hours shopping for the perfect dress to wear at her sister's wedding.",
-                            "Ella pasó horas comprando ropa para el vestido perfecto que llevaría a la boda de su hermana."
-                        ],
-                        [
-                            "The mall was packed with people doing their holiday shopping.",
-                            "La tienda estaba llena de gente haciendo sus compras navideñas."
-                        ],
-                        [
-                            "I love going to thrift stores for unique and affordable shopping finds.",
-                            "Adoro ir a tiendas de segundamano para encontrar compras únicas y baratas."
-                        ],
-                        [
-                            "Online shopping has become increasingly popular due to its convenience.",
-                            "La compra en línea ha aumentado de manera creciente debido a su comodidad."
-                        ],
-                        [
-                            "Shopping for groceries can be a daunting task, especially when you have a long list of items to buy.",
-                            "La compra de alimentos puede ser una tarea desafiante, especialmente cuando hay muchas cosas que comprar en la lista."
-                        ]
-                    ]
 
-    provisional_result_3 = componenteExtractor.get_provisional_result(element_shopping, output_shopping)
-    
-    assert provisional_result_3 == ['compra'], "Should be ['compra']"
     
 def component_validator_test():
         
     # --------------------------------------   Prueba 1   -------------------------------------------
     
-    element_paper = ( "eng-30-14974264-n_paper", [
-                "1",
-                "A material made of cellulose pulp derived mainly from wood or rags or certain grasses.",
-                "Un material hecho de pulpa de celulosa derivada principalmente del madera o los paños o ciertas hierbas..",
-                "n",
-                "eng",
-                [
-                    [
-                        "The paper was smooth and glossy, perfect for printing high-quality images.",
-                        "El papel era suave y brillante, perfecto para imprimir imágenes de alta calidad."
-                    ],
-                    [
-                        "The paper mill produced thousands of tons of paper every day, using a combination of wood and recycled materials.",
-                        "La fábrica de papel produjo miles de toneladas de papel cada día, utilizando una combinación de madera y materiales reciclados."
-                    ],
-                    [
-                        "The artist used handmade paper to create intricate sculptures that were both beautiful and functional.",
-                        "El artista utilizó papel hecho a mano para crear esculturas complejas que eran al mismo tiempo bellas y funcionales."
-                    ],
-                    [
-                        "The paper was acid-free and archival quality, ensuring that the documents would last for centuries.",
-                        "El papel era ácido libre y de calidad arquivística, lo que garantizaba que los documentos duraran siglos."
-                    ],
-                    [
-                        "The paper mill had been in operation for over a century, providing employment opportunities for generations of families in the area.",
-                        "La fábrica de papel había estado en funcionamiento durante más de un siglo, proporcionando oportunidades de empleo a generaciones de familias en la zona."
-                    ]
-                ],
-                "papel"
+    element_cause = ("eng-30-00007347-n_cause", [
+        "4",
+        "Any entity that produces an effect or is responsible for events or results.",
+        "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
+        "n",
+        "eng",
+        [
+            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
+            [
+                " La causa del accidente fue un sistema de frenos defectuoso.",
+                " La falta de lluvias es la causa principal de la sequía.",
+                " La causa de la salida de la enfermedad se puede rastrear hasta la comida contaminada.",
+                " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación relajada.",
+                " La causa de la explosión fue una fuga de gas en el conducto."
+            ]
+        ],
+        "causa",
+        [
+            " 1) La causa del accidente fue la falta de atención del conductor.\n2) El cambio climático es una causa preocupante para la supervivencia de las especies en peligro.\n3) La pobreza es una causa importante de la mortalidad infantil en muchos países.\n4) La falta de educación es una causa de la desigualdad social.\n5) El estrés es una causa común de problemas de salud mental.",
+            [
+                " The cause of the accident was the lack of attention by the driver.",
+                " The climate change is a concerning cause for the survival of endangered species.",
+                " Poverty is a significant cause of childhood mortality in many countries.",
+                " The lack of education is a cause of social inequality.",
+                " Stress is a common cause of mental health problems."
+            ]
         ]
-    )
+    ])
     
-    llm_extracted_answer_1 = [
-      [
-        "El papel es un material muy utilizado para la impresión y la escritura.",
-        "The paper is a very commonly used material for printing and writing."
-      ],
-      [
-        "La mayoría de los libros se imprimen en papel.",
-        "The majority of books are printed on paper."
-      ],
-      [
-        "Los periódicos son publicados diariamente en papel.",
-        "Newspapers are published daily on paper."
-      ],
-      [
-        "Las cartas se envían por correo en papel.",
-        "The letters are sent by mail on paper."
-      ],
-      [
-        "El papel es un producto económico y versátil que se utiliza en muchos aspectos de la vida cotidiana, desde el escritorio hasta la cocina.",
-        "The paper is an economical and versatile product that is used in many aspects of daily life, from the office to the kitchen."
-      ]
-    ]
+    llm_answer_list_1 = [
+            " 1) La causa del accidente fue la falta de atención del conductor.\n2) El cambio climático es una causa preocupante para la supervivencia de las especies en peligro.\n3) La pobreza es una causa importante de la mortalidad infantil en muchos países.\n4) La falta de educación es una causa de la desigualdad social.\n5) El estrés es una causa común de problemas de salud mental.",
+            [
+                " The cause of the accident was the lack of attention by the driver.",
+                " The climate change is a concerning cause for the survival of endangered species.",
+                " Poverty is a significant cause of childhood mortality in many countries.",
+                " The lack of education is a cause of social inequality.",
+                " Stress is a common cause of mental health problems."
+            ]
+        ]
     
-    final_result_paper = componenteValidator.get_final_result(element_paper, llm_extracted_answer_1, "papel")
+    result_cause = componenteExtractor_faseValidacion.get_result(element_cause, llm_answer_list_1)
     
-    assert final_result_paper == ["papel"], "Should be ['papel']"
+    assert result_cause == ['causa'], "Should be ['causa']"
     
     # --------------------------------------   Prueba 2   -------------------------------------------
     
-    
-    element_tree = ("eng-30-13104059-n_tree", [
-                "1",
-                "A tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
-                "Una planta arbórea perenne de gran altura que tiene un tronco principal y ramas formando una corona distintiva en elevación, incluye tanto a las gimnospermas como a las angiospermas.",
-                "n",
-                "eng",
-                [
-                    [
-                        "The towering oak tree provided shade for the picnic on a hot summer day.",
-                        "El árbol de roble alto proporcionó sombra para la cena en un caluroso día de verano."
-                    ],
-                    [
-                        "The maple tree in the front yard boasted vibrant red leaves during autumn.",
-                        "La árbol de roble en el jardín delantero exhibió hojas rojas brillantes durante la otoño."
-                    ],
-                    [
-                        "The evergreen pine tree stood tall amidst the snowy landscape of winter.",
-                        "El árbol de pino siempreverde se erguía alto en medio del paisaje nevado de invierno."
-                    ],
-                    [
-                        "The birch tree's white bark contrasted beautifully against the lush green forest floor.",
-                        "La corteza blanca del árbol de betulá contrastó hermosamente contra el suelo verde y fértil del bosque."
-                    ],
-                    [
-                        "The willow tree's branches dipped gracefully into the tranquil pond, creating a serene atmosphere for the nearby wildlife.",
-                        "La rama del árbol de sauce se inclinó con gracia hacia el tranquilo estanque, creando una atmósfera serena para la fauna cercana."
-                    ]
-                ],
-                "árbol",
-                [
-                    [
-                        "El árbol más grande del bosque es un roble americano de más de 30 metros de altura.",
-                        "The largest tree in the forest is an american oak, which is over 30 meters tall."
-                    ],
-                    [
-                        "La sequía ha matado la mayoría de los árboles en el parque, dejando solo algunas coníferas resistentes.",
-                        "The drought has killed most of the trees in the park, leaving only some resistant conifers."
-                    ],
-                    [
-                        "El árbol de la vida es una metáfora cristiana que representa a Jesucristo como el centro y la fuente de la existencia humana.",
-                        "The tree of life is a christian metaphor that represents jesus christ as the center and source of human existence."
-                    ],
-                    [
-                        "Los árboles frutales son una parte importante de la dieta humana, proporcionando frutas y verduras para consumir.",
-                        "Fruit-bearing trees are an important part of human diet, providing fruits and vegetables to consume."
-                    ],
-                    [
-                        "El árbol genealógico es un documento que sigue la descendencia de una familia o linaje, mostrándola en forma de un árbol con raíces, tronco principal y ramas secundarias.",
-                        "The genealogical tree is a document that follows the descent of a family or lineage, showing it in the form of a tree with roots, main trunk, and secondary branches."
-                    ]
-                ]
+    element_cell = ("eng-30-00006484-n_cell", [
+        "2",
+        "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+        "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+        "n",
+        "eng",
+        [
+            " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
+            [
+                " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
+                " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
+                " Las células son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
+                " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
+                " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
             ]
-        )
+        ],
+        "célula",
+        [
+            " 1. Las células son el bloque básico de la vida.\n2. La división celular es un proceso fundamental para la reproducción y el crecimiento.\n3. Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.\n4. Las células especializadas tienen funciones específicas en los organismos multicelulares.\n5. La investigación de las células ha revelado muchas verdades sobre la biología y la medicina.",
+            [
+                " Cells are the fundamental building blocks of life.",
+                " The cell division process is a fundamental one for reproduction and growth.",
+                " Each cell contains a complete copy of DNA, but only a small portion is expressed at any given time.",
+                " 'The specialized cells have specific functions in multicellular organisms.'",
+                " The investigation of cells has revealed many truths about biology and medicine."
+            ]
+        ]
+    ])
     
-    llm_extracted_answer_2 = [
-                    [
-                        "El árbol más grande del bosque es un roble americano de más de 30 metros de altura.",
-                        "The largest tree in the forest is an american oak, which is over 30 meters tall."
-                    ],
-                    [
-                        "La sequía ha matado la mayoría de los árboles en el parque, dejando solo algunas coníferas resistentes.",
-                        "The drought has killed most of the trees in the park, leaving only some resistant conifers."
-                    ],
-                    [
-                        "El árbol de la vida es una metáfora cristiana que representa a Jesucristo como el centro y la fuente de la existencia humana.",
-                        "The tree of life is a christian metaphor that represents jesus christ as the center and source of human existence."
-                    ],
-                    [
-                        "Los árboles frutales son una parte importante de la dieta humana, proporcionando frutas y verduras para consumir.",
-                        "Fruit-bearing trees are an important part of human diet, providing fruits and vegetables to consume."
-                    ],
-                    [
-                        "El árbol genealógico es un documento que sigue la descendencia de una familia o linaje, mostrándola en forma de un árbol con raíces, tronco principal y ramas secundarias.",
-                        "The genealogical tree is a document that follows the descent of a family or lineage, showing it in the form of a tree with roots, main trunk, and secondary branches."
-                    ]
-                ]
+    llm_answer_list_2 =         [
+            " 1. Las células son el bloque básico de la vida.\n2. La división celular es un proceso fundamental para la reproducción y el crecimiento.\n3. Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.\n4. Las células especializadas tienen funciones específicas en los organismos multicelulares.\n5. La investigación de las células ha revelado muchas verdades sobre la biología y la medicina.",
+            [
+                " Cells are the fundamental building blocks of life.",
+                " The cell division process is a fundamental one for reproduction and growth.",
+                " Each cell contains a complete copy of DNA, but only a small portion is expressed at any given time.",
+                " 'The specialized cells have specific functions in multicellular organisms.'",
+                " The investigation of cells has revealed many truths about biology and medicine."
+            ]
+        ]
+        
+    result_cell = componenteExtractor_faseValidacion.get_result(element_cell, llm_answer_list_2)
     
+    assert result_cell == ['célula'], "Should be ['célula']"
     
-    final_result_year = componenteValidator.get_final_result(element_tree, llm_extracted_answer_2, "árbol")
+    # --------------------------------------   Prueba 2   -------------------------------------------
     
-    assert final_result_year == ["árbol"], "Should be ['árbol']"
+    element_object =  ("eng-30-00002684-n_object", [
+        "1",
+        "A tangible and visible entity; an entity that can cast a shadow.",
+        "Una entidad tangible y visible; una entidad que puede hacer sombra'.",
+        "n",
+        "eng",
+        [
+            " The object on the table was a vase made of porcelain. Its delicate curves and intricate design were mesmerizing to behold. As I approached it, its shadow grew longer and more defined, casting a soft glow across the room.\n\nThe object in my hand was a small stone, smooth and polished by years of tumbling through streams and rivers. It felt heavy and substantial, as if it held within it some ancient wisdom or secret knowledge. As I held it up to the light, its shadow danced on the ground, a flickering reminder of its solidity and weight.\n\nThe object in front of me was a painting, a masterpiece of color and texture that seemed to come alive as I gazed upon it. Its brushstrokes were bold and confident, each one casting a distinct shadow against the wall behind it. The shadows added depth and dimension to the painting, transforming it from a mere image into a living, breathing entity",
+            [
+                " El objeto en la mesa era una jarra de porcelana.",
+                " Sus delicadas curvas y su compleja forma eran hipnóticas de contemplar.",
+                " Mientras me acercaba, su sombra se alargó y se definió más, proyectando una luz suave en la habitación.",
+                " El objeto en mi mano era una pequeña piedra, lisa y pulida por años de rodar por arroyos y ríos.",
+                " Se sintió pesado y sólido, como si albergara dentro de él alguna sabiduría antigua o conocimiento oculto. (Noun: objeto)",
+                " Mientras lo sostuviera hacia la luz, su sombra bailaba en el suelo, una danza flickerante que recordaba su sólida y pesada realidad.",
+                " El objeto que estaba delante de mí era una pintura, un maestrito de color y textura que parecía vivir mientras la miraba.",
+                " Sus trazos eran audaces y confiados, cada uno dejando una sombra distintiva contra la pared detrás de él.",
+                " Las sombras agregaron profundidad y dimensión al cuadro, transformándolo en una entidad viviente e respirante."
+            ]
+        ],
+        "objeto",
+        [
+            " 1. The object cast a shadow on the wall.\n2. The object was hidden behind the tree.\n3. The object was found at the bottom of the lake.\n4. The object was buried under the sand.\n5. The object was obscured by the fog.",
+            [
+                " The object (tangible and visible entity) cast a shadow on the wall.",
+                " The item was concealed behind the tree.\n\n",
+                " The item was discovered at the bottom of the lake.",
+                " The item was buried beneath the sand.\n\n",
+                " The object was hidden by the fog.\n\n"
+            ]
+        ]
+    ])
+    
+    llm_answer_list_3 = [
+            " 1. The object cast a shadow on the wall.\n2. The object was hidden behind the tree.\n3. The object was found at the bottom of the lake.\n4. The object was buried under the sand.\n5. The object was obscured by the fog.",
+            [
+                " The object (tangible and visible entity) cast a shadow on the wall.",
+                " The item was concealed behind the tree.\n\n",
+                " The item was discovered at the bottom of the lake.",
+                " The item was buried beneath the sand.\n\n",
+                " The object was hidden by the fog.\n\n"
+            ]
+        ]
+    
+    result_object = componenteExtractor_faseValidacion.get_result(element_object, llm_answer_list_3)
+    
+    assert result_object == ["NULL",
+    {
+      "Correctas.": 0
+    },
+    {
+      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+    },
+    {
+      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
+    },
+    {
+      "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
+    }], "Should be true"
     
 def component_exporter_test():
     
     exploited_information = {
-        "eng-30-00039297-n_contact": [
+        "eng-30-00002684-n_object": [
             "1",
-            "Close interaction.",
-            "Interacción cercana.",
+            "A tangible and visible entity; an entity that can cast a shadow.",
+            "Una entidad tangible y visible; una entidad que puede proyectar sombra.'.",
             "n",
             "eng",
             [
+            " The object on the table was a vase made of porcelain. Its delicate curves and intricate design were mesmerizing to behold. As I approached it, its shadow grew longer and more defined, casting a soft glow across the room.\n\nThe object in my hand was a smooth stone, cool to the touch. It had been worn down by years of tumbling through streams and rivers, leaving behind a textured surface that felt almost alive beneath my fingertips. As I held it up to the light, its shadow danced across the ground, a testament to its solidity and weight.\n\nThe object in front of me was a book, bound in leather and filled with pages of wisdom and knowledge. Its cover bore the imprint of an ancient symbol, a reminder of the secrets that lay within. As I opened it, its shadow stretched out behind me, casting a long, dark line across the floor.\n\nThe object on the wall was",
             [
-                "The sales team had frequent contacts with potential clients to close deals.",
-                "La plantilla debe ser una traducción exacta del original en inglés"
+                " El objeto en la mesa era una jarra hecha de porcelana.",
+                " Sus delicadas curvas y su compleja forma eran hipnóticas de contemplar.",
+                " Mientras me acercaba, su sombra se alargó y se definió más, proyectando una luz suave en la habitación.",
+                " El objeto en mi mano era una piedra lisa, fría al tacto.",
+                " 'Había sido desgastado durante años de ser arrastrado por corrientes y ríos, dejando atrás una superficie texturizada que sentía casi viva bajo mis dedos.'",
+                " Mientras la sostuviese hacia la luz, su sombra bailaba por el suelo, una prueba de su sólida y pesada naturaleza.",
+                " El objeto que estaba delante de mí era un libro, recubierto de cuero y lleno de páginas de sabiduría y conocimiento.",
+                " Su tapadera llevaba la impresión de un antiguo símbolo, una recordatoria de los secretos que se escondían dentro.",
+                " Al abrirlo, su sombra se extendió detrás de mí, dibujando una larga línea oscura en el piso.",
+                " El objeto en la pared era."
+            ]
             ],
+            "objeto",
             [
-                "The doctor scheduled regular contacts with her patients for follow-up care.",
-                "El médico programó contactos regulares con sus pacientes para seguimiento de la atención."
-            ],
+            " 1. The object cast a long shadow on the ground.\n2. The ball was an object that rolled across the floor.\n3. The statue in the park is an object that has been there for years.\n4. The car's headlights illuminated the object in front of it.\n5. The rock formation in the desert is an object that has stood the test of time.",
             [
-                "The project manager maintained constant contact with the team members to ensure progress.",
-                "El gerente del proyecto mantuvo una comunicación constante con los miembros de la equipo para asegurar el avance."
-            ],
-            [
-                "The social media influencer had numerous contacts with her followers through various platforms.",
-                "La influencera de redes sociales tuvo numerosas interacciones cercanas con sus seguidores a través de diferentes plataformas."
-            ],
-            [
-                "The diplomat established close contacts with foreign officials to negotiate treaties and agreements.",
-                "El diplomático estableció relaciones cercanas con funcionarios extranjeros para negociar tratados y acuerdos."
+                " The object cast a long shadow on the ground.\n\n",
+                " The ball was a tangible and visible entity that could project a shadow, which rolled across the floor.\n\n",
+                " The statue in the park is a tangible and visible entity that can cast a shadow, which has been there for years.",
+                " The car's headlights illuminated the tangible and visible entity that could cast a shadow.\n\n",
+                " The rock formation in the desert is a tangible and visible entity that can cast a shadow, which has withstood the test of time."
             ]
             ],
             "NULL",
             {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
+            "Correctas.": 0
             },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
-            }
-        ],
-        "eng-30-00058743-n_flight": [
-            "4",
-            "The act of escaping physically.",
-            "La acción de huir físicamente.",
-            "n",
-            "eng",
-            [
-            [
-                "The bird took flight from its nest to avoid being caught by predators.",
-                "El pájaro tomó vuelo desde su nido para evitar ser capturado por los depredadores."
-            ],
-            [
-                "The hikers fled into the forest, hoping to escape the wildfire through flight.",
-                "Los senderistas huyeron hacia el bosque, esperando escapar del incendio forestal a través de la huida."
-            ],
-            [
-                "The prisoner broke free and ran as fast as he could, taking flight from his captors.",
-                "El preso se liberó y corrió lo más rápido que pudo, huyendo de sus captores."
-            ],
-            [
-                "The survivors of the shipwreck swam for hours until they finally reached land, their flight from danger complete.",
-                "Los supervivientes de la naufragio nadaron durante horas hasta que finalmente llegaron a tierra, su huida del peligro completa."
-            ],
-            [
-                "The woman sprinted down the street, her heart racing as she tried to outrun the attacker and take flight from his grasp.",
-                "La mujer corrió por la calle, su corazón latía mientras intentaba huir del agresor y lograr la fuga física."
-            ]
-            ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
-            }
-        ],
-        "eng-30-00072473-n_confusion": [
-            "5",
-            "A mistake that results from taking one thing to be another.",
-            "Un error que resulta de confundir una cosa con otra.",
-            "n",
-            "eng",
-            [
-            [
-                "The confusion between there and their led to several grammatical errors in the text.",
-                "La confusión entre allí y sus llevó a varios errores gramaticales en el texto."
-            ],
-            [
-                "The doctor's diagnosis was a case of confusion, mistaking the symptoms for those of a different disease.",
-                "La diagnóstico del médico fue un caso de confusión, al confundir los síntomas con los de una enfermedad diferente."
-            ],
-            [
-                "The student's answer on the math test was an example of confusion, as they had misinterpreted the question.",
-                "La respuesta del estudiante en el examen de matemáticas fue un ejemplo de confusión, ya que habían malinterpretado la pregunta."
-            ],
-            [
-                "The police officer's mistake in identifying the suspect was due to confusion, as they had mistaken one person for another.",
-                "La equivocación del oficial de policía al identificar al sospechoso fue debida a la confusión, ya que se equivocó de una persona por otra."
-            ],
-            [
-                "The author's use of homonyms led to confusion in their writing, as they used words with similar spellings but different meanings.",
-                "El autor utilizó homónimos, lo que llevó a la confusión en su escritura, ya que usó palabras con ortografía similar pero significados diferentes."
-            ]
-            ],
-            "confusión",
-            [
-            [
-                "La confusión entre la palabra suave y dulce es común en inglés.",
-                "The confusion between the words soft and sweet is common in english."
-            ],
-            [
-                "La confusión entre los nombres de las estrellas Vega y Deneb puede ser problemática para los astrónomos.",
-                "The confusion between the names of the stars vega and deneb can be problematic for astronomers."
-            ],
-            [
-                "La confusión entre la palabra principal y principio es frecuente en el idioma español.",
-                "The confusion between the main word and principle is common in the spanish language."
-            ],
-            [
-                "La confusión entre las palabras suelo y sueño puede ser problemática para los estudiantes de inglés.",
-                "The confusion between the words floor and dream can be problematic for english learners."
-            ],
-            [
-                "La confusión entre la palabra principal y principio es una causa común de errores en el idioma español.",
-                "The confusion between the main word and principle is a common cause of errors in the spanish language."
-            ]
-            ],
-            "confusión"
-        ],
-        "eng-30-00081836-n_shopping": [
-            "1",
-            "Searching for or buying goods or services.",
-            "Buscando o comprando bienes o servicios.",
-            "n",
-            "eng",
-            [
-            [
-                "She spent hours shopping for the perfect dress to wear at her sister's wedding.",
-                "Ella pasó horas comprando ropa para el vestido perfecto que llevaría a la boda de su hermana."
-            ],
-            [
-                "The mall was packed with people doing their holiday shopping.",
-                "La tienda estaba llena de gente haciendo sus compras navideñas."
-            ],
-            [
-                "I love going to thrift stores for unique and affordable shopping finds.",
-                "Adoro ir a tiendas de segundamano para encontrar compras únicas y baratas."
-            ],
-            [
-                "Online shopping has become increasingly popular due to its convenience.",
-                "La compra en línea ha aumentado de manera creciente debido a su comodidad."
-            ],
-            [
-                "Shopping for groceries can be a daunting task, especially when you have a long list of items to buy.",
-                "La compra de alimentos puede ser una tarea desafiante, especialmente cuando hay muchas cosas que comprar en la lista."
-            ]
-            ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 2
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
-            }
-        ],
-        "eng-30-00152727-n_diagnosis": [
-            "1",
-            "Identifying the nature or cause of some phenomenon.",
-            "Identificar la naturaleza o causa de algún fenómeno.",
-            "n",
-            "eng",
-            [
-            [
-                "The doctor carefully examined the patient and arrived at a diagnosis of pneumonia.",
-                "El médico examinó cuidadosamente al paciente y llegó a un diagnóstico de neumonía."
-            ],
-            [
-                "After conducting extensive tests, the scientists were able to make a definitive diagnosis of the rare disease.",
-                "Después de realizar pruebas extensas, los científicos pudieron hacer un diagnóstico definitivo de la enfermedad rara."
-            ],
-            [
-                "The forensic team's analysis led them to a clear diagnosis of homicide.",
-                "El equipo de análisis forense llegó a un diagnóstico claro de asesinato."
-            ],
-            [
-                "The meteorologists issued a severe weather warning based on their diagnosis of an impending storm.",
-                "Los meteorólogos emitieron una advertencia de mal tiempo severa basada en su diagnóstico de una tormenta que se avecina."
-            ],
-            [
-                "The linguist's analysis revealed a diagnosis of a previously unknown dialect in the rural community.",
-                "La análisis del lingüista reveló un diagnóstico de una variedad desconocida en la comunidad rural."
-            ]
-            ],
-            "diagnóstico",
-            [
-            [
-                "El diagnóstico médico reveló que la paciente padecía una infección bacteriana.",
-                "The medical diagnosis revealed that the patient was suffering from a bacterial infection."
-            ],
-            [
-                "La investigación científica llevó al diagnóstico de un nuevo elemento químico.",
-                "The scientific research led to the identification of a new chemical element."
-            ],
-            [
-                "El diagnóstico forense concluyó en el asesinato premeditado.",
-                "The autopsy determined that the murder was premeditated."
-            ],
-            [
-                "El diagnóstico psicológico indicó que la persona sufría de depresión clínica.",
-                "The psychological diagnosis indicated that the person was suffering from clinical depression."
-            ],
-            [
-                "La investigación arqueológica llevó al diagnóstico de una antigua ciudad perdida.",
-                "The archaeological investigation led to the identification of an ancient lost city."
-            ]
-            ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
-            }
-        ],
-        "eng-30-00180413-n_acceptance": [
-            "2",
-            "The act of accepting with approval; favorable reception.",
-            "La acción de aceptar con aprobación; la recepción favorable.",
-            "n",
-            "eng",
-            [
-            [
-                "The audience's acceptance of the play was overwhelmingly positive.",
-                "La aceptación del público de la obra fue abrumadoramente positiva."
-            ],
-            [
-                "The committee's decision to accept the proposal was a significant milestone for the project.",
-                "La decisión del comité de aceptar la propuesta fue un hito significativo para el proyecto."
-            ],
-            [
-                "The company's acceptance of the new employee policy has led to increased productivity and job satisfaction.",
-                "La aceptación de la nueva política del empleador ha llevado a un aumento de la productividad y el satisfacimiento en el trabajo."
-            ],
-            [
-                "The jury's acceptance of the defendant's plea of insanity was a surprising turn of events in the trial.",
-                "La aceptación del jurado de la declaración de insanidad del acusado fue una sorprendente vuelta de tuerca en el juicio."
-            ],
-            [
-                "The community's acceptance of the immigrant family has been a source of pride for all involved.",
-                "La aceptación de la comunidad de la familia inmigrante ha sido una fuente de orgullo para todos los implicados."
-            ]
-            ],
-            "aceptación",
-            [
-            [
-                "La aceptación de la propuesta fue unánime.",
-                "The acceptance of the proposal was unanimous."
-            ],
-            [
-                "El libro ha recibido una aceptación positiva entre los lectores.",
-                "The book has received positive acceptance among readers."
-            ],
-            [
-                "La aceptación de la idea por parte del equipo fue inmediata.",
-                "The acceptance of the idea by the team was immediate."
-            ],
-            [
-                "La aceptación de la nueva política ha sido generalizada en la empresa.",
-                "The acceptance of the new policy has been widely adopted within the company."
-            ],
-            [
-                "La aceptación de la propuesta por parte del cliente es crucial para el éxito del negocio.",
-                "The acceptance of the proposal by the customer is critical for the success of the business."
-            ]
-            ],
-            "aceptación"
-        ],
-        "eng-30-00187337-n_goal": [
-            "4",
-            "A successful attempt at scoring.",
-            "Un exitoso intento de marcar.",
-            "n",
-            "eng",
-            [
-            [
-                "The soccer team scored two goals in their victory over the opposing team",
-                "El equipo de fútbol anotó dos goles en su victoria sobre el equipo contrario."
-            ],
-            [
-                "The basketball player made a goal with just seconds left on the clock",
-                "El jugador de baloncesto anotó con solo segundos restantes en el reloj."
-            ],
-            [
-                "The football quarterback threw a long pass that resulted in a touchdown and a goal for his team",
-                "El quarterback de fútbol americano lanzó un pase largo que resultó en una anotación y un gol para su equipo."
-            ],
-            [
-                "The hockey team's center forward scored a hat trick, which is three goals in one game",
-                "La delantera central del equipo de hockey anotó un triplete, que es tres goles en un solo partido."
-            ],
-            [
-                "The tennis player hit an ace to win the set and achieve her goal of winning the match.",
-                "El tenista acertó un as para ganar el set y lograr su objetivo de ganar la partida."
-            ]
-            ],
-            "gol",
-            [
-            [
-                "El delantero anotó un gol en la última jugada.",
-                "The striker scored a goal in the last play."
-            ],
-            [
-                "La pelota entró en la red y se marcó un gol para el equipo local.",
-                "The ball entered the net and scored a goal for the home team."
-            ],
-            [
-                "El arquero falló al bloquear el disparo y se le marcó un gol.",
-                "The goalkeeper failed to block the shot and was credited with a goal against him."
-            ],
-            [
-                "El referee señaló una falta a favor del equipo visitante, y el jugador anotó un gol de tiro libre.",
-                "The referee signaled a foul against the visiting team, and the player scored a goal from a free kick."
-            ],
-            [
-                "La selección nacional logró un gol en la primera mitad del partido.",
-                "The national team managed to score a goal during the first half of the game."
-            ]
-            ],
-            "gol"
-        ],
-        "eng-30-00213903-n_exemption": [
-            "3",
-            "An act exempting someone.",
-            "Una acción que exime a alguien.",
-            "n",
-            "eng",
-            [
-            [
-                "The government granted an exemption to the small business owner from paying taxes for the current year due to financial hardship.",
-                "El gobierno concedió una exención al propietario de la pequeña empresa del pago de impuestos por el año actual debido a dificultades financieras."
-            ],
-            [
-                "The university provided an exemption to the student who had a medical condition that prevented them from attending classes in person.",
-                "La universidad otorgó una exención al estudiante que tenía una condición médica que le impidió asistir a las clases de manera presencial."
-            ],
-            [
-                "The court issued an exemption to the defendant who was deemed mentally unfit to stand trial.",
-                "La corte otorgó una exención al acusado que fue considerado mentalmente incapaz de enfrentar juicio."
-            ],
-            [
-                "The state granted an exemption to the religious organization that refused to provide services for same-sex weddings due to their beliefs.",
-                "El estado concedió una exención a la organización religiosa que se negó a proporcionar servicios para las bodas del mismo sexo debido a sus creencias."
-            ],
-            [
-                "The government provided an exemption to the foreign aid agency that allowed them to bypass certain bureaucratic procedures in order to quickly distribute funds to those affected by a natural disaster.",
-                "El gobierno otorgó una exención al agencia de ayuda extranjera que les permitió evitar ciertos procedimientos burocráticos para poder distribuir rápidamente los fondos a aquellos afectados por un desastre natural."
-            ]
-            ],
-            "exención",
-            [
-            [
-                "La ley otorga una exención fiscal a los veteranos.",
-                "The law grants a tax exemption to veterans."
-            ],
-            [
-                "El tribunal concedió una exención temporal a la acusada.",
-                "The court granted a temporary exemption to the accused."
-            ],
-            [
-                "La universidad ofrece una exención de matrícula para los estudiantes con excelentes calificaciones.",
-                "The university offers a waiver of tuition fees for students with excellent grades."
-            ],
-            [
-                "La ley de inmigración otorga una exención especial a los refugiados.",
-                "The immigration law grants special exemption to refugees."
-            ],
-            [
-                "El sistema legal concede una exención a los testigos que cooperan con la justicia.",
-                "The legal system grants an exemption to witnesses who cooperate with justice."
-            ]
-            ],
-            "exención"
-        ],
-        "eng-30-00312553-n_voyage": [
-            "2",
-            "A journey to some distant place.",
-            "Un viaje a algún lugar lejano.",
-            "n",
-            "eng",
-            [
-            [
-                "The couple embarked on a voyage across the Atlantic Ocean to explore new lands and cultures.",
-                "El pareja emprendió un viaje transatlántico para explorar nuevas tierras y culturas."
-            ],
-            [
-                "The adventurous traveler set out on a voyage to the Amazon rainforest, eager to discover its secrets.",
-                "El aventurero viajero se embarcó en un viaje hacia la selva amazónica, ansioso por descubrir sus secretos."
-            ],
-            [
-                "The ship's captain led his crew on a perilous voyage through treacherous waters, determined to reach their destination.",
-                "El capitán de la nave llevó a su tripulación en un viaje peligroso a través de aguas traicioneras, determinado a llegar a su destino."
-            ],
-            [
-                "The intrepid explorers embarked on a voyage to the Arctic Circle in search of lost treasure and ancient artifacts.",
-                "Los audaces exploradores se embarcaron en un viaje al círculo ártico en busca del tesoro perdido y de artefactos antiguos."
-            ],
-            [
-                "The family took a voyage around the world, visiting exotic destinations and experiencing new cultures along the way.",
-                "La familia realizó un viaje alrededor del mundo, visitando destinos exóticos y experimentando nuevas culturas en el camino."
-            ]
-            ],
-            "viaje",
-            [
-            [
-                "El viaje a la India ha sido una experiencia inolvidable.",
-                "The journey to india has been an unforgettable experience."
-            ],
-            [
-                "Su viaje al Himalaya fue un gran desafío físico y mental.",
-                "His trip to the himalayas was a great physical and mental challenge."
-            ],
-            [
-                "La joven se embarcó en un viaje de descubrimiento por Europa.",
-                "The young woman embarked on a discovery trip through europe."
-            ],
-            [
-                "El viaje a la Antártida es una aventura única que solo los más aventureros pueden soportar.",
-                "The journey to antarctica is a unique adventure that only the most adventurous can endure."
-            ],
-            [
-                "Su viaje al desierto ha cambiado su perspectiva sobre la vida.",
-                "Her trip to the desert has changed her perspective on life."
-            ]
-            ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
-            }
-        ],
-        "eng-30-00315986-n_transfer": [
-            "1",
-            "The act of moving something from one location to another.",
-            "El acto de mover algo desde un lugar al otro.",
-            "n",
-            "eng",
-            [
-            [
-                "The transfer of goods from the warehouse to the delivery truck was completed successfully.",
-                "La transferencia de los bienes desde el almacén hasta la camión de entrega se completó con éxito."
-            ],
-            [
-                "The company has initiated a transfer of its operations to a new facility, which is expected to be completed by next year.",
-                "La empresa ha iniciado la transferencia de sus operaciones a una nueva instalación, que se espera completar en el próximo año."
-            ],
-            [
-                "The patient's medical records were transferred electronically to the hospital for further treatment.",
-                "Los registros médicos del paciente fueron transferidos electrónicamente al hospital para tratamiento adicional."
-            ],
-            [
-                "The transfer of funds from one account to another can be done easily through online banking.",
-                "La transferencia de fondos de una cuenta a otra se puede hacer fácilmente a través del banco en línea."
-            ],
-            [
-                "The transfer of ownership of the property was finalized last week, and the new owner has taken possession of it.",
-                "La transacción de la propiedad se completó la semana pasada, y el nuevo dueño ha tomado posesión de ella."
-            ]
-            ],
-            "transferencia",
-            [
-            [
-                "La transferencia de los documentos electrónicos a la nube es una práctica común hoy en día.",
-                "The transfer of electronic documents to the cloud is a common practice today."
-            ],
-            [
-                "El proceso de transferencia de la información de la base de datos antigua a la nueva puede ser largo y complejo.",
-                "The process of transferring information from the old database to the new one can be long and complex."
-            ],
-            [
-                "La transferencia de los archivos de la oficina al nuevo servidor es una tarea diaria para el administrador de la red.",
-                "The daily task for the network administrator is transferring the office files to the new server."
-            ],
-            [
-                "El acto de transferir la propiedad de la casa a otra persona se llama venta.",
-                "The act of selling property is called a sale."
-            ],
-            [
-                "La transferencia de la responsabilidad de la tarea a otro empleado puede ser necesario en algunas circunstancias.",
-                "The transfer of responsibility for the task to another employee may be necessary in some circumstances."
-            ]
-            ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 1
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
-            }
-        ],
-        "eng-30-00327824-n_swing": [
-            "4",
-            "Changing location by moving back and forth.",
-            "Cambiando de ubicación al moverse de un lado a otro.",
-            "n",
-            "eng",
-            [
-            [
-                "The child enjoyed swinging on the playground set",
-                "El niño disfrutó de colgarse en el conjunto de juegos del parque."
-            ],
-            [
-                "The pendulum swung back and forth, ticking off each second",
-                "El reloj de péndulo osciló de un lado a otro, marcando cada segundo."
-            ],
-            [
-                "The wind chimes hung from a tree branch, swaying gently with the breeze, creating a soothing melody as they swung back and forth",
-                "Las campanas de viento colgaban de una rama del árbol, oscilando suavemente con el viento, creando un melodioso sonido mientras se movían de un lado a otro."
-            ],
-            [
-                "The door creaked open, swinging on its hinges in the gusty wind",
-                "La puerta se abrió con un zumbido, oscilando en sus bisagras ante el viento brusco."
-            ],
-            [
-                "The boat rocked back and forth on the choppy waves, causing the passengers to feel queasy.",
-                "El barco osciló de un lado a otro sobre las olas agitadas, haciendo que los pasajeros se sintieran enfermos."
-            ]
-            ],
-            "NULL",
             {
             "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
             },
@@ -1211,189 +731,126 @@ def component_exporter_test():
             "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
             },
             {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
-            }
-        ],
-        "eng-30-00331950-n_movement": [
-            "1",
-            "A change of position that does not entail a change of location.",
-            "Un cambio de posición que no implica un cambio de ubicación.",
-            "n",
-            "eng",
-            [
-            [
-                "The movement of the pendulum was caused by the vibration of the clock mechanism.",
-                "El movimiento del péndulo fue causado por la vibración del mecanismo de reloj."
-            ],
-            [
-                "The movement of the water in the river was due to the force of gravity.",
-                "El movimiento del agua en el río se debía al fuerza de la gravedad."
-            ],
-            [
-                "The movement of the leaves on the tree was affected by the wind.",
-                "El movimiento de las hojas del árbol fue afectado por el viento."
-            ],
-            [
-                "The movement of the air molecules in the room was influenced by the temperature.",
-                "El movimiento de las moléculas de aire en la habitación fue influenciado por la temperatura."
-            ],
-            [
-                "The movement of the particles in the gas was caused by collisions with other particles.",
-                "El movimiento de las partículas en el gas fue causado por las colisiones con otras partículas."
-            ]
-            ],
-            "movimiento",
-            [
-            [
-                "El movimiento del sol a través del cielo es una ilusión óptica, ya que la Tierra gira alrededor del Sol.",
-                "The apparent motion of the sun across the sky is an optical illusion, as the earth rotates around the sun."
-            ],
-            [
-                "La luna parece moverse en el cielo debido a la rotación de la Tierra.",
-                "The moon seems to move across the sky due to the earth's rotation."
-            ],
-            [
-                "El movimiento de las nubes en el cielo es solo una ilusión óptica, ya que son las mismas nubes que se desplazan sobre la superficie de la Tierra.",
-                "The apparent movement of clouds in the sky is merely an optical illusion, as they are actually moving across the surface of the earth."
-            ],
-            [
-                "La apariencia de un objeto moverse en la pantalla de un proyector es solo un efecto óptico, ya que el objeto no cambia de posición físicamente.",
-                "The appearance of an object moving on a screen is merely an optical effect, as the object does not physically change its position."
-            ],
-            [
-                "El movimiento de las ondas en el agua es solo una ilusión óptica, ya que son las mismas ondas que se",
-                "The movement of waves in water is only an optical illusion, as it is actually the same waves that are reflected back from the surface."
-            ]
-            ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 2
-            },
-            {
             "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
             }
         ],
-        "eng-30-00372607-n_storage": [
-            "6",
-            "Depositing in a warehouse.",
-            "Depósito en un almacén.",
-            "n",
-            "eng",
-            [
-            [
-                "The company has allocated a large storage facility for storing their excess inventory.",
-                "La empresa ha reservado un gran almacén para el almacenamiento de sus inventarios en exceso."
-            ],
-            [
-                "The warehouse is equipped with state-of-the-art storage systems to ensure optimal preservation of goods.",
-                "El almacén está equipado con sistemas de almacenamiento de última generación para garantizar la óptima conservación de los bienes."
-            ],
-            [
-                "The storage area is kept clean and organized to prevent any damage or spoilage to the stored items.",
-                "El área de almacenamiento se mantiene limpia y organizada para prevenir cualquier daño o desgaste en los artículos almacenados."
-            ],
-            [
-                "The company's storage capacity has increased by 50% in the past year, allowing them to better meet customer demand.",
-                "La capacidad de almacenamiento de la empresa ha aumentado en un 50% en el último año, lo que les permite mejor atender a las necesidades de los clientes."
-            ],
-            [
-                "The warehouse's storage system includes racks, shelves, and pallets to maximize space utilization and minimize handling time.",
-                "El sistema de almacenamiento del almacén incluye estantes, rejillas y palets para maximizar el uso del espacio y minimizar el tiempo de manejo."
-            ]
-            ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 5
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
-            }
-        ],
-        "eng-30-00397347-n_censorship": [
+        "eng-30-00006484-n_cell": [
             "2",
-            "Deleting parts of publications or correspondence or theatrical performances.",
-            "Eliminación de partes de publicaciones o correspondencia o representaciones teatrales.",
+            "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+            "(biología) la unidad estructural y funcional básica de todas las entidades vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
             "n",
             "eng",
             [
+            " 1. The cell is the fundamental building block of all living organisms, providing a protective environment for the genetic material to function properly.\n2. In multicellular organisms, cells work together to form tissues and organs that carry out specialized functions.\n3. The human body contains trillions of cells, each with its own unique role in maintaining homeostasis and carrying out essential processes.\n4. Some organisms, such as bacteria and protists, exist as single cells called monads, while others form colonies or tissues through cell division and differentiation.\n5. The study of cell biology has led to significant advances in medicine, allowing for the development of new treatments and therapies for a variety of diseases.",
             [
-                "The government's censorship policies have led to the suppression of critical voices and the stifling of dissent",
-                "Las políticas de censura del gobierno han llevado a la supresión de voces críticas y al estrangulamiento de la disidencia, en el sentido de eliminar partes de publicaciones o correspondencia o representaciones teatrales."
-            ],
-            [
-                "The newspaper's editor was forced to censor certain articles due to pressure from the authorities",
-                "El editor del periódico fue obligado a censurar ciertos artículos debido a la presión de las autoridades, en el sentido de eliminar partes de publicaciones o correspondencia o representaciones teatrales."
-            ],
-            [
-                "The playwright's work was heavily censored, with entire scenes being cut or rewritten",
-                "El trabajo del dramaturgo fue fuertemente censurado, con escenas enteras siendo eliminadas o reescritas."
-            ],
-            [
-                "The publisher faced legal action for refusing to censor a book that contained explicit language and imagery",
-                "El editor enfrentó acción legal por negarse a censurar un libro que contenía lenguaje y imágenes explícitas."
-            ],
-            [
-                "The government's censorship of the internet has resulted in the blocking of numerous websites and social media platforms.",
-                "La censura del gobierno ha resultado en el bloqueo de numerosas páginas web y plataformas sociales."
+                " La celda es el bloque básico de construcción fundamental de todas las entidades vivas, proporcionando un entorno protector para que la materia genética funcione correctamente.",
+                " En organismos multicelulares, las células trabajan juntas para formar tejidos y órganos que llevan a cabo funciones especializadas.",
+                " El cuerpo humano contiene trillones de células, cada una con su propio papel único en mantener la homeostasis y llevar a cabo procesos esenciales.",
+                " Algunos organismos, como las bacterias y los protistas, existen como células individuales llamadas monadas, mientras que otros forman colonias o tejidos a través de la división celular y la diferenciación.",
+                " El estudio de la biología celular ha llevado a importantes avances en la medicina, permitiendo el desarrollo de nuevas terapias y tratamientos para una variedad de enfermedades."
             ]
             ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 1
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 3
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
-            }
+            "células",
+            [
+            " 1. Las células son el bloque básico de la vida.\n2. Cada organismo está compuesto por millones de células.\n3. La división celular es un proceso fundamental en la biología.\n4. Los científicos están investigando cómo las células se comunican entre sí.\n5. Las células cancerosas son una amenaza para la salud humana.",
+            [
+                " 'Cells are the basic building block of life.'",
+                " 'Each organism is composed of millions of cells.'",
+                " 'Cell division is a fundamental process in biology.'",
+                " The scientists are investigating how cells communicate with each other.",
+                " Cancerous cells are a threat to human health."
+            ]
+            ],
+            "células"
         ],
-        "eng-30-00418615-n_neglect": [
-            "3",
-            "Willful lack of care and attention.",
-            "Cuidado y atención voluntariamente ausentes.",
+        "eng-30-00007347-n_cause": [
+            "4",
+            "Any entity that produces an effect or is responsible for events or results.",
+            "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados.'.",
             "n",
             "eng",
             [
+            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the fire was an electrical fault in the wiring.\n5. The cause of the financial crisis was a combination of factors, including excessive borrowing and risky investments.",
             [
-                "The parents' neglect resulted in their child's malnourishment and developmental delays.",
-                "La negligencia de los padres resultó en la desnutrición y retrasos en el desarrollo de su hijo."
-            ],
-            [
-                "The elderly woman's neglect by her family led to her being hospitalized for dehydration and malnutrition.",
-                "La falta de atención y cuidado voluntario de la familia llevó a la anciana mujer a ser hospitalizada por deshidratación y mala nutrición."
-            ],
-            [
-                "The company's neglect of safety protocols caused a catastrophic explosion that injured dozens of workers.",
-                "La negligencia de la empresa en cuestión de protocolos de seguridad causó una explosión catastrófica que dejó heridos a varios trabajadores."
-            ],
-            [
-                "The teacher's neglect of her students' needs resulted in low test scores and a high dropout rate.",
-                "La negligencia del profesor en las necesidades de sus estudiantes resultó en bajas calificaciones en los exámenes y una alta tasa de abandono escolar."
-            ],
-            [
-                "The government's neglect of its citizens' basic human rights led to widespread protests and unrest.",
-                "El despreocupo del gobierno por los derechos básicos humanos de sus ciudadanos llevó a manifestaciones y disturbios generalizados."
+                " La causa del accidente fue un sistema de frenos defectuoso.",
+                " La falta de precipitaciones es la causa principal de la sequía.",
+                " La causa de la salida de la enfermedad se puede rastrear hasta el alimento contaminado.",
+                " La causa del incendio fue una falla eléctrica en la instalación de cables.",
+                " La causa de la crisis financiera fue una combinación de factores, incluyendo el exceso de préstamos y las inversiones riesgosas."
             ]
             ],
-            "NULL",
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 0
-            },
-            {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la extracción del resultado provisional."
-            }
+            "causa",
+            [
+            " 1. La causa de la epidemia fue una mutación genética.\n2. El cambio climático es la causa principal del deshielo polar.\n3. La falta de educación es la causa principal de la pobreza en muchas partes del mundo.\n4. El estrés es la causa más común de enfermedades mentales.\n5. La corrupción política es la causa principal de la desconfianza en el gobierno.",
+            [
+                " The cause of the epidemic was a genetic mutation.\n\n",
+                " The primary cause of polar ice melting is climate change.",
+                " The lack of education is the main cause of poverty in many parts of the world.",
+                " Stress is the most common cause of mental illnesses.\n\n",
+                " Political corruption is the main cause of distrust in government."
+            ]
+            ],
+            "causa"
+        ],
+        "eng-30-00007846-n_person": [
+            "1",
+            "A human being.",
+            "Una persona'.",
+            "n",
+            "eng",
+            [
+            " 1. The person sitting next to me on the bus is reading a book.\n2. The person who helped me with my project was very kind.\n3. The person I met at the party last night had an interesting accent.\n4. The person in charge of the event is making sure everything runs smoothly.\n5. The person who won the race set a new world record.",
+            [
+                " La persona que está sentada al lado mío en el autobús está leyendo un libro.",
+                " La persona que me ayudó con mi proyecto fue muy amable.",
+                " La persona que conocí en la fiesta de anoche tenía un acento interesante.",
+                " La persona encargada del evento está asegurándose de que todo fluya sin problemas.",
+                " La persona que ganó la carrera estableció un nuevo récord mundial."
+            ]
+            ],
+            "persona",
+            [
+            " 1) La mujer que estaba sentada a mi lado era una persona muy amable. 2) El hombre que leyó el libro es una persona muy inteligente. 3) La niña que cantó la canción es una persona muy talentosa. 4) El hombre que ganó el premio es una persona muy exitosa. 5) La mujer que ayudó a los necesitados es una persona muy generosa.",
+            [
+                " The woman who was sitting next to me was very kind.",
+                " The man who read the book is a very intelligent person.\n\n",
+                " The girl who sang the song is a very talented person.",
+                " The man who won the prize is a very successful person.\n\n",
+                " The woman who helped those in need is a very generous person."
+            ]
+            ],
+            "persona"
+        ],
+        "eng-30-00015388-n_animal": [
+            "1",
+            "A living organism characterized by voluntary movement.",
+            "Un ser vivo que se mueve de manera voluntaria.",
+            "n",
+            "eng",
+            [
+            " 1. The lion is an animal that roams the savannah in search of prey.\n2. The elephant is the largest land animal and can weigh up to six tons.\n3. The cheetah is a fast-running animal that can reach speeds of over 70 miles per hour.\n4. The gorilla is an intelligent animal that lives in groups called troops.\n5. The kangaroo is a marsupial animal that has powerful hind legs for jumping long distances.",
+            [
+                " El león es un animal que pasea la sabana en busca de presas.",
+                " El elefante es el mayor animal terrestre y puede pesar hasta seis toneladas.",
+                " La gueparda es un animal rápido que puede alcanzar velocidades superiores a los 70 millas por hora.",
+                " El gorila es un animal inteligente que vive en bandadas llamadas tropas.",
+                " El kanguro es un animal marsupial que tiene patas traseras poderosas para saltar largas distancias."
+            ]
+            ],
+            "animal",
+            [
+            " 1. El leopardo es un animal grande y poderoso que habita en los bosques tropicales.\n2. Los elefantes son animales herbívoros que pueden pesar hasta tres toneladas.\n3. La gacela es un animal rápido y ágil que corre a velocidades de hasta 80 kilómetros por hora.\n4. El panda rojo es un animal en peligro de extinción que habita en los bosques de China.\n5. La orca es un animal inteligente y social que vive en grupos llamados podas.",
+            [
+                " The leopard is a large and powerful animal that lives in tropical forests.",
+                " Elephants are herbivorous animals that can weigh up to three tons.",
+                " The gazelle is a fast and agile animal that runs at speeds up to 80 kilometers per hour.",
+                " The red panda is an endangered animal that lives in the forests of China.",
+                " The killer whale is an intelligent and social animal that lives in groups called pods."
+            ]
+            ],
+            "animal"
         ]
-    }
+        }
     
     config = ConfigParser()
     config.read('./config.ini')
@@ -1426,15 +883,21 @@ def validar_linea(linea):
     
 def auxiliar_functions_test():
     
-    # -----------------------------------   destokinize()   ---------------------------------------
+    # -----------------------------------   destokenize()   ---------------------------------------
     
     print('Testing destokenize() function')
     
     tokens = []
-    assert "" == auxFunctions.destokenize(tokens), "Should be ''"
+    new_tokens = []
+    assert "" == auxFunctions.destokenize(tokens, new_tokens), "Should be ''"
     
     tokens_2 = ['Hola',',','soy','David''.']
-    assert "Hola, soy David." == auxFunctions.destokenize(tokens_2), "Should be 'Hola, soy David.'"
+    new_tokens_2 = ['Hola',',','soy','David''.']
+    assert "Hola, soy David." == auxFunctions.destokenize(tokens_2, new_tokens_2), "Should be 'Hola, soy David.'"
+    
+    tokens_3 = ['Hola',',','soy','David''.']
+    new_tokens_3 = ['Hola',',','soy']
+    assert "Hola, soy" == auxFunctions.destokenize(tokens_3, new_tokens_3), "Should be 'Hola, soy David.'"
     
     print('destokenize() function tested correctly') 
     
@@ -1443,15 +906,15 @@ def auxiliar_functions_test():
     print('Testing extract_nouns_with_positions_english() function')
     
     phrase_1 = "The towering oak tree provided shade for the picnic on a hot summer day."
-    expected_output_1 = [('tree', 3, 'nsubj', 'provided'), ('shade', 5, 'dobj', 'provided'), ('picnic', 8, 'pobj', 'for'), ('day', 13, 'pobj', 'on')]
+    expected_output_1 = [('tree', 3), ('shade', 5), ('picnic', 8), ('day', 13)]
     assert expected_output_1 == auxFunctions.extract_nouns_with_positions_english(phrase_1), "Should be true"
     
     phrase_2 = "The largest tree in the forest is an american oak, which is over 30 meters tall."
-    expected_output_2 = [('tree', 2, 'nsubj', 'is'), ('forest', 5, 'pobj', 'in'), ('oak', 9, 'attr', 'is'), ('meters', 15, 'npadvmod', 'tall')]
+    expected_output_2 = [('tree', 2), ('forest', 5), ('oak', 9), ('meters', 15)]
     assert expected_output_2 == auxFunctions.extract_nouns_with_positions_english(phrase_2), "Should be true"
     
     phrase_3 = "The paper was smooth and glossy, perfect for printing high-quality images."
-    expected_output_3 = [('paper', 1, 'nsubj', 'was'), ('images', 13, 'dobj', 'printing')]
+    expected_output_3 = [('paper', 1), ('images', 13)]
     assert expected_output_3 == auxFunctions.extract_nouns_with_positions_english(phrase_3), "Should be true"
     
     phrase_4 = ""
@@ -1465,15 +928,15 @@ def auxiliar_functions_test():
     print('Testing extract_nouns_with_positions_spanish() function')
     
     phrase_5 = "La fábrica de papel había estado en funcionamiento durante más de un siglo, proporcionando oportunidades de empleo a generaciones de familias en la zona."
-    expected_output_5 = [('fábrica', 1, 'nsubj', 'funcionamiento'), ('papel', 3, 'nmod', 'fábrica'), ('funcionamiento', 7, 'ROOT', 'funcionamiento'), ('siglo', 12, 'nmod', 'funcionamiento'), ('oportunidades', 15, 'obj', 'proporcionando'), ('empleo', 17, 'nmod', 'oportunidades'), ('generaciones', 19, 'nmod', 'oportunidades'), ('familias', 21, 'nmod', 'generaciones'), ('zona', 24, 'nmod', 'familias')]
+    expected_output_5 = [('fábrica', 1), ('papel', 3), ('funcionamiento', 7), ('siglo', 12), ('oportunidades', 15), ('empleo', 17), ('generaciones', 19), ('familias', 21), ('zona', 24)]
     assert expected_output_5 == auxFunctions.extract_nouns_with_positions_spanish(phrase_5), "Should be true"
 
     phrase_6 = "El papel es un material muy utilizado para la impresión y la escritura."
-    expected_output_6 = [('papel', 1, 'nsubj', 'material'), ('material', 4, 'ROOT', 'material'), ('impresión', 9, 'obl', 'utilizado'), ('escritura', 12, 'conj', 'impresión')]
+    expected_output_6 = [('papel', 1), ('material', 4), ('impresión', 9), ('escritura', 12)]
     assert expected_output_6 == auxFunctions.extract_nouns_with_positions_spanish(phrase_6), "Should be true"
   
     phrase_7 = "El árbol más grande del bosque es un roble americano de más de 30 metros de altura."
-    expected_output_7 = [('árbol', 1, 'nsubj', 'roble'), ('metros', 14, 'nmod', 'roble'), ('altura', 16, 'nmod', 'metros')]
+    expected_output_7 = [('árbol', 1), ('metros', 14), ('altura', 16)]
     assert expected_output_7 == auxFunctions.extract_nouns_with_positions_spanish(phrase_7), "Should be true"
 
     phrase_8 = ""
@@ -1786,7 +1249,96 @@ def auxiliar_functions_test():
     assert ('transfer', 3) == auxFunctions.find_element_with_difference([('transferring', 2), ('transfer', 3)],1)
     assert ('transfer', 3) == auxFunctions.find_element_with_difference([('transferring', 2), ('transfer', 3)],2)
     
-    print('find_element_with_difference() function tested correctly') 
+    print('find_element_with_difference() function tested correctly')
+    
+    # -----------------------------------   is_possessive()   ---------------------------------------
+    
+    print('Testing is_possessive() function')
+    
+    # Primer conjunto de palabras en inglés
+    tokens_1 = ["John", "'", "s", "book"]
+    index_1 = 0
+    expected_1 = True
+    assert expected_1 == auxFunctions.is_possessive(tokens_1, index_1), "Test 1 failed"
+
+    # Segundo conjunto de palabras en inglés
+    tokens_2 = ["The", "cat", "'", "s", "tail"]
+    index_2 = 1
+    expected_2 = False
+    assert expected_2 == auxFunctions.is_possessive(tokens_2, index_2), "Test 2 failed"
+
+    # Tercer conjunto de palabras en inglés
+    tokens_3 = ["This", "is", "Sarah", "'", "s", "pen"]
+    index_3 = 2
+    expected_3 = True
+    assert expected_3 == auxFunctions.is_possessive(tokens_3, index_3), "Test 3 failed"
+
+    # Cuarto conjunto de palabras en inglés
+    tokens_4 = ["This", "is", "the", "book"]
+    index_4 = 2
+    expected_4 = False
+    assert expected_4 == auxFunctions.is_possessive(tokens_4, index_4), "Test 4 failed"
+
+    # Quinto conjunto de palabras en inglés
+    tokens_5 = ["The", "dogs", "are", "playing"]
+    index_5 = 1
+    expected_5 = False
+    assert expected_5 == auxFunctions.is_possessive(tokens_5, index_5), "Test 5 failed"
+
+    print('is_possessive() function tested correctly')
+    
+    
+    # -----------------------------------   extract_llm_answers_set_of_phrases()   ---------------------------------------
+    
+    print('Testing extract_llm_answers_set_of_phrases() function')
+    
+    elemento_prueba_piloto_masculino = "\n1. El gran desafío que enfrenta la tierra es combatir la erosión y mantener su fertilidad.\n2. La tierra está siendo devastada por los cambios climáticos y la deforestación.\n3. La tierra necesita que los humanos cambien su manera de pensar y actuar para protegerla.\n4. El hombre ha estado explotando y devastando la tierra durante siglos.\n5. La tierra ha sido la fuente de vida y prosperidad para millones de personas durante milenios.\n6. La tierra es un recurso limitado que necesita ser utilizado y preservado con cuidado.\n7. La tierra es un regalo de la naturaleza que ha sido y seguirá siendo vital para la supervivencia humana.\n8. La tierra es más que un lugar, es un sistema complejo que afecta a todas las formas de vida.\n9. La tierra es la fuente de todos los recursos que necesitamos para sobrevivir y prosperar.\n10. La tierra es un legado que debemos preservar para las generaciones futuras."
+
+    expected_output_piloto_masculino = ["El gran desafío que enfrenta la tierra es combatir la erosión y mantener su fertilidad.",
+                              "La tierra está siendo devastada por los cambios climáticos y la deforestación.",
+                              "La tierra necesita que los humanos cambien su manera de pensar y actuar para protegerla.",
+                              "El hombre ha estado explotando y devastando la tierra durante siglos.",
+                              "La tierra ha sido la fuente de vida y prosperidad para millones de personas durante milenios.",
+                              "La tierra es un recurso limitado que necesita ser utilizado y preservado con cuidado.",
+                              "La tierra es un regalo de la naturaleza que ha sido y seguirá siendo vital para la supervivencia humana.",
+                              "La tierra es más que un lugar, es un sistema complejo que afecta a todas las formas de vida.",
+                              "La tierra es la fuente de todos los recursos que necesitamos para sobrevivir y prosperar.",
+                              "La tierra es un legado que debemos preservar para las generaciones futuras."]
+    
+    assert expected_output_piloto_masculino == auxFunctions.extract_llm_answers_set_of_phrases(elemento_prueba_piloto_masculino), "Should be true"
+    
+    elemento_prueba_piloto_femenino = "1. La tierra es una madre generosa que nos da sustento. 2. La tierra es una hermosa dama que necesita nuestra atención y amor. 3. La tierra es una piel que nos cubre y protege. 4. La tierra es una madre que nos guía y nos da vida. 5. La tierra es una madre que nos da alimentos y agua. 6. La tierra es una madre que nos da un lugar en la que vivir y crecer. 7. La tierra es una madre que nos da un hogar y una casa. 8. La tierra es una madre que nos da un lugar en la que compartir nuestras vidas. 9. La tierra es una madre que nos da un lugar en la que vivir y crecer juntos. 10. La tierra es una madre que nos da una oportunidad de crecer y desarrollarnos."
+
+    expected_output_piloto_femenino = ["La tierra es una madre generosa que nos da sustento.",
+                                       "La tierra es una hermosa dama que necesita nuestra atención y amor.",
+                                       "La tierra es una piel que nos cubre y protege.",
+                                       "La tierra es una madre que nos guía y nos da vida.",
+                                       "La tierra es una madre que nos da alimentos y agua.",
+                                       "La tierra es una madre que nos da un lugar en la que vivir y crecer.",
+                                       "La tierra es una madre que nos da un hogar y una casa.",
+                                       "La tierra es una madre que nos da un lugar en la que compartir nuestras vidas.",
+                                       "La tierra es una madre que nos da un lugar en la que vivir y crecer juntos.",
+                                       "La tierra es una madre que nos da una oportunidad de crecer y desarrollarnos."]
+    
+    assert expected_output_piloto_femenino == auxFunctions.extract_llm_answers_set_of_phrases(elemento_prueba_piloto_femenino), "Should be true"
+    
+    print('extract_llm_answers_set_of_phrases() function tested correctly')
+    
+    # -----------------------------------   extract_llm_answers_translation()   ---------------------------------------
+    
+    print('Testing extract_llm_answers_translation() function')
+    
+    elemento_prueba_piloto = "Alguien que posee una licencia para operar un avión en vuelo."
+
+    expected_output_piloto = "Alguien que posee una licencia para operar un avión en vuelo."
+    assert expected_output_piloto == auxFunctions.extract_llm_answers_translation(elemento_prueba_piloto), "Should be true"
+
+    elemento_prueba_accion = "'una acción'\n\n"
+
+    expected_output_accion = "Una acción."
+    assert expected_output_accion == auxFunctions.extract_llm_answers_translation(elemento_prueba_accion), "Should be true"
+
+    print('extract_llm_answers_translation() function tested correctly') 
     
 # Método main
 if __name__ == "__main__":
@@ -1794,20 +1346,32 @@ if __name__ == "__main__":
     print("Testing over Importer component...")
     # component_importer_test() # Tested correctly
     print("Everything in Importer component passed")
-    print("Testing over Question Maker component...")
-    # component_question_maker_test() # Tested correctly
-    print("Everything in Question Maker component passed")
+    print("Testing over Question Maker traduccion glosa component...")
+    # component_question_maker_traduccion_glosa_test() # Tested correctly
+    print("Everything in Question Maker traduccion glosa  component passed")
+    print("Testing over Question Maker traduccion inglés español component...")
+    # component_question_maker_traduccion_ingles_español_test() # Tested correctly
+    print("Everything in Question Maker traduccion inglés español component passed")
+    print("Testing over Question Maker traduccion español inglés component...")
+    # component_question_maker_traduccion_españolingles_test() # Tested correctly
+    print("Everything in Question Maker traduccion español inglés component passed")
+    print("Testing over Question Maker extraccion component...")
+    # component_question_maker_extraccion_test() # Tested correctly
+    print("Everything in Question Maker extraccion component passed")
+    print("Testing over Question Maker validacion component...")
+    # component_question_maker_validacion_test() # Tested correctly
+    print("Everything in Question Maker validacion component passed")
     print("Testing over LLM Communicator component...")
     # component_llm_communicator_test() # Tested correctly
     print("Everything in LLM Communicator component passed")
     print("Testing over Extractor component...")
-    # component_extractor_test() # Tested correctly
+    component_extractor_test() # Tested correctly
     print("Everything in Extractor component passed")
     print("Testing over Validator component...")
     # component_validator_test() # Tested correctly
     print("Everything in Validator component passed")
     print("Testing over Exporter component...")
-    # component_exporter_test() # Tested correctly
+    component_exporter_test() # Tested correctly
     print("Everything in Exporter component passed")
     print("Testing over Auxiliar funcitions...")
     # auxiliar_functions_test() # Tested correctly
