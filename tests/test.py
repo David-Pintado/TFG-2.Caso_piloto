@@ -1344,25 +1344,25 @@ def auxiliar_functions_test():
 if __name__ == "__main__":
     print("Test started: second pilot case")
     print("Testing over Importer component...")
-    # component_importer_test() # Tested correctly
+    component_importer_test() # Tested correctly
     print("Everything in Importer component passed")
     print("Testing over Question Maker traduccion glosa component...")
-    # component_question_maker_traduccion_glosa_test() # Tested correctly
+    component_question_maker_traduccion_glosa_test() # Tested correctly
     print("Everything in Question Maker traduccion glosa  component passed")
     print("Testing over Question Maker traduccion inglés español component...")
-    # component_question_maker_traduccion_ingles_español_test() # Tested correctly
+    component_question_maker_traduccion_ingles_español_test() # Tested correctly
     print("Everything in Question Maker traduccion inglés español component passed")
     print("Testing over Question Maker traduccion español inglés component...")
-    # component_question_maker_traduccion_españolingles_test() # Tested correctly
+    component_question_maker_traduccion_españolingles_test() # Tested correctly
     print("Everything in Question Maker traduccion español inglés component passed")
     print("Testing over Question Maker extraccion component...")
-    # component_question_maker_extraccion_test() # Tested correctly
+    component_question_maker_extraccion_test() # Tested correctly
     print("Everything in Question Maker extraccion component passed")
     print("Testing over Question Maker validacion component...")
-    # component_question_maker_validacion_test() # Tested correctly
+    component_question_maker_validacion_test() # Tested correctly
     print("Everything in Question Maker validacion component passed")
     print("Testing over LLM Communicator component...")
-    # component_llm_communicator_test() # Tested correctly
+    component_llm_communicator_test() # Tested correctly
     print("Everything in LLM Communicator component passed")
     print("Testing over Extractor component...")
     component_extractor_test() # Tested correctly
@@ -1374,6 +1374,6 @@ if __name__ == "__main__":
     component_exporter_test() # Tested correctly
     print("Everything in Exporter component passed")
     print("Testing over Auxiliar funcitions...")
-    # auxiliar_functions_test() # Tested correctly
+    auxiliar_functions_test() # Tested correctly
     print("Everything in Auxiliar funcitions passed")
     print("Everything passed")
