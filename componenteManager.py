@@ -37,7 +37,7 @@ def knowledge_exploitation_process():
     file_path_knowledge_table_json = config['file_path']['knowledge_table']
     
     # Componente Importer para importar los datos de las fuentes 
-    componenteImporter = ComponenteImporter(config['file_path']['eng_variant_file'], config['file_path']['eng_synset_file'], config['file_path']['most_used_words_spa_file'])
+    componenteImporter = ComponenteImporter(config['file_path']['eng_variant_file'], config['file_path']['eng_synset_file'], config['file_path']['most_used_words_eng_file'])
     
     # componente LLMCommunicator para la fase de extracción y validación
     componenteLLMCommunicator = ComponenteLLMCommunicator(config['file_path']['language_model_path'])

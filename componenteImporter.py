@@ -109,9 +109,9 @@ class ComponenteImporter:
                         if word in words_dic[offset]:
                             # Añadimos al diccionario: Key=word. Value = [synset, sense, part_of_speech, language]
                             knowledge_table[offset_word] = [sense, part_of_speech, language]
-                    #         count += 1
-                    # if count > 4: 
-                    #     break
+                            count += 1
+                    if count > 499: 
+                        break
                         
         except FileNotFoundError:
             print(f'Archivo "{self.eng_variant_file}" no encontrado. Vuelve a introducir una nueva ruta')   

@@ -31,9 +31,9 @@ for key, value in data.items():
             incorrect_2_count += value[9].get("Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.", 0)
             total_frases += len(auxFunctions.extract_llm_answers_set_of_phrases(value[5][0]))
         if len(value) > 10:
-            if value[10].get("Mensaje de información") == "La entrada ha terminado su ejecución en la extracción del resultado provisional.":
+            if value[10].get("Mensaje de información") == "La entrada ha terminado su ejecución en la fase de extracción.":
                 null_extraccion += 1
-            elif value[10].get("Mensaje de información") == "La entrada ha terminado su ejecución en la validación del resultado provisional.":
+            elif value[10].get("Mensaje de información") == "La entrada ha terminado su ejecución en la fase de validación.":
                 null_validacion += 1
 
     if len(value) > 8 and value[8] == "NULL":
@@ -43,9 +43,9 @@ for key, value in data.items():
             incorrect_2_count += value[11].get("Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.", 0)
             total_frases += len(auxFunctions.extract_llm_answers_set_of_phrases(value[7][0]))
         if len(value) > 12:
-            if value[12].get("Mensaje de información") == "La entrada ha terminado su ejecución en la extracción del resultado provisional.":
+            if value[12].get("Mensaje de información") == "La entrada ha terminado su ejecución en la fase de extracción.":
                 null_extraccion += 1
-            elif value[12].get("Mensaje de información") == "La entrada ha terminado su ejecución en la validación del resultado provisional.":
+            elif value[12].get("Mensaje de información") == "La entrada ha terminado su ejecución en la fase de validación.":
                 null_validacion += 1
 
 # Calcular los porcentajes de errores

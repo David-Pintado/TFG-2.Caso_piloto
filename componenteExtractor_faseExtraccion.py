@@ -44,7 +44,7 @@ def get_result(element, llm_answer_list):
     #   - Si es NULL, no se ha podido obtner un resultado a partir de la entrada, y la ejecución queda en provisional
     #       message: "La entrada ha terminado su ejecución en la extracción del resultado provisional"
     #   - Si no es NULL, no se añade ningún mensaje
-    message = "La entrada ha terminado su ejecución en la extracción del resultado provisional."
+    message = "La entrada ha terminado su ejecución en la fase de extracción."
     # Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.
     count_incorrect_1 = 0
     # Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.

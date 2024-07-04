@@ -525,7 +525,7 @@ def component_extractor_test():
     
     result_cell_2 = componenteExtractor_faseExtraccion.get_result(element_cause, llm_answer_list_3)
     
-    assert result_cell_2 == ['NULL', {'Correctas.': 0}, {'Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.': 0}, {'Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.': 5}, {'Mensaje de información': 'La entrada ha terminado su ejecución en la extracción del resultado provisional.'}], "Should be true"
+    assert result_cell_2 == ['NULL', {'Correctas.': 0}, {'Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.': 0}, {'Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.': 5}, {'Mensaje de información': 'La entrada ha terminado su ejecución en la fase de extracción.'}], "Should be true"
      
 
     
@@ -682,7 +682,7 @@ def component_validator_test():
       "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
     },
     {
-      "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
+      "Mensaje de información": "La entrada ha terminado su ejecución en la fase de validación."
     }], "Should be true"
     
 def component_exporter_test():
@@ -731,7 +731,7 @@ def component_exporter_test():
             "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
             },
             {
-            "Mensaje de información": "La entrada ha terminado su ejecución en la validación del resultado provisional."
+            "Mensaje de información": "La entrada ha terminado su ejecución en la fase de validación."
             }
         ],
         "eng-30-00006484-n_cell": [
