@@ -21,8 +21,8 @@ def calculate_percentage(part, whole):
     return (part / whole) * 100 if whole > 0 else 0
 
 # Paths to the input files
-file1_path = './resultados.txt'
-file2_path = './resultados.txt'
+file1_path = './resultados_1.txt'
+file2_path = './resultados_2.txt'
 
 # Extract values from the files
 values1 = extract_values(file1_path)

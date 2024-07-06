@@ -38,8 +38,8 @@ def get_result(element, llm_answer_list):
     # Crear la lista del contenido completo del result
     result = []
     # Crear el mensaje de información del estado de la entrada: 
-    #   - Si es NULL, no se ha podido obtner un resultado a partir de la entrada, y la ejecución queda en provisional
-    #       message: "La entrada ha terminado su ejecución en la extracción del resultado provisional"
+    #   - Si es NULL, no se ha podido validar el resultado de la fase de extracción
+    #       message: "La entrada ha terminado su ejecución en la fase de validación"
     #   - Si no es NULL, no se añade ningún mensaje
     message = "La entrada ha terminado su ejecución en la fase de validación."
     # Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.
@@ -60,8 +60,7 @@ def get_result(element, llm_answer_list):
     relationships_list = []
     # Crear un tokenizador personalizado con una expresión regular
     tokenizer = RegexpTokenizer(r'\w+|[^\w\s]')
-    # making an instance of our model.
-    # You can specify the embedding model and all alignment settings in the constructor.
+    # Crear una instancia del modelo
     myaligner = SentenceAligner(model="bert", token_type="bpe", matching_methods="mai")
     # Recorremos 'llm_extracted_answer' para comparar cada frase/traduccion y sacar las relaciones
     for phrase in llm_extracted_answer:
@@ -94,8 +93,8 @@ def get_result(element, llm_answer_list):
             extraction_result_position_list = list(position for (noun, position) in nouns_with_positions if noun in list_of_extraction_result_appearence)
             if len(extraction_result_position_list) >= 1:
                 extraction_result_position = extraction_result_position_list[0]
-                # The output is a dictionary with different matching methods.
-                # Each method has a list of pairs indicating the indexes of aligned words (The alignments are zero-indexed).
+                # El resultado es un diccionario con diferentes métodos de comparación.
+                # Cada método tiene una lista de pares que indican los índices de palabras alineadas (las alineaciones tienen un índice cero).
                 alignments = myaligner.get_word_aligns(tokens_original_phrase, tokens_translated_original_phrase)
                 # Obtener los resultados
                 results = alignments['mwmf']
@@ -134,7 +133,7 @@ def get_result(element, llm_answer_list):
                 # Sumar Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase. en caso de que no haya nouns
                 count_incorrect_1 += 1
         else:
-            # Sumamos a Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.
+            # Sumar Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.
             count_incorrect_2 += 1
         # Vaciar la lista
         list_of_extraction_result_appearence = []
