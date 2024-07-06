@@ -406,6 +406,33 @@ def is_possessive(tokens, index):
     
     return False
 
+def extract_llm_answers_translation(llm_answer):
+    
+    """
+    Método para extraer la respuesta del LLM.
+    
+        Parámetros:
+            - llm_answer (str): Respuesta del LLM sin tratar. Contiene una única frase
+        Retorna:
+            - llm_extracted_answer (str): Respuesta del LLM extraída. 
+            
+    """
+    
+    # Eliminar los saltos de linea
+    llm_extracted_answer = llm_answer.replace('\n',' ').replace('\n\n',' ').strip()
+    # Si es una traducción tratarla
+    if type(llm_extracted_answer) is list:
+        if len(llm_extracted_answer) > 0:
+            llm_extracted_answer = llm_extracted_answer[0]
+        elif len(llm_extracted_answer) == 0:
+            llm_extracted_answer = ""
+    llm_extracted_answer = llm_extracted_answer.split(". ")[0].strip()
+    llm_extracted_answer = llm_extracted_answer.strip("'")
+    llm_extracted_answer = llm_extracted_answer.strip().replace('"', '').replace("\"", "").replace('\\', '').replace("\\\"", "").replace("?", "").replace("¿", "").capitalize()
+    if not llm_extracted_answer.endswith('.'):
+        llm_extracted_answer += '.'
+    return llm_extracted_answer
+
 def extract_llm_answers_set_of_phrases(llm_answer):
     
     """
