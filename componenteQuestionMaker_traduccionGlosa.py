@@ -13,7 +13,7 @@ def generate_prompts(element):
             - prompt_list (List[str]): Lista que contiene los prompts para la traducción de la glosa inglés a castellano.
     """
     
-    gloss = element[1][1]
+    gloss = element[1]["English gloss"]
     question = f"As a translation expert, I need an accurate translation into Spanish of the following phrase: '{gloss}'."
     prompt_list = [question]
     

@@ -2,6 +2,7 @@ import json
 import sys
 sys.path.append("./auxFunctionLibrary")
 from pythonLib import auxFunctions
+import random
 
 class ComponenteImporter:
     
@@ -107,20 +108,79 @@ class ComponenteImporter:
                     # Si es un synset en inglés y el tipo de palabra es sustantivo (noun=n)
                     if language == "eng" and part_of_speech == "n" and offset in words_dic.keys():
                         if word in words_dic[offset]:
-                            # Añadimos al diccionario: Key=word. Value = [synset, sense, part_of_speech, language]
-                            knowledge_table[offset_word] = [sense, part_of_speech, language]
-                            count += 1
+                            # # Generar un número aleatorio entre 1 y 10
+                            # numero_aleatorio = random.randint(1, 10)
+
+                            # # Verificar si el número aleatorio es 1
+                            # if numero_aleatorio == 10:
+                                # Añadimos al diccionario: Key=word. Value = [synset, sense, part_of_speech, language]
+                                knowledge_table[offset_word] = [sense, part_of_speech, language]
+                                count += 1
                     if count > 499: 
                         break
                         
         except FileNotFoundError:
             print(f'Archivo "{self.eng_variant_file}" no encontrado. Vuelve a introducir una nueva ruta')   
-          
+            
+        # Definir los atributos de element que tienen un valor por defecto al inicio del proceso
+        spanish_gloss = {
+            "Spanish gloss": "NULL"
+        }
+        extraction_llm_answers = {
+            "Extraction LLM answers": []
+        }
+        validation_llm_answers = {   
+            "Validation LLM answers": []
+        }
+        extraction_translation = {
+            "Extraction translation": "NULL"
+        }
+        validation_translation = {
+            "Validation translation": "NULL"
+        }  
+        correct_phrases = {
+            "Correctas": 0
+        }
+        incorrect_phrases_1 = {
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0
+        }
+        incorrect_phrases_2 = {
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0
+        }
+        incorrect_phrases_3 = {
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0
+        }
+        information_message = {
+            "Mensaje de información": "NULL"
+        }
+
         # Modificar el knowledge_table añadiendo los glosses del offsets_glosses_array
-        # Sigue el siguiente esquema:  Key=offset_word. Value= [sense, gloss, part_of_speech, language]
-        for word, element in knowledge_table.items(): 
-            item_list = []
-            item_list = [element[0], offsets_glosses_array[word.split('_')[0]].replace('_',' '), element[1], element[2]]
-            knowledge_table[word] = item_list
-        
+        # Sigue el siguiente esquema:  Key=offset_word. Value= [sense_index, english_gloss, spanish_gloss, part_of_speech, language, extraction_llm_answers, validation_llm_answers, extraction_translation, validation_translation, correct_phrases, incorrect_phrases_1, incorrect_phrases_2, incorrect_phrases_3, information_message]
+        for word, element in knowledge_table.items():
+            sense_index = element[0]
+            english_gloss = offsets_glosses_array[word.split('_')[0]].replace('_', ' ')
+            part_of_speech = element[1]
+            language = element[2]
+            
+            # Crear el nuevo formato de diccionario
+            item_dict = {
+                "Sense index": sense_index,
+                "English gloss": english_gloss,
+                "Spanish gloss": spanish_gloss["Spanish gloss"],
+                "Part of speech": part_of_speech,
+                "Language": language,
+                "Extraction LLM answers": extraction_llm_answers["Extraction LLM answers"],
+                "Validation LLM answers": validation_llm_answers["Validation LLM answers"],
+                "Extraction translation": extraction_translation["Extraction translation"],
+                "Validation translation": validation_translation["Validation translation"],
+                "Correctas": correct_phrases["Correctas"],
+                "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": incorrect_phrases_1["Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase"],
+                "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": incorrect_phrases_2["Incorrectas de tipo 2: la palabra a analizar no aparece en la frase"],
+                "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": incorrect_phrases_3["Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo"],
+                "Mensaje de información": information_message["Mensaje de información"]
+            }
+            
+            # Actualizar el knowledge_table con el nuevo formato
+            knowledge_table[word] = item_dict
+
         return knowledge_table

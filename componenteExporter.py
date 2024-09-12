@@ -2,10 +2,10 @@
 
 class ComponenteExporter:
     
-    def __init__(self, exploited_information_file_path):
-        self.exploited_information_file_path = exploited_information_file_path
+    def __init__(self, knowledge_table_file_path):
+        self.knowledge_table_file_path = knowledge_table_file_path
 
-    def export_knowledge(self, exploited_information):
+    def export_knowledge(self, knowledge_table):
         
         """
         Método para exportar los resultados almacenados en `knowledge_table` a un archivo específico.
@@ -18,32 +18,28 @@ class ComponenteExporter:
 
         """
         
-        with open(self.exploited_information_file_path, 'w', encoding='utf-8') as f:
-            for (offset_word,attributes) in exploited_information.items():
+        with open(self.knowledge_table_file_path, 'w', encoding='utf-8') as f:
+            for (offset_word,attributes) in knowledge_table.items():
                 
                 # Extraccion de los elementos que van a formar parte de la exportacion
                 offset_word_splitted = offset_word.split('_')
                 offset = offset_word_splitted[0]
                 word = offset_word_splitted[1]
-                # Ontenemos el sense
-                sense = attributes[0]
+                # Ontenemos el sense-index
+                sense = attributes["Sense index"]
                 # Obtenemos el gloss en español
-                gloss = attributes[2]
+                gloss = attributes["Spanish gloss"]
                 # Obtenemos el part of speech
-                part_of_speech = attributes[3]
+                part_of_speech = attributes["Part of speech"]
                 # Obtenemos el idioma
                 language = "spa"
                 # Obtenemos la respuesta final / concimiento explotado
-                knowledge = ""
-                if attributes[6] == "NULL":
-                    knowledge = "NULL"
-                else:
-                    knowledge = attributes[8]
+                translation = attributes["Validation translation"]
                 # Creamos el elemento final de cada línea, como separador
                 final_element = "------"
                 
                 # Almacenar los valores entre comillas en una lista
-                valores_con_comillas = [f'"{offset}"', f'"{word}"', f'"{sense}"', f'"{gloss}"', f'"{part_of_speech}"', f'"{language}"', f'"{knowledge}"', f'"{final_element}"']
+                valores_con_comillas = [f'"{offset}"', f'"{word}"', f'"{sense}"', f'"{gloss}"', f'"{part_of_speech}"', f'"{language}"', f'"{translation}"', f'"{final_element}"']
 
                 # Unir los valores con comas
                 line = ', '.join(valores_con_comillas) + ",\n"

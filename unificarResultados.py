@@ -7,13 +7,14 @@ def extract_values(file_path):
     values = {
         'entradas_totales': int(re.search(r'Entradas totales: (\d+)', content).group(1)),
         'conocimiento': int(re.search(r'Cantidad de conocimiento obtenido: (\d+)', content).group(1)),
-        'null': int(re.search(r"Cantidad de casos sin clasificar \('NULL'\) obtenidos: (\d+)", content).group(1)),
-        'null_extraccion': int(re.search(r"Cantidad de casos sin clasificar \('NULL'\) obtenidos en la fase de extracción: (\d+)", content).group(1)),
-        'null_validacion': int(re.search(r"Cantidad de casos sin clasificar \('NULL'\) obtenidos en la fase de validación: (\d+)", content).group(1)),
-        'total_frases': int(re.search(r"Total de frases analizadas de casos sin clasificar \('NULL'\): (\d+)", content).group(1)),
+        'null': int(re.search(r"Cantidad de casos sin traducir \('NULL'\) obtenidos: (\d+)", content).group(1)),
+        'null_extraccion': int(re.search(r"Cantidad de casos sin traducir \('NULL'\) obtenidos en la fase de extracción: (\d+)", content).group(1)),
+        'null_validacion': int(re.search(r"Cantidad de casos sin traducir \('NULL'\) obtenidos en la fase de validación: (\d+)", content).group(1)),
+        'total_frases': int(re.search(r"Total de frases analizadas de casos sin traducir \('NULL'\): (\d+)", content).group(1)),
         'correctas': int(re.search(r'Correctas: (\d+)', content).group(1)),
-        'incorrectas_1': int(re.search(r'Incorrectas de tipo 1 \(Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.\): (\d+)', content).group(1)),
-        'incorrectas_2': int(re.search(r'Incorrectas de tipo 2 \(La palabra que buscamos no aparece en la frase.\): (\d+)', content).group(1)),
+        'incorrectas_1': int(re.search(r'Incorrectas de tipo 1 \(Generacion de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase.\): (\d+)', content).group(1)),
+        'incorrectas_2': int(re.search(r'Incorrectas de tipo 2 \(la palabra a analizarno aparece en la frase.\): (\d+)', content).group(1)),
+        'incorrectas_3': int(re.search(r'Incorrectas de tipo 3 \(La relación obtenida no corresponde con un sustantivo.\): (\d+)', content).group(1)),
     }
     return values
 
@@ -41,6 +42,7 @@ combined_percentages = {
     'correctas': calculate_percentage(combined_values['correctas'], combined_values['total_frases']),
     'incorrectas_1': calculate_percentage(combined_values['incorrectas_1'], combined_values['total_frases']),
     'incorrectas_2': calculate_percentage(combined_values['incorrectas_2'], combined_values['total_frases']),
+    'incorrectas_3': calculate_percentage(combined_values['incorrectas_3'], combined_values['total_frases']),
 }
 
 # Write combined results to a new file
@@ -49,10 +51,11 @@ with open(output_path, 'w', encoding='utf-8') as result_file:
     result_file.write(f"\n\nINFORMACIÓN DE LOS RESULTADOS DE LA EXPERIMENTACIÓN DEL SEGUNDO CASO PILOTO\n\n")
     result_file.write(f"Entradas totales: {combined_values['entradas_totales']} ({combined_percentages['entradas_totales']:.2f}%)\n")
     result_file.write(f"Cantidad de conocimiento obtenido: {combined_values['conocimiento']} ({combined_percentages['conocimiento']:.2f}%)\n")
-    result_file.write(f"Cantidad de casos sin clasificar ('NULL') obtenidos: {combined_values['null']} ({combined_percentages['null']:.2f}%)\n")
-    result_file.write(f"Cantidad de casos sin clasificar ('NULL') obtenidos en la fase de extracción: {combined_values['null_extraccion']} ({combined_percentages['null_extraccion']:.2f}%)\n")
-    result_file.write(f"Cantidad de casos sin clasificar ('NULL') obtenidos en la fase de validación: {combined_values['null_validacion']} ({combined_percentages['null_validacion']:.2f}%)\n")
-    result_file.write(f"Total de frases analizadas de casos sin clasificar ('NULL'): {combined_values['total_frases']}\n")
+    result_file.write(f"Cantidad de casos sin traducir ('NULL') obtenidos: {combined_values['null']} ({combined_percentages['null']:.2f}%)\n")
+    result_file.write(f"Cantidad de casos sin traducir ('NULL') obtenidos en la fase de extracción: {combined_values['null_extraccion']} ({combined_percentages['null_extraccion']:.2f}%)\n")
+    result_file.write(f"Cantidad de casos sin traducir ('NULL') obtenidos en la fase de validación: {combined_values['null_validacion']} ({combined_percentages['null_validacion']:.2f}%)\n")
+    result_file.write(f"Total de frases analizadas de casos sin traducir ('NULL'): {combined_values['total_frases']}\n")
     result_file.write(f"Correctas: {combined_values['correctas']} ({combined_percentages['correctas']:.2f}%)\n")
-    result_file.write(f"Incorrectas de tipo 1 (Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.): {combined_values['incorrectas_1']} ({combined_percentages['incorrectas_1']:.2f}%)\n")
-    result_file.write(f"Incorrectas de tipo 2 (La palabra que buscamos no aparece en la frase.): {combined_values['incorrectas_2']} ({combined_percentages['incorrectas_2']:.2f}%)\n")
+    result_file.write(f"Incorrectas de tipo 1 (Generacion de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase.): {combined_values['incorrectas_1']} ({combined_percentages['incorrectas_1']:.2f}%)\n")
+    result_file.write(f"Incorrectas de tipo 2 (la palabra a analizarno aparece en la frase.): {combined_values['incorrectas_2']} ({combined_percentages['incorrectas_2']:.2f}%)\n")
+    result_file.write(f"Incorrectas de tipo 3 (La relación obtenida no corresponde con un sustantivo.): {combined_values['incorrectas_3']} ({combined_percentages['incorrectas_3']:.2f}%)\n")

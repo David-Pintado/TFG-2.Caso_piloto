@@ -51,22 +51,16 @@ def knowledge_exploitation_process():
     # Fase 1: Recorrer el 'knowledge_table' para conseguir por cada entrada un conjunto de frases en la que aparece el word y sense
     # de un elemento del 'knowledge_table', con sus respectivas traducciones
     for (offset_word, attributes) in knowledge_table.items():
-        llm_answer_list = []
         llm_trads_answer_list = []
         prompt_list = componenteQuestionMaker_extraccion.generate_prompts((offset_word,attributes))
         for prompt in prompt_list:
             # Realizar la pregunta al modelo de lenguaje 
             llm_answer = componenteLLMCommunicator.run_the_model(prompt)
-            print(llm_answer)
+            attributes["Extraction LLM answers"] = [llm_answer]
             # Extraer la parte de la respuesta para su posterior tratado
-            llm_extracted_answer = componenteExtractor_conjuntoFrases.get_result(None, [llm_answer])
-            print(llm_extracted_answer)
+            (offset_word, attributes) = componenteExtractor_conjuntoFrases.get_result((offset_word,attributes), [llm_answer])
             # Obtener los prompts
-            llm_answer_list.append(llm_answer)
-            llm_answer_list.append(llm_extracted_answer)
-            attributes.append(llm_answer_list)
             trad_prompt_list = componenteQuestionMaker_traduccionInglesEspañol.generate_prompts((offset_word, attributes))
-            print(trad_prompt_list)
             # Recorrer las frases
             for trad_prompt in trad_prompt_list:
                 # Traducirla al español
@@ -78,38 +72,31 @@ def knowledge_exploitation_process():
         # Traducir el gloss al español
         translated_gloss_llm_answer = componenteLLMCommunicator.run_the_model(gloss_prompt_list[0])
         # Extraer la parte de la respuesta para su posterior tratado
-        spa_gloss = componenteExtractor_traduccion.get_result(None, [translated_gloss_llm_answer])
-        # Conseguir el resultado de la fase de extracción en base a lo devuelto por el modelo de lenguaje
-        result = componenteExtractor_faseExtraccion.get_result((offset_word,attributes),[attributes[4][0], llm_trads_answer_list])
+        (offset_word, attributes) = componenteExtractor_traduccion.get_result((offset_word, attributes), [translated_gloss_llm_answer])
         # Añadirlo al knowledge_table
-        if len(result) == 1:  
-            item_list = [attributes[0], attributes[1], spa_gloss, attributes[2], attributes[3], [attributes[4][0], llm_trads_answer_list], result[0]]
-            knowledge_table[offset_word] = item_list
-        elif len(result) == 5:
-            item_list = [attributes[0], attributes[1], spa_gloss, attributes[2], attributes[3], [attributes[4][0], llm_trads_answer_list], result[0], result[1], result[2], result[3], result[4]]
-            knowledge_table[offset_word] = item_list
-                
+        attributes["Extraction LLM answers"] = [attributes["Extraction LLM answers"][0], llm_trads_answer_list]
+        # Conseguir el element del knowledge_table con el resultado de la fase de extracción en
+        # base a lo devuelto por el modelo de lenguaje
+        (offset_word, attributes) = componenteExtractor_faseExtraccion.get_result((offset_word,attributes),[attributes["Extraction LLM answers"][0], llm_trads_answer_list])
+
     # Fase 2: Validar los resultados de la fase de extracción que no tengan NULL como valor. 
     # Para ello, se procede a recorrer el 'knowledge_table' para conseguir por cada entrada un conjunto
     # de frases en español en las que aparecen el 
-    #     - word (Provisional answer) 
+    #     - word (Extraction translation answer) 
     #     - sense (Traducido del inglés)
     # con sus respectivas traducciones al inglés.
     for (offset_word, attributes) in knowledge_table.items():
-        llm_answer_list = []
         llm_trads_answer_list = []
-        extraction_result = attributes[6]
-        if extraction_result != "NULL":
+        extraction_translation = attributes["Extraction translation"]
+        if extraction_translation != "NULL":
             prompt_list = componenteQuestionMaker_validacion.generate_prompts((offset_word,attributes))
             for prompt in prompt_list:
                 # Realizar la pregunta al modelo de lenguaje 
                 llm_answer = componenteLLMCommunicator.run_the_model(prompt)
+                attributes["Validation LLM answers"] = [llm_answer]
                 # Extraer la parte de la respuesta para su posterior tratado
-                llm_extracted_answer = componenteExtractor_conjuntoFrases.get_result(None, [llm_answer])
+                (offset_word, attributes) = componenteExtractor_conjuntoFrases.get_result((offset_word, attributes), [llm_answer])
                 # Obtener los prompts
-                llm_answer_list.append(llm_answer)
-                llm_answer_list.append(llm_extracted_answer)
-                attributes.append(llm_answer_list)
                 trad_prompt_list = componenteQuestionMaker_traduccionEspañolIngles.generate_prompts((offset_word, attributes))
                 # Recorremos las frases
                 for trad_prompt in trad_prompt_list:
@@ -117,25 +104,21 @@ def knowledge_exploitation_process():
                     translated_llm_answer = componenteLLMCommunicator.run_the_model(trad_prompt)
                     # Añadirlo a la lista
                     llm_trads_answer_list.append(translated_llm_answer)
-            result = componenteExtractor_faseValidacion.get_result((offset_word,attributes), [attributes[7][0], llm_trads_answer_list])
             # Añadirlo al knowledge_table
-            if len(result) == 1:  
-                item_list = [attributes[0], attributes[1], attributes[2], attributes[3], attributes[4], attributes[5], attributes[6], [attributes[7][0], llm_trads_answer_list], result[0]]
-                knowledge_table[offset_word] = item_list
-            elif len(result) == 5:
-                item_list = [attributes[0], attributes[1], attributes[2], attributes[3], attributes[4], attributes[5], attributes[6], [attributes[7][0], llm_trads_answer_list], result[0], result[1], result[2], result[3], result[4]]
-                knowledge_table[offset_word] = item_list
+            attributes["Validation LLM answers"] = [attributes["Validation LLM answers"][0], llm_trads_answer_list]
+            # Modificar element
+            (offset_word, attributes) = componenteExtractor_faseValidacion.get_result((offset_word,attributes), [attributes["Validation LLM answers"][0], llm_trads_answer_list])
         
     print('Knowledge exploitation process FINISHED')
     
     # Generar un JSON con la estructura de datos, para una mejor visualizacion
-    json_exploited_information = json.dumps(knowledge_table, indent=2, ensure_ascii=False)
+    json_knowledge_table = json.dumps(knowledge_table, indent=2, ensure_ascii=False)
     
     # Guardar el 'knowledge_table' en formato json en un archivo    
-    auxFunctions.save_json(file_path_knowledge_table_json,json_exploited_information)
+    auxFunctions.save_json(file_path_knowledge_table_json,json_knowledge_table)
     
     # Inicializar la instancia del Componente Exporter con la ruta del archivo a exportar
-    componenteExporter = ComponenteExporter(config['file_path']['exploited_information_file_path'])
+    componenteExporter = ComponenteExporter(config['file_path']['knowledge_table_file_path'])
     
     print('Knowledge export process STARTED')
     componenteExporter.export_knowledge(knowledge_table)

@@ -14,9 +14,9 @@ def generate_prompts(element):
     """
 
     prompt_list = []
-    word = element[1][6]
-    gloss = element[1][2]
-    phrases = element[1][7][1]
+    word = element[1]["Extraction translation"]
+    gloss = element[1]["Spanish gloss"]
+    phrases = element[1]["Validation LLM answers"][1]
     for phrase in phrases: 
         question = f"As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence '{phrase}', where the noun '{word}' appears in the sense of '{gloss}'."
         prompt_list.append(question)

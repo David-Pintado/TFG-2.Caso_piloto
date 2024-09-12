@@ -93,16 +93,16 @@ Using fallback chat format: llama-2
 Model loaded.
 Running model...
 
-llama_print_timings:        load time =   48363.55 ms
-llama_print_timings:      sample time =      66.73 ms /   106 runs   (    0.63 ms per token,  1588.56 tokens per second)
-llama_print_timings: prompt eval time =   48360.00 ms /    49 tokens (  986.94 ms per token,     1.01 tokens per second)
-llama_print_timings:        eval time =   57942.84 ms /   105 runs   (  551.84 ms per token,     1.81 tokens per second)
-llama_print_timings:       total time =  106748.94 ms /   154 tokens
+llama_print_timings:        load time =   14530.99 ms
+llama_print_timings:      sample time =      66.91 ms /   132 runs   (    0.51 ms per token,  1972.80 tokens per second)
+llama_print_timings: prompt eval time =   14529.75 ms /    49 tokens (  296.53 ms per token,     3.37 tokens per second)
+llama_print_timings:        eval time =   39869.11 ms /   131 runs   (  304.34 ms per token,     3.29 tokens per second)
+llama_print_timings:       total time =   54716.61 ms /   180 tokens
 Running model...
 Llama.generate: prefix-match hit
 
-llama_print_timings:        load time =   48363.55 ms
-llama_print_timings:      sample time =      59.25 ms /   127 runs   (    0.47 ms per token,  2143.60 tokens per second)
-llama_print_timings: prompt eval time =   12220.14 ms /    29 tokens (  421.38 ms per token,     2.37 tokens per second)
-llama_print_timings:        eval time =   46162.93 ms /   126 runs   (  366.37 ms per token,     2.73 tokens per second)
-llama_print_timings:       total time =   58862.12 ms /   155 tokens
+llama_print_timings:        load time =   14530.99 ms
+llama_print_timings:      sample time =      61.98 ms /   132 runs   (    0.47 ms per token,  2129.62 tokens per second)
+llama_print_timings: prompt eval time =    6914.91 ms /    29 tokens (  238.45 ms per token,     4.19 tokens per second)
+llama_print_timings:        eval time =   37196.25 ms /   131 runs   (  283.94 ms per token,     3.52 tokens per second)
+llama_print_timings:       total time =   44388.93 ms /   160 tokens

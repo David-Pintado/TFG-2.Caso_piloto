@@ -23,12 +23,10 @@ def get_result(element, llm_answer_list):
                 - El segundo elemento es una lista de respuestas del LLM a las traducciones de las frases anteriores
 
         Retorna:
-        - result (Lista)
-                - word: La palabra en español que corresponde al word de element 
-                - "NULL" (Y más información para analizar): No se ha conseguido encontrar la palabra en español correspondiente a word
+        - element (dict): Elemento de la estructura de datos 'knowledge_table', compuesto por key + attributes
+            con los atributos modificados.  
     """
     
-        
     # Lista de respuesta extraídas del LLM
     llm_extracted_answer_list_original = auxFunctions.extract_llm_answers_set_of_phrases(llm_answer_list[0])
     llm_extracted_answer_list_trads = []
@@ -38,17 +36,17 @@ def get_result(element, llm_answer_list):
     # Combinar las listas
     llm_extracted_answer = [list(par) for par in zip(llm_extracted_answer_list_original, llm_extracted_answer_list_trads)]
     
-    # Crear la lista del contenido completo del result
-    result = []
     # Crear el mensaje de información del estado de la entrada: 
     #   - Si es NULL, no se ha podido obtener un resultado a partir de la entrada
     #       message: "La entrada ha terminado su ejecución en la fase de extracción."
     #   - Si no es NULL, no se añade ningún mensaje
     message = "La entrada ha terminado su ejecución en la fase de extracción."
-    # Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.
+    # Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase
     count_incorrect_1 = 0
-    # Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.
+    # Incorrectas de tipo 2: la palabra a analizar no aparece en la frase
     count_incorrect_2 = 0
+    # Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo
+    count_incorrect_3 = 0
     # Lista de apariciones de word
     list_of_word_appearences = []
     # Respuesta provisional
@@ -120,11 +118,14 @@ def get_result(element, llm_answer_list):
                         # Añadirla a 'relationships_list'
                         if (tranlated_relationed_result, pos[1]) in nouns_with_positions_spanish:
                             relationships_list.append(tranlated_relationed_result)
+                        else:
+                            # Sumar Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo
+                            count_incorrect_3 += 1
             else:
-                # Sumar Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase. en caso de que no haya nouns
+                # Sumar Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase en caso de que no haya nouns
                 count_incorrect_1 += 1
         else:
-            # Sumar Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.
+            # Sumar Incorrectas de tipo 2: la palabra a analizar no aparece en la frase
             count_incorrect_2 += 1
         # Vaciar la lista
         list_of_word_appearences = []
@@ -152,26 +153,19 @@ def get_result(element, llm_answer_list):
             answer = found_element[0]
     else:
         answer = "NULL"
-    # Devolver el contenido completo del resultado provisional
+    # Comprobar el tipo de resultado obtenido en la fase de extraccion
     if answer == "NULL":
-        # Crea el primer elemento como un diccionario
-        correct_message = {
-            "Correctas.": len(relationships_list)
-        }
-        # Crea el segundo elemento como un diccionario
-        incorrect_message_1 = {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": count_incorrect_1
-        }
-        # Crea el tercer elemento como un diccionario
-        incorrect_message_2 = {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": count_incorrect_2
-        }
-        # Crea el cuarto elemento como un diccionario
-        information_message = {
-            "Mensaje de información" : message
-        }
-        result = [answer, correct_message, incorrect_message_1, incorrect_message_2, information_message]
-    else:
-        result = [answer]
-    return result
+        # Modificar el número de frases correctas
+        element[1]["Correctas"] = len(relationships_list)
+        # Modificar el número de frases incorrectas de tipo 1
+        element[1]["Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase"] = count_incorrect_1
+        # Modificar el número de frases incorrectas de tipo 2
+        element[1]["Incorrectas de tipo 2: la palabra a analizar no aparece en la frase"] = count_incorrect_2
+        # Modificar el número de frases incorrectas de tipo 3
+        element[1]["Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo"] = count_incorrect_3
+        # Modificar el mensaje de información de la fase en la que el proceso acaba
+        element[1]["Mensaje de información"] = message
+    # Modificar el resultado de la fase de extracción
+    element[1]["Extraction translation"] = answer
+    return (element[0], element[1])
             

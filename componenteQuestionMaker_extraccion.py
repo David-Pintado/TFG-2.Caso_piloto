@@ -14,7 +14,7 @@ def generate_prompts(element):
     
     offset_word = element[0]
     word = offset_word.split('_')[1]
-    gloss = element[1][1]
+    gloss = element[1]["English gloss"]
     question = f"As a linguistics expert, provide five sentences where the noun '{word}' appears in the sense of '{gloss}'."
     prompt_list = [question]
     

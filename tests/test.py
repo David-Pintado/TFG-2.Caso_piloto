@@ -15,9 +15,9 @@ import componenteQuestionMaker_traduccionGlosa
 import componenteQuestionMaker_traduccionInglesEspañol
 import componenteQuestionMaker_traduccionEspañolIngles
 from componenteLLMCommunicator import ComponenteLLMCommunicator
-import componenteExtractor_faseExtraccion
-import componenteExtractor_conjuntoFrases
 import componenteExtractor_traduccion
+import componenteExtractor_conjuntoFrases
+import componenteExtractor_faseExtraccion
 import componenteExtractor_faseValidacion
 from componenteExporter import ComponenteExporter
 
@@ -106,11 +106,41 @@ def component_importer_test():
     assert appearences_david == 0, "Should be 0"
     
     # Elemento que debe contener el knowledge_table
-    element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","n","eng"])
+    element_paper = ("eng-30-14974264-n_paper", {
+        "Sense index": "1",
+        "English gloss": "A material made of cellulose pulp derived mainly from wood or rags or certain grasses.",
+        "Spanish gloss": "NULL",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [],
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
     assert (element_paper[0], element_paper[1]) in knowledge_table.items(), "Should appear"
     
     # Elemento que debe contener el knowledge_table
-    element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","n","eng"])
+    element_year = ("eng-30-15203791-n_year", {
+        "Sense index": "1",
+        "English gloss": "A period of time containing 365 (or 366) days.",
+        "Spanish gloss": "NULL",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [],
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
     assert (element_year[0], element_year[1]) in knowledge_table.items(), "Should appear"
     
     # print the output
@@ -120,8 +150,38 @@ def component_importer_test():
 def component_question_maker_traduccion_glosa_test():
      
     # Elementos de prueba
-    element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","n","eng"])
-    element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","n","eng"])
+    element_paper = ("eng-30-14974264-n_paper", {
+        "Sense index": "1",
+        "English gloss": "A material made of cellulose pulp derived mainly from wood or rags or certain grasses.",
+        "Spanish gloss": "NULL",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [],
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
+    element_year = ("eng-30-15203791-n_year", {
+        "Sense index": "1",
+        "English gloss": "A period of time containing 365 (or 366) days.",
+        "Spanish gloss": "NULL",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [],
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
     
     prompts_paper = componenteQuestionMaker_traduccionGlosa.generate_prompts(element_paper)
     prompts_year = componenteQuestionMaker_traduccionGlosa.generate_prompts(element_year)
@@ -132,12 +192,13 @@ def component_question_maker_traduccion_glosa_test():
 def component_question_maker_traduccion_ingles_español_test():
      
     # Elementos de prueba
-    element_plant = ("eng-30-00017222-n_plant", [
-        "2",
-        "(botany) a living organism lacking the power of locomotion.",
-        "n",
-        "eng",
-        [
+    element_plant = ("eng-30-00017222-n_plant", {
+        "Sense index": "2",
+        "English gloss": "(botany) a living organism lacking the power of locomotion.",
+        "Spanish gloss": "NULL",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " 1. The plant, with its green leaves and sturdy stem, stood tall amidst the barren landscape.\n2. The botanist carefully examined the plant's intricate structure, noting the arrangement of its roots and branches.\n3. The plant's delicate petals opened to reveal a vibrant array of colors, attracting bees and butterflies alike.\n4. The plant's leaves, once lush and green, now wilted under the scorching sun, a victim of drought and neglect.\n5. The plant's seeds, carefully nurtured in the soil, sprouted into a new life, a testament to the power of nature and the cycle of life.",
             [
                 "The plant, with its green leaves and sturdy stem, stood tall amidst the barren landscape.",
@@ -146,15 +207,24 @@ def component_question_maker_traduccion_ingles_español_test():
                 "The plant's leaves, once lush and green, now wilted under the scorching sun, a victim of drought and neglect.",
                 "The plant's seeds, carefully nurtured in the soil, sprouted into a new life, a testament to the power of nature and the cycle of life."
             ]
-        ]
-    ])
+        ],
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
     
-    elemet_substance = ("eng-30-00019613-n_substance", [
-        "1",
-        "The real physical matter of which a person or thing consists.",
-        "n",
-        "eng",
-        [
+    elemet_substance = ("eng-30-00019613-n_substance", {
+        "Sense index": "1",
+        "English gloss": "The real physical matter of which a person or thing consists.",
+        "Spanish gloss": "NULL",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " 1. The substance of the rock is primarily composed of granite.\n2. The chemical substance of water is H2O.\n3. The substance of the human body is made up of various organs and tissues.\n4. The substance of the diamond is carbon, arranged in a crystalline structure.\n5. The substance of the air we breathe is primarily composed of nitrogen, oxygen, and trace amounts of other gases.",
             [
                 "The substance of the rock is primarily composed of granite.",
@@ -163,8 +233,16 @@ def component_question_maker_traduccion_ingles_español_test():
                 "The substance of the diamond is carbon, arranged in a crystalline structure.",
                 "The substance of the air we breathe is primarily composed of nitrogen, oxygen, and trace amounts of other gases."
             ]
-        ]
-    ])
+        ],
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
     
     prompts_plant = componenteQuestionMaker_traduccionInglesEspañol.generate_prompts(element_plant)
     prompts_substance = componenteQuestionMaker_traduccionInglesEspañol.generate_prompts(elemet_substance)
@@ -183,16 +261,16 @@ def component_question_maker_traduccion_ingles_español_test():
                                  "As an English to Spanish translation expert, I need an accurate translation into Spanish of the English sentence 'The substance of the air we breathe is primarily composed of nitrogen, oxygen, and trace amounts of other gases.', where the noun 'substance' appears in the sense of 'The real physical matter of which a person or thing consists.'."                      
                                 ], "Shold be true"
     
-def component_question_maker_traduccion_españolingles_test():
+def component_question_maker_traduccion_español_ingles_test():
     
     # Elementos de prueba
-    elemet_animal = ("eng-30-00015388-n_animal", [
-        "1",
-        "A living organism characterized by voluntary movement.",
-        "Un ser vivo con capacidad de movimiento voluntario.",
-        "n",
-        "eng",
-        [
+    elemet_animal = ("eng-30-00015388-n_animal", {
+        "Sense index": "1",
+        "English gloss": "A living organism characterized by voluntary movement.",
+        "Spanish gloss": "Un ser vivo con capacidad de movimiento voluntario.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " 1. The lion is a majestic animal that roams the African savannah.\n2. The elephant is the largest land animal and can weigh up to six tons.\n3. The cheetah is the fastest animal on land, capable of reaching speeds of over 70 miles per hour.\n4. The monkey is a primate animal that lives in trees and has opposable thumbs.\n5. The shark is a predatory animal that inhabits oceans around the world and can grow up to 30 feet long.",
             [
                 " El león es un animal majestuoso que pasea por las praderas africanas.",
@@ -202,8 +280,7 @@ def component_question_maker_traduccion_españolingles_test():
                 " El tiburón es un animal depredador que habita los océanos en todo el mundo y puede alcanzar una longitud de hasta 30 pies."
             ]
         ],
-        "animal",
-        [
+        "Validation LLM answers": [
             " 1. El leopardo es un animal grande y poderoso.\n2. La jirafa es un animal herbívoro que puede alcanzar alturas de hasta 5,5 metros.\n3. El elefante es un animal inteligente y social que vive en grupos.\n4. El tigre es un animal carnívoro que habita en las selvas tropicales.\n5. La ballena es un animal marino gigante que puede pesar hasta 180 toneladas.",
             [
                "El leopardo es un animal grande y poderoso.",
@@ -212,16 +289,23 @@ def component_question_maker_traduccion_españolingles_test():
                "El tigre es un animal carnívoro que habita en las selvas tropicales.",
                "La ballena es un animal marino gigante que puede pesar hasta 180 toneladas."
             ]
-        ]
-    ])
+        ],
+        "Extraction translation": "animal",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
     
-    element_cell = ("eng-30-00006484-n_cell", [
-        "2",
-        "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
-        "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
-        "n",
-        "eng",
-        [
+    element_cell = ("eng-30-00006484-n_cell", {
+        "Sense index": "2",
+        "English gloss": "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+        "Spanish gloss": "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
             [
                 " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
@@ -231,8 +315,7 @@ def component_question_maker_traduccion_españolingles_test():
                 " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
             ]
         ],
-        "célula",
-        [
+        "Validation LLM answers": [
             " 1. Las células son el bloque básico de la vida.\n2. La división celular es un proceso fundamental para la reproducción y el crecimiento.\n3. Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.\n4. Las células especializadas tienen funciones específicas en los organismos multicelulares.\n5. La investigación de las células ha revelado muchas verdades sobre la biología y la medicina.",
             [
                 "Las células son el bloque básico de la vida.",
@@ -242,9 +325,15 @@ def component_question_maker_traduccion_españolingles_test():
                 "La investigación de las células ha revelado muchas verdades sobre la biología y la medicina."
             ]
         ],
-        "célula"
-    ])
-    
+        "Extraction translation": "célula",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
+  
     prompts_animal = componenteQuestionMaker_traduccionEspañolIngles.generate_prompts(elemet_animal)
     
     assert prompts_animal == ["As an Spanish to English translation expert, I need an accurate translation into English of the Spanish sentence 'El leopardo es un animal grande y poderoso.', where the noun 'animal' appears in the sense of 'Un ser vivo con capacidad de movimiento voluntario.'.",
@@ -266,8 +355,38 @@ def component_question_maker_traduccion_españolingles_test():
 def component_question_maker_extraccion_test():
      
     # Elementos de prueba
-    element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","n","eng"])
-    element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","n","eng"])
+    element_paper = ("eng-30-14974264-n_paper", {
+        "Sense index": "1",
+        "English gloss": "A material made of cellulose pulp derived mainly from wood or rags or certain grasses.",
+        "Spanish gloss": "NULL",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [],
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
+    element_year = ("eng-30-15203791-n_year", {
+        "Sense index": "1",
+        "English gloss": "A period of time containing 365 (or 366) days.",
+        "Spanish gloss": "NULL",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [],
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
     
     prompts_paper = componenteQuestionMaker_extraccion.generate_prompts(element_paper)
     prompts_year = componenteQuestionMaker_extraccion.generate_prompts(element_year)
@@ -278,13 +397,13 @@ def component_question_maker_extraccion_test():
 def component_question_maker_validacion_test():
     
     # Elementos de prueba
-    element_plant = ("eng-30-00017222-n_plant", [
-        "2",
-        "(botany) a living organism lacking the power of locomotion.",
-        "(botánica) una entidad viviente que no posee la capacidad de movimiento.",
-        "n",
-        "eng",
-        [
+    element_plant = ("eng-30-00017222-n_plant", {
+        "Sense index": "2",
+        "English gloss": "(botany) a living organism lacking the power of locomotion.",
+        "Spanish gloss": "(botánica) una entidad viviente que no posee la capacidad de movimiento.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " 1. The plant, with its green leaves and sturdy stem, stood tall amidst the barren landscape.\n2. The botanist carefully examined the plant's intricate structure, noting the arrangement of its roots and branches.\n3. The plant's delicate petals opened to reveal a vibrant array of colors, attracting bees and butterflies alike.\n4. The plant's leaves, once lush and green, now wilted under the scorching sun, a victim of drought and neglect.\n5. The plant's seeds, carefully nurtured in the soil, sprouted into a new life, a testament to the power of nature and the cycle of life.",
             [
                 " La planta, con sus hojas verdes y su tronco firme, se erguía en medio del paisaje árido.",
@@ -294,16 +413,23 @@ def component_question_maker_validacion_test():
                 " Las semillas de la planta, cuidadosamente nutridas en el suelo, brotaron en una nueva vida, un testimonio del poder de la naturaleza y el ciclo de la vida.",      
             ]
         ],
-        "planta"
-    ])
+        "Validation LLM answers": [],
+        "Extraction translation": "planta",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
     
-    elemet_substance = ("eng-30-00019613-n_substance", [
-        "1",
-        "The real physical matter of which a person or thing consists.",
-        "La materia física real de la que consta una persona o cosa.",
-        "n",
-        "eng",
-        [
+    elemet_substance = ("eng-30-00019613-n_substance",  {
+        "Sense index": "1",
+        "English gloss": "The real physical matter of which a person or thing consists.",
+        "Spanish gloss": "La materia física real de la que consta una persona o cosa.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " 1. The substance of the rock is primarily composed of granite.\n2. The chemical substance of water is H2O.\n3. The substance of the human body is made up of various organs and tissues.\n4. The substance of the diamond is carbon, arranged in a crystalline structure.\n5. The substance of the air we breathe is primarily composed of nitrogen, oxygen, and trace amounts of other gases.",
             [
                 " La sustancia de la roca está principalmente compuesta de granito.",
@@ -313,9 +439,16 @@ def component_question_maker_validacion_test():
                 " La sustancia principal del aire que respiramos está compuesta por nitrógeno, oxígeno y pequeñas cantidades de otros gases.",
             ]
         ],
-        "sustancia"
-    ])
-     
+        "Validation LLM answers": [],
+        "Extraction translation": "sustancia",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
+    
     prompts_plant = componenteQuestionMaker_validacion.generate_prompts(element_plant)
     prompts_substance = componenteQuestionMaker_validacion.generate_prompts(elemet_substance)
     
@@ -387,8 +520,38 @@ def component_llm_communicator_test():
         componenteLLMCommunicator.load_model()
         
         # Elementos de prueba
-        element_paper = ("eng-30-14974264-n_paper", ["1","A material made of cellulose pulp derived mainly from wood or rags or certain grasses.","n","eng"])
-        element_year = ("eng-30-15203791-n_year", ["1","A period of time containing 365 (or 366) days.","n","eng"])
+        element_paper = ("eng-30-14974264-n_paper", {
+            "Sense index": "1",
+            "English gloss": "A material made of cellulose pulp derived mainly from wood or rags or certain grasses.",
+            "Spanish gloss": "NULL",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [],
+            "Validation LLM answers": [],
+            "Extraction translation": "NULL",
+            "Validation translation": "NULL",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        })
+        element_year = ("eng-30-15203791-n_year", {
+            "Sense index": "1",
+            "English gloss": "A period of time containing 365 (or 366) days.",
+            "Spanish gloss": "NULL",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [],
+            "Validation LLM answers": [],
+            "Extraction translation": "NULL",
+            "Validation translation": "NULL",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        })
     
         # Pruebas de preguntas
         prompts_paper = componenteQuestionMaker_extraccion.generate_prompts(element_paper)
@@ -435,29 +598,259 @@ def component_llm_communicator_test():
         
     # Cierra el archivo
     archivo_salida.close()
+    
+def component_extractor_translation_test():
+    
+    element_credit = ('eng-30-00065855-n_credit', {
+        'Sense index': '6',
+        'English gloss': 'Recognition by a college or university that a course of studies has been successfully completed; typically measured in semester hours.',
+        'Spanish gloss': 'NULL',
+        'Part of speech': 'n',
+        'Language': 'eng',
+        'Extraction LLM answers': [
+            ' 1. The student received credit for completing the introductory course on computer programming with a grade of B+.\n2. After passing the final exam, Sarah earned three credits towards her degree in psychology.\n3. The summer school program offered by the university awarded students up to six credits for each course completed.\n4. In order to graduate, students must have accumulated at least 120 credits from approved courses.\n5. The transfer student was granted credit for the equivalent of two semesters of college-level French language classes.', 
+            [
+                'The student received credit for completing the introductory course on computer programming with a grade of B+.',
+                'After passing the final exam, Sarah earned three credits towards her degree in psychology.',
+                'The summer school program offered by the university awarded students up to six credits for each course completed.',
+                'In order to graduate, students must have accumulated at least 120 credits from approved courses.',
+                'The transfer student was granted credit for the equivalent of two semesters of college-level French language classes.'
+            ]
+        ],
+        'Validation LLM answers': [],
+        'Extraction translation': 'NULL',
+        'Validation translation': 'NULL',
+        'Correctas': 0,
+        'Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase': 0,
+        'Incorrectas de tipo 2: la palabra a analizar no aparece en la frase': 0,
+        'Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo': 0,
+        'Mensaje de información': 'NULL'
+    })
+    
+    llm_answer = [" 'Reconocimiento de una universidad o colegio por la completa realización de un curso de estudios, medido en horas semestrales.'."]
+    
+    result_credit = componenteExtractor_traduccion.get_result(element_credit, llm_answer)
+    
+    expected_result_credit = ('eng-30-00065855-n_credit', {
+        'Sense index': '6',
+        'English gloss': 'Recognition by a college or university that a course of studies has been successfully completed; typically measured in semester hours.',
+        'Spanish gloss': 'Reconocimiento de una universidad o colegio por la completa realización de un curso de estudios, medido en horas semestrales.',
+        'Part of speech': 'n',
+        'Language': 'eng',
+        'Extraction LLM answers': [
+            ' 1. The student received credit for completing the introductory course on computer programming with a grade of B+.\n2. After passing the final exam, Sarah earned three credits towards her degree in psychology.\n3. The summer school program offered by the university awarded students up to six credits for each course completed.\n4. In order to graduate, students must have accumulated at least 120 credits from approved courses.\n5. The transfer student was granted credit for the equivalent of two semesters of college-level French language classes.', 
+            [
+                'The student received credit for completing the introductory course on computer programming with a grade of B+.',
+                'After passing the final exam, Sarah earned three credits towards her degree in psychology.',
+                'The summer school program offered by the university awarded students up to six credits for each course completed.',
+                'In order to graduate, students must have accumulated at least 120 credits from approved courses.',
+                'The transfer student was granted credit for the equivalent of two semesters of college-level French language classes.'
+            ]
+        ],
+        'Validation LLM answers': [],
+        'Extraction translation': 'NULL',
+        'Validation translation': 'NULL',
+        'Correctas': 0,
+        'Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase': 0,
+        'Incorrectas de tipo 2: la palabra a analizar no aparece en la frase': 0,
+        'Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo': 0,
+        'Mensaje de información': 'NULL'
+    })
+    
+    assert expected_result_credit == result_credit, "Should be true"
+    
+    element_food = ('eng-30-00021265-n_food', {
+        'Sense index': '1',
+        'English gloss': 'Any substance that can be metabolized by an animal to give energy and build tissue.',
+        'Spanish gloss': 'NULL',
+        'Part of speech': 'n',
+        'Language': 'eng',
+        'Extraction LLM answers': [
+            ' 1. The farmer grew crops such as wheat, corn, and soybeans for food.\n2. The chef prepared a delicious meal consisting of grilled chicken, roasted vegetables, and steamed rice for dinner.\n3. The nutritionist recommended a balanced diet that included fruits, vegetables, whole grains, lean protein, and healthy fats for optimal health.\n4. The traveler packed snacks such as granola bars, trail mix, and dried fruit for the long hike in the mountains.\n5. The food bank distributed canned goods, fresh produce, and dairy products to families in need.',
+            [
+                'The farmer grew crops such as wheat, corn, and soybeans for food.',
+                'The chef prepared a delicious meal consisting of grilled chicken, roasted vegetables, and steamed rice for dinner.',
+                'The nutritionist recommended a balanced diet that included fruits, vegetables, whole grains, lean protein, and healthy fats for optimal health.',
+                'The traveler packed snacks such as granola bars, trail mix, and dried fruit for the long hike in the mountains.',
+                'The food bank distributed canned goods, fresh produce, and dairy products to families in need.'
+            ]
+        ],
+        'Validation LLM answers': [],
+        'Extraction translation': 'NULL',
+        'Validation translation': 'NULL',
+        'Correctas': 0,
+        'Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase': 0,
+        'Incorrectas de tipo 2: la palabra a analizar no aparece en la frase': 0,
+        'Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo': 0,
+        'Mensaje de información': 'NULL'
+    })
 
-def component_extractor_test():
+    llm_answer_2 = [" 'Cualquier sustancia que pueda ser metabolizada por un animal para dar energía y construir tejido'."]
+    
+    result_food = componenteExtractor_traduccion.get_result(element_food, llm_answer_2)
+    
+    expected_result_food = ('eng-30-00021265-n_food', {
+        'Sense index': '1',
+        'English gloss': 'Any substance that can be metabolized by an animal to give energy and build tissue.',
+        'Spanish gloss': 'Cualquier sustancia que pueda ser metabolizada por un animal para dar energía y construir tejido.',
+        'Part of speech': 'n',
+        'Language': 'eng',
+        'Extraction LLM answers': [
+            ' 1. The farmer grew crops such as wheat, corn, and soybeans for food.\n2. The chef prepared a delicious meal consisting of grilled chicken, roasted vegetables, and steamed rice for dinner.\n3. The nutritionist recommended a balanced diet that included fruits, vegetables, whole grains, lean protein, and healthy fats for optimal health.\n4. The traveler packed snacks such as granola bars, trail mix, and dried fruit for the long hike in the mountains.\n5. The food bank distributed canned goods, fresh produce, and dairy products to families in need.',
+            [
+                'The farmer grew crops such as wheat, corn, and soybeans for food.',
+                'The chef prepared a delicious meal consisting of grilled chicken, roasted vegetables, and steamed rice for dinner.',
+                'The nutritionist recommended a balanced diet that included fruits, vegetables, whole grains, lean protein, and healthy fats for optimal health.',
+                'The traveler packed snacks such as granola bars, trail mix, and dried fruit for the long hike in the mountains.',
+                'The food bank distributed canned goods, fresh produce, and dairy products to families in need.'
+            ]
+        ],
+        'Validation LLM answers': [],
+        'Extraction translation': 'NULL',
+        'Validation translation': 'NULL',
+        'Correctas': 0,
+        'Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase': 0,
+        'Incorrectas de tipo 2: la palabra a analizar no aparece en la frase': 0,
+        'Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo': 0,
+        'Mensaje de información': 'NULL'
+    })
+    
+    assert expected_result_food == result_food, "Should be true"
+
+def component_extractor_set_of_phrases_test():
+    
+    element_credit = ('eng-30-00065855-n_credit', {
+        'Sense index': '6',
+        'English gloss': 'Recognition by a college or university that a course of studies has been successfully completed; typically measured in semester hours.',
+        'Spanish gloss': 'NULL',
+        'Part of speech': 'n',
+        'Language': 'eng',
+        'Extraction LLM answers': [
+            ' 1. The student received credit for completing the introductory course on computer programming with a grade of B+.\n2. After passing the final exam, Sarah earned three credits towards her degree in psychology.\n3. The summer school program offered by the university awarded students up to six credits for each course completed.\n4. In order to graduate, students must have accumulated at least 120 credits from approved courses.\n5. The transfer student was granted credit for the equivalent of two semesters of college-level French language classes.'
+        ],
+        'Validation LLM answers': [],
+        'Extraction translation': 'NULL',
+        'Validation translation': 'NULL',
+        'Correctas': 0,
+        'Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase': 0,
+        'Incorrectas de tipo 2: la palabra a analizar no aparece en la frase': 0,
+        'Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo': 0,
+        'Mensaje de información': 'NULL'
+    })
+
+    llm_answer = [' 1. The student received credit for completing the introductory course on computer programming with a grade of B+.\n2. After passing the final exam, Sarah earned three credits towards her degree in psychology.\n3. The summer school program offered by the university awarded students up to six credits for each course completed.\n4. In order to graduate, students must have accumulated at least 120 credits from approved courses.\n5. The transfer student was granted credit for the equivalent of two semesters of college-level French language classes.']
+    
+    result_credit = componenteExtractor_conjuntoFrases.get_result(element_credit, llm_answer)
+    
+    expected_element_credit = ('eng-30-00065855-n_credit', {
+        'Sense index': '6',
+        'English gloss': 'Recognition by a college or university that a course of studies has been successfully completed; typically measured in semester hours.',
+        'Spanish gloss': 'NULL',
+        'Part of speech': 'n',
+        'Language': 'eng', 
+        'Extraction LLM answers': [
+            ' 1. The student received credit for completing the introductory course on computer programming with a grade of B+.\n2. After passing the final exam, Sarah earned three credits towards her degree in psychology.\n3. The summer school program offered by the university awarded students up to six credits for each course completed.\n4. In order to graduate, students must have accumulated at least 120 credits from approved courses.\n5. The transfer student was granted credit for the equivalent of two semesters of college-level French language classes.',
+            [
+                'The student received credit for completing the introductory course on computer programming with a grade of B+.',
+                'After passing the final exam, Sarah earned three credits towards her degree in psychology.',
+                'The summer school program offered by the university awarded students up to six credits for each course completed.',
+                'In order to graduate, students must have accumulated at least 120 credits from approved courses.',
+                'The transfer student was granted credit for the equivalent of two semesters of college-level French language classes.'
+            ]
+        ],
+        'Validation LLM answers': [],
+        'Extraction translation': 'NULL',
+        'Validation translation': 'NULL',
+        'Correctas': 0,
+        'Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase': 0,
+        'Incorrectas de tipo 2: la palabra a analizar no aparece en la frase': 0,
+        'Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo': 0,
+        'Mensaje de información': 'NULL'
+    })
+    
+    assert result_credit == expected_element_credit, "Should be true"
+    
+    element_food = ('eng-30-00021265-n_food', {
+        'Sense index': '1',
+        'English gloss': 'Any substance that can be metabolized by an animal to give energy and build tissue.',
+        'Spanish gloss': 'NULL',
+        'Part of speech': 'n',
+        'Language': 'eng',
+        'Extraction LLM answers': [
+            ' 1. The farmer grew crops such as wheat, corn, and soybeans for food.\n2. The chef prepared a delicious meal consisting of grilled chicken, roasted vegetables, and steamed rice for dinner.\n3. The nutritionist recommended a balanced diet that included fruits, vegetables, whole grains, lean protein, and healthy fats for optimal health.\n4. The traveler packed snacks such as granola bars, trail mix, and dried fruit for the long hike in the mountains.\n5. The food bank distributed canned goods, fresh produce, and dairy products to families in need.'
+        ],
+        'Validation LLM answers': [],
+        'Extraction translation': 'NULL',
+        'Validation translation': 'NULL',
+        'Correctas': 0,
+        'Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase': 0,
+        'Incorrectas de tipo 2: la palabra a analizar no aparece en la frase': 0,
+        'Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo': 0,
+        'Mensaje de información': 'NULL'
+    })
+
+    llm_answer_2 = [' 1. The farmer grew crops such as wheat, corn, and soybeans for food.\n2. The chef prepared a delicious meal consisting of grilled chicken, roasted vegetables, and steamed rice for dinner.\n3. The nutritionist recommended a balanced diet that included fruits, vegetables, whole grains, lean protein, and healthy fats for optimal health.\n4. The traveler packed snacks such as granola bars, trail mix, and dried fruit for the long hike in the mountains.\n5. The food bank distributed canned goods, fresh produce, and dairy products to families in need.']
+    
+    result_food = componenteExtractor_conjuntoFrases.get_result(element_food, llm_answer_2)
+    
+    expected_element_food = ('eng-30-00021265-n_food', {
+        'Sense index': '1',
+        'English gloss': 'Any substance that can be metabolized by an animal to give energy and build tissue.',
+        'Spanish gloss': 'NULL',
+        'Part of speech': 'n',
+        'Language': 'eng',
+        'Extraction LLM answers': [
+            ' 1. The farmer grew crops such as wheat, corn, and soybeans for food.\n2. The chef prepared a delicious meal consisting of grilled chicken, roasted vegetables, and steamed rice for dinner.\n3. The nutritionist recommended a balanced diet that included fruits, vegetables, whole grains, lean protein, and healthy fats for optimal health.\n4. The traveler packed snacks such as granola bars, trail mix, and dried fruit for the long hike in the mountains.\n5. The food bank distributed canned goods, fresh produce, and dairy products to families in need.',
+            [
+                'The farmer grew crops such as wheat, corn, and soybeans for food.',
+                'The chef prepared a delicious meal consisting of grilled chicken, roasted vegetables, and steamed rice for dinner.',
+                'The nutritionist recommended a balanced diet that included fruits, vegetables, whole grains, lean protein, and healthy fats for optimal health.',
+                'The traveler packed snacks such as granola bars, trail mix, and dried fruit for the long hike in the mountains.',
+                'The food bank distributed canned goods, fresh produce, and dairy products to families in need.'
+            ]
+        ],
+        'Validation LLM answers': [],
+        'Extraction translation': 'NULL',
+        'Validation translation': 'NULL',
+        'Correctas': 0,
+        'Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase': 0,
+        'Incorrectas de tipo 2: la palabra a analizar no aparece en la frase': 0,
+        'Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo': 0,
+        'Mensaje de información': 'NULL'
+    })
+    
+    assert expected_element_food == result_food, "Should be true"
+
+def component_extractor_extraccion_test():
     
     # --------------------------------------   Prueba 1   -------------------------------------------
         
     # Elementos de prueba
-    element_cell = ("eng-30-00006484-n_cell", [
-        "2",
-        "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
-        "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
-        "n",
-        "eng",
-        [
-            " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
-            [
-                " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
-                " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
-                " Las células son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
-                " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
-                " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
-            ]
-        ]
-    ])
+    element_cell = ("eng-30-00006484-n_cell", {
+            "Sense index": "2",
+            "English gloss": "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+            "Spanish gloss": "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
+                [
+                    " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
+                    " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
+                    " Las células son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
+                    " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
+                    " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
+                ]
+            ],
+            "Validation LLM answers": [],
+            "Extraction translation": "NULL",
+            "Validation translation": "NULL",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+    })
     
     llm_answer_list_1 = [
             " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
@@ -472,28 +865,62 @@ def component_extractor_test():
     
     result_cell = componenteExtractor_faseExtraccion.get_result(element_cell, llm_answer_list_1)
     
-    assert result_cell == ['célula'], "Should be ['célula']"
+    expected_element_cell = ("eng-30-00006484-n_cell", {
+        "Sense index": "2",
+        "English gloss": "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+        "Spanish gloss": "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
+            " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
+            [
+                " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
+                " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
+                " Las células son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
+                " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
+                " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
+            ]
+        ],
+        "Validation LLM answers": [],
+        "Extraction translation": "célula",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
+    
+    assert result_cell == expected_element_cell, "Should be true"
     
     # --------------------------------------   Prueba 2   -------------------------------------------
    
     # Elementos de prueba
-    element_cause = ("eng-30-00007347-n_cause", [
-        "4",
-        "Any entity that produces an effect or is responsible for events or results.",
-        "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
-        "n",
-        "eng",
-        [
-            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
-            [
-                " La causa del accidente fue un sistema de frenos defectuoso.",
-                " La falta de lluvias es la causa principal de la sequía.",
-                " La causa de la salida de la enfermedad se puede rastrear hasta la comida contaminada.",
-                " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación relajada.",
-                " La causa de la explosión fue una fuga de gas en el conducto."
-            ]
-        ]
-    ])
+    element_cause = ("eng-30-00007347-n_cause", {
+            "Sense index": "4",
+            "English gloss": "Any entity that produces an effect or is responsible for events or results.",
+            "Spanish gloss": "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
+                [
+                    " La causa del accidente fue un sistema de frenos defectuoso.",
+                    " La falta de lluvias es la causa principal de la sequía.",
+                    " La causa de la salida de la enfermedad se puede rastrear hasta la comida contaminada.",
+                    " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación relajada.",
+                    " La causa de la explosión fue una fuga de gas en el conducto."
+                ]
+            ],
+            "Validation LLM answers": [],
+            "Extraction translation": "NULL",
+            "Validation translation": "NULL",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+    })
     
     llm_answer_list_2 = [
             " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
@@ -508,11 +935,37 @@ def component_extractor_test():
 
     result_cause = componenteExtractor_faseExtraccion.get_result(element_cause, llm_answer_list_2)
     
-    assert result_cause == ['causa'], "Should be ['causa']"
+    expected_element_cause = ("eng-30-00007347-n_cause", {
+        "Sense index": "4",
+        "English gloss": "Any entity that produces an effect or is responsible for events or results.",
+        "Spanish gloss": "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
+            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
+            [
+                " La causa del accidente fue un sistema de frenos defectuoso.",
+                " La falta de lluvias es la causa principal de la sequía.",
+                " La causa de la salida de la enfermedad se puede rastrear hasta la comida contaminada.",
+                " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación relajada.",
+                " La causa de la explosión fue una fuga de gas en el conducto."
+            ]
+        ],
+        "Validation LLM answers": [],
+        "Extraction translation": "causa",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "NULL"
+    })
+    
+    assert result_cause == expected_element_cause, "Should be True"
     
     # --------------------------------------   Prueba 3   -------------------------------------------
     
-    llm_answer_list_3 =     llm_answer_list_1 = [
+    llm_answer_list_3 = [
             " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
             [
                 " La célula procariota es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
@@ -525,21 +978,13 @@ def component_extractor_test():
     
     result_cell_2 = componenteExtractor_faseExtraccion.get_result(element_cause, llm_answer_list_3)
     
-    assert result_cell_2 == ['NULL', {'Correctas.': 0}, {'Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.': 0}, {'Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.': 5}, {'Mensaje de información': 'La entrada ha terminado su ejecución en la fase de extracción.'}], "Should be true"
-     
-
-    
-def component_validator_test():
-        
-    # --------------------------------------   Prueba 1   -------------------------------------------
-    
-    element_cause = ("eng-30-00007347-n_cause", [
-        "4",
-        "Any entity that produces an effect or is responsible for events or results.",
-        "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
-        "n",
-        "eng",
-        [
+    expected_element_cause_2 = ("eng-30-00007347-n_cause", {
+        "Sense index": "4",
+        "English gloss": "Any entity that produces an effect or is responsible for events or results.",
+        "Spanish gloss": "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
             [
                 " La causa del accidente fue un sistema de frenos defectuoso.",
@@ -549,8 +994,41 @@ def component_validator_test():
                 " La causa de la explosión fue una fuga de gas en el conducto."
             ]
         ],
-        "causa",
-        [
+        "Validation LLM answers": [],
+        "Extraction translation": "NULL",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 5,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "La entrada ha terminado su ejecución en la fase de extracción."
+    })
+    
+    assert result_cell_2 == expected_element_cause_2, "Should be true"
+     
+
+    
+def component_extractor_validacion_test():
+        
+    # --------------------------------------   Prueba 1   -------------------------------------------
+    
+    element_cause = ("eng-30-00007347-n_cause", {
+        "Sense index": "4",
+        "English gloss": "Any entity that produces an effect or is responsible for events or results.",
+        "Spanish gloss": "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
+            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
+            [
+                " La causa del accidente fue un sistema de frenos defectuoso.",
+                " La falta de lluvias es la causa principal de la sequía.",
+                " La causa de la salida de la enfermedad se puede rastrear hasta la comida contaminada.",
+                " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación relajada.",
+                " La causa de la explosión fue una fuga de gas en el conducto."
+            ]
+        ],
+        "Validation LLM answers": [
             " 1) La causa del accidente fue la falta de atención del conductor.\n2) El cambio climático es una causa preocupante para la supervivencia de las especies en peligro.\n3) La pobreza es una causa importante de la mortalidad infantil en muchos países.\n4) La falta de educación es una causa de la desigualdad social.\n5) El estrés es una causa común de problemas de salud mental.",
             [
                 " The cause of the accident was the lack of attention by the driver.",
@@ -559,10 +1037,44 @@ def component_validator_test():
                 " The lack of education is a cause of social inequality.",
                 " Stress is a common cause of mental health problems."
             ]
-        ]
-    ])
+        ],
+        "Extraction translation": "causa",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 5,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "La entrada ha terminado su ejecución en la fase de extracción."
+    })
     
     llm_answer_list_1 = [
+        " 1) La causa del accidente fue la falta de atención del conductor.\n2) El cambio climático es una causa preocupante para la supervivencia de las especies en peligro.\n3) La pobreza es una causa importante de la mortalidad infantil en muchos países.\n4) La falta de educación es una causa de la desigualdad social.\n5) El estrés es una causa común de problemas de salud mental.",
+        [
+            " The cause of the accident was the lack of attention by the driver.",
+            " The climate change is a concerning cause for the survival of endangered species.",
+            " Poverty is a significant cause of childhood mortality in many countries.",
+            " The lack of education is a cause of social inequality.",
+            " Stress is a common cause of mental health problems."
+        ]
+    ]
+    
+    expected_element_cause = ("eng-30-00007347-n_cause", {
+        "Sense index": "4",
+        "English gloss": "Any entity that produces an effect or is responsible for events or results.",
+        "Spanish gloss": "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
+            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.\n5. The cause of the explosion was a gas leak in the pipeline.",
+            [
+                " La causa del accidente fue un sistema de frenos defectuoso.",
+                " La falta de lluvias es la causa principal de la sequía.",
+                " La causa de la salida de la enfermedad se puede rastrear hasta la comida contaminada.",
+                " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación relajada.",
+                " La causa de la explosión fue una fuga de gas en el conducto."
+            ]
+        ],
+        "Validation LLM answers": [
             " 1) La causa del accidente fue la falta de atención del conductor.\n2) El cambio climático es una causa preocupante para la supervivencia de las especies en peligro.\n3) La pobreza es una causa importante de la mortalidad infantil en muchos países.\n4) La falta de educación es una causa de la desigualdad social.\n5) El estrés es una causa común de problemas de salud mental.",
             [
                 " The cause of the accident was the lack of attention by the driver.",
@@ -571,21 +1083,29 @@ def component_validator_test():
                 " The lack of education is a cause of social inequality.",
                 " Stress is a common cause of mental health problems."
             ]
-        ]
+        ],
+        "Extraction translation": "causa",
+        "Validation translation": "causa",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 5,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "La entrada ha terminado su ejecución en la fase de extracción."
+    })
     
     result_cause = componenteExtractor_faseValidacion.get_result(element_cause, llm_answer_list_1)
     
-    assert result_cause == ['causa'], "Should be ['causa']"
+    assert result_cause == expected_element_cause, "Should be True"
     
     # --------------------------------------   Prueba 2   -------------------------------------------
     
-    element_cell = ("eng-30-00006484-n_cell", [
-        "2",
-        "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
-        "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
-        "n",
-        "eng",
-        [
+    element_cell = ("eng-30-00006484-n_cell", {
+        "Sense index": "2",
+        "English gloss": "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+        "Spanish gloss": "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
             [
                 " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
@@ -595,8 +1115,7 @@ def component_validator_test():
                 " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
             ]
         ],
-        "célula",
-        [
+        "Validation LLM answers": [
             " 1. Las células son el bloque básico de la vida.\n2. La división celular es un proceso fundamental para la reproducción y el crecimiento.\n3. Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.\n4. Las células especializadas tienen funciones específicas en los organismos multicelulares.\n5. La investigación de las células ha revelado muchas verdades sobre la biología y la medicina.",
             [
                 " Cells are the fundamental building blocks of life.",
@@ -605,10 +1124,17 @@ def component_validator_test():
                 " 'The specialized cells have specific functions in multicellular organisms.'",
                 " The investigation of cells has revealed many truths about biology and medicine."
             ]
-        ]
-    ])
+        ],
+        "Extraction translation": "célula",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 5,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "La entrada ha terminado su ejecución en la fase de extracción."
+    })
     
-    llm_answer_list_2 =         [
+    llm_answer_list_2 = [
             " 1. Las células son el bloque básico de la vida.\n2. La división celular es un proceso fundamental para la reproducción y el crecimiento.\n3. Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.\n4. Las células especializadas tienen funciones específicas en los organismos multicelulares.\n5. La investigación de las células ha revelado muchas verdades sobre la biología y la medicina.",
             [
                 " Cells are the fundamental building blocks of life.",
@@ -621,17 +1147,52 @@ def component_validator_test():
         
     result_cell = componenteExtractor_faseValidacion.get_result(element_cell, llm_answer_list_2)
     
-    assert result_cell == ['célula'], "Should be ['célula']"
+    expected_element_cell = ("eng-30-00006484-n_cell", {
+        "Sense index": "2",
+        "English gloss": "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+        "Spanish gloss": "(biología) la unidad estructural y funcional básica de todas las organizaciones vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
+            " 1. The cell is a fundamental building block of all living organisms, providing structure and facilitating essential biological processes.\n2. In multicellular organisms, cells work together to form complex tissues and organs that enable the organism to carry out its functions.\n3. Cells are capable of reproducing through binary fission or other means, allowing for growth and development in both unicellular and multicellular organisms.\n4. The cell membrane is a crucial component of the cell, regulating the exchange of materials between the cell and its environment.\n5. Cells contain various organelles that perform specific functions, such as the mitochondria which generate energy through cellular respiration or the chloroplasts in plant cells that carry out photosynthesis.",
+            [
+                " La célula es el bloque básico de construcción fundamental en todas las entidades vivientes, proporcionando estructura y facilitando procesos biológicos esenciales.",
+                " En los seres multicelulares, las células trabajan juntas para formar tejidos y órganos complejos que permiten al organismo llevar a cabo sus funciones.",
+                " Las células son capaces de reproducirse a través de la fisión binaria o otros medios, lo que permite el crecimiento y el desarrollo tanto en organismos unicelulares como en multicelulares.",
+                " La membrana celular es un componente crucial de la célula, regulando el intercambio de materiales entre la célula y su entorno.",
+                " Las células contienen varias organelas que realizan funciones específicas, como las mitocondrias que generan energía a través de la respiración celular o los cloroplastos en las células vegetales que llevan a cabo la fotosíntesis."
+            ]
+        ],
+        "Validation LLM answers": [
+            " 1. Las células son el bloque básico de la vida.\n2. La división celular es un proceso fundamental para la reproducción y el crecimiento.\n3. Cada célula contiene una copia completa del ADN, pero solo una pequeña parte se expresa en cualquier momento.\n4. Las células especializadas tienen funciones específicas en los organismos multicelulares.\n5. La investigación de las células ha revelado muchas verdades sobre la biología y la medicina.",
+            [
+                " Cells are the fundamental building blocks of life.",
+                " The cell division process is a fundamental one for reproduction and growth.",
+                " Each cell contains a complete copy of DNA, but only a small portion is expressed at any given time.",
+                " 'The specialized cells have specific functions in multicellular organisms.'",
+                " The investigation of cells has revealed many truths about biology and medicine."
+            ]
+        ],
+        "Extraction translation": "célula",
+        "Validation translation": "célula",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 5,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "La entrada ha terminado su ejecución en la fase de extracción."
+    })
+    
+    assert result_cell == expected_element_cell, "Should be True"
     
     # --------------------------------------   Prueba 2   -------------------------------------------
     
-    element_object =  ("eng-30-00002684-n_object", [
-        "1",
-        "A tangible and visible entity; an entity that can cast a shadow.",
-        "Una entidad tangible y visible; una entidad que puede hacer sombra'.",
-        "n",
-        "eng",
-        [
+    element_object =  ("eng-30-00002684-n_object", {
+        "Sense index": "1",
+        "English gloss": "A tangible and visible entity; an entity that can cast a shadow.",
+        "Spanish gloss": "Una entidad tangible y visible; una entidad que puede hacer sombra'.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
             " The object on the table was a vase made of porcelain. Its delicate curves and intricate design were mesmerizing to behold. As I approached it, its shadow grew longer and more defined, casting a soft glow across the room.\n\nThe object in my hand was a small stone, smooth and polished by years of tumbling through streams and rivers. It felt heavy and substantial, as if it held within it some ancient wisdom or secret knowledge. As I held it up to the light, its shadow danced on the ground, a flickering reminder of its solidity and weight.\n\nThe object in front of me was a painting, a masterpiece of color and texture that seemed to come alive as I gazed upon it. Its brushstrokes were bold and confident, each one casting a distinct shadow against the wall behind it. The shadows added depth and dimension to the painting, transforming it from a mere image into a living, breathing entity",
             [
                 " El objeto en la mesa era una jarra de porcelana.",
@@ -645,8 +1206,7 @@ def component_validator_test():
                 " Las sombras agregaron profundidad y dimensión al cuadro, transformándolo en una entidad viviente e respirante."
             ]
         ],
-        "objeto",
-        [
+        "Validation LLM answers": [
             " 1. The object cast a shadow on the wall.\n2. The object was hidden behind the tree.\n3. The object was found at the bottom of the lake.\n4. The object was buried under the sand.\n5. The object was obscured by the fog.",
             [
                 " The object (tangible and visible entity) cast a shadow on the wall.",
@@ -655,9 +1215,16 @@ def component_validator_test():
                 " The item was buried beneath the sand.\n\n",
                 " The object was hidden by the fog.\n\n"
             ]
-        ]
-    ])
-    
+        ],
+        "Extraction translation": "objeto",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 5,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "La entrada ha terminado su ejecución en la fase de extracción."
+    })
+
     llm_answer_list_3 = [
             " 1. The object cast a shadow on the wall.\n2. The object was hidden behind the tree.\n3. The object was found at the bottom of the lake.\n4. The object was buried under the sand.\n5. The object was obscured by the fog.",
             [
@@ -671,197 +1238,407 @@ def component_validator_test():
     
     result_object = componenteExtractor_faseValidacion.get_result(element_object, llm_answer_list_3)
     
-    assert result_object == ["NULL",
-    {
-      "Correctas.": 0
-    },
-    {
-      "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
-    },
-    {
-      "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
-    },
-    {
-      "Mensaje de información": "La entrada ha terminado su ejecución en la fase de validación."
-    }], "Should be true"
+    expected_element_object =  ("eng-30-00002684-n_object", {
+        "Sense index": "1",
+        "English gloss": "A tangible and visible entity; an entity that can cast a shadow.",
+        "Spanish gloss": "Una entidad tangible y visible; una entidad que puede hacer sombra'.",
+        "Part of speech": "n",
+        "Language": "eng",
+        "Extraction LLM answers": [
+            " The object on the table was a vase made of porcelain. Its delicate curves and intricate design were mesmerizing to behold. As I approached it, its shadow grew longer and more defined, casting a soft glow across the room.\n\nThe object in my hand was a small stone, smooth and polished by years of tumbling through streams and rivers. It felt heavy and substantial, as if it held within it some ancient wisdom or secret knowledge. As I held it up to the light, its shadow danced on the ground, a flickering reminder of its solidity and weight.\n\nThe object in front of me was a painting, a masterpiece of color and texture that seemed to come alive as I gazed upon it. Its brushstrokes were bold and confident, each one casting a distinct shadow against the wall behind it. The shadows added depth and dimension to the painting, transforming it from a mere image into a living, breathing entity",
+            [
+                " El objeto en la mesa era una jarra de porcelana.",
+                " Sus delicadas curvas y su compleja forma eran hipnóticas de contemplar.",
+                " Mientras me acercaba, su sombra se alargó y se definió más, proyectando una luz suave en la habitación.",
+                " El objeto en mi mano era una pequeña piedra, lisa y pulida por años de rodar por arroyos y ríos.",
+                " Se sintió pesado y sólido, como si albergara dentro de él alguna sabiduría antigua o conocimiento oculto. (Noun: objeto)",
+                " Mientras lo sostuviera hacia la luz, su sombra bailaba en el suelo, una danza flickerante que recordaba su sólida y pesada realidad.",
+                " El objeto que estaba delante de mí era una pintura, un maestrito de color y textura que parecía vivir mientras la miraba.",
+                " Sus trazos eran audaces y confiados, cada uno dejando una sombra distintiva contra la pared detrás de él.",
+                " Las sombras agregaron profundidad y dimensión al cuadro, transformándolo en una entidad viviente e respirante."
+            ]
+        ],
+        "Validation LLM answers": [
+            " 1. The object cast a shadow on the wall.\n2. The object was hidden behind the tree.\n3. The object was found at the bottom of the lake.\n4. The object was buried under the sand.\n5. The object was obscured by the fog.",
+            [
+                " The object (tangible and visible entity) cast a shadow on the wall.",
+                " The item was concealed behind the tree.\n\n",
+                " The item was discovered at the bottom of the lake.",
+                " The item was buried beneath the sand.\n\n",
+                " The object was hidden by the fog.\n\n"
+            ]
+        ],
+        "Extraction translation": "objeto",
+        "Validation translation": "NULL",
+        "Correctas": 0,
+        "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,  
+        "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 5,
+        "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+        "Mensaje de información": "La entrada ha terminado su ejecución en la fase de validación."
+    })
+    
+    assert result_object == expected_element_object, "Should be true"
     
 def component_exporter_test():
     
-    exploited_information = {
-        "eng-30-00002684-n_object": [
-            "1",
-            "A tangible and visible entity; an entity that can cast a shadow.",
-            "Una entidad tangible y visible; una entidad que puede proyectar sombra.'.",
-            "n",
-            "eng",
-            [
-            " The object on the table was a vase made of porcelain. Its delicate curves and intricate design were mesmerizing to behold. As I approached it, its shadow grew longer and more defined, casting a soft glow across the room.\n\nThe object in my hand was a smooth stone, cool to the touch. It had been worn down by years of tumbling through streams and rivers, leaving behind a textured surface that felt almost alive beneath my fingertips. As I held it up to the light, its shadow danced across the ground, a testament to its solidity and weight.\n\nThe object in front of me was a book, bound in leather and filled with pages of wisdom and knowledge. Its cover bore the imprint of an ancient symbol, a reminder of the secrets that lay within. As I opened it, its shadow stretched out behind me, casting a long, dark line across the floor.\n\nThe object on the wall was",
-            [
-                " El objeto en la mesa era una jarra hecha de porcelana.",
-                " Sus delicadas curvas y su compleja forma eran hipnóticas de contemplar.",
-                " Mientras me acercaba, su sombra se alargó y se definió más, proyectando una luz suave en la habitación.",
-                " El objeto en mi mano era una piedra lisa, fría al tacto.",
-                " 'Había sido desgastado durante años de ser arrastrado por corrientes y ríos, dejando atrás una superficie texturizada que sentía casi viva bajo mis dedos.'",
-                " Mientras la sostuviese hacia la luz, su sombra bailaba por el suelo, una prueba de su sólida y pesada naturaleza.",
-                " El objeto que estaba delante de mí era un libro, recubierto de cuero y lleno de páginas de sabiduría y conocimiento.",
-                " Su tapadera llevaba la impresión de un antiguo símbolo, una recordatoria de los secretos que se escondían dentro.",
-                " Al abrirlo, su sombra se extendió detrás de mí, dibujando una larga línea oscura en el piso.",
-                " El objeto en la pared era."
-            ]
+    knowledge_table = {
+        "eng-30-00002684-n_object": {
+            "Sense index": "1",
+            "English gloss": "A tangible and visible entity; an entity that can cast a shadow.",
+            "Spanish gloss": "Una entidad tangible y visible; una entidad que puede hacer sombra'.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " The object on the table was a vase made of porcelain. Its intricate design caught my eye as I walked by. The object in the corner of the room was a large, wooden bookshelf. It towered over me, and I could see the shadows it cast on the floor. The object that lay at my feet was a small, red ball. It rolled away from me as soon as I picked it up, leaving behind a faint shadow. The object in the distance was a tall, metal fence. Its sharp edges created deep shadows on the ground below. The object that hung from the ceiling was a chandelier made of crystal. Its light cast long, shimmering shadows on the walls.",
+                [
+                    " El objeto en la mesa era una jarra hecha de porcelana.",
+                    " Su compleja forma me llamó la atención mientras caminaba por allí.",
+                    " El objeto en la esquina de la habitación era un gran estante de madera para libros.",
+                    " 'Se elevaba sobre mí y podía ver las sombras que proyectaba en el suelo'.",
+                    " El objeto que estaba en mis pies era una pequeña pelota roja.",
+                    " 'Se deslizó lejos de mí al mismo tiempo que lo agarré, dejando atrás una sombra suave.'",
+                    " El objeto en la distancia era una reja de metal alta. ",
+                    " Sus bordes agudos crearon sombras profundas en el suelo debajo.",
+                    " El objeto que colgaba del techo era una candelabro de cristal.",
+                    " Su luz proyectaba largas sombras brillantes en las paredes."
+                ]
             ],
-            "objeto",
-            [
-            " 1. The object cast a long shadow on the ground.\n2. The ball was an object that rolled across the floor.\n3. The statue in the park is an object that has been there for years.\n4. The car's headlights illuminated the object in front of it.\n5. The rock formation in the desert is an object that has stood the test of time.",
-            [
-                " The object cast a long shadow on the ground.\n\n",
-                " The ball was a tangible and visible entity that could project a shadow, which rolled across the floor.\n\n",
-                " The statue in the park is a tangible and visible entity that can cast a shadow, which has been there for years.",
-                " The car's headlights illuminated the tangible and visible entity that could cast a shadow.\n\n",
-                " The rock formation in the desert is a tangible and visible entity that can cast a shadow, which has withstood the test of time."
-            ]
+            "Validation LLM answers": [
+                " 1. The object cast a shadow on the ground.\n2. The ball is an object that can be thrown and caught.\n3. The statue in the park is an object of beauty.\n4. The car is an object that requires maintenance.\n5. The rock formation in the desert is an object that has been shaped by erosion over time.",
+                [
+                    "The object cast a shadow on the ground.",
+                    "The ball is an object that can be thrown and caught.",
+                    "The statue in the park is an object of beauty.",
+                    "The car is an object that requires maintenance.",
+                    "The rock formation in the desert is an object that has been shaped by erosion over time."
+                ]
             ],
-            "NULL",
-            {
-            "Correctas.": 0
-            },
-            {
-            "Incorrectas de tipo 1: Generacion de palabras con otro part of speech. La palabra que buscamos no está como noun en la frase.": 0
-            },
-            {
-            "Incorrectas de tipo 2: La palabra que buscamos no aparece en la frase.": 5
-            },
-            {
+            "Extraction translation": "objeto",
+            "Validation translation": "NULL",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 5,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
             "Mensaje de información": "La entrada ha terminado su ejecución en la fase de validación."
-            }
-        ],
-        "eng-30-00006484-n_cell": [
-            "2",
-            "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
-            "(biología) la unidad estructural y funcional básica de todas las entidades vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
-            "n",
-            "eng",
-            [
-            " 1. The cell is the fundamental building block of all living organisms, providing a protective environment for the genetic material to function properly.\n2. In multicellular organisms, cells work together to form tissues and organs that carry out specialized functions.\n3. The human body contains trillions of cells, each with its own unique role in maintaining homeostasis and carrying out essential processes.\n4. Some organisms, such as bacteria and protists, exist as single cells called monads, while others form colonies or tissues through cell division and differentiation.\n5. The study of cell biology has led to significant advances in medicine, allowing for the development of new treatments and therapies for a variety of diseases.",
-            [
-                " La celda es el bloque básico de construcción fundamental de todas las entidades vivas, proporcionando un entorno protector para que la materia genética funcione correctamente.",
-                " En organismos multicelulares, las células trabajan juntas para formar tejidos y órganos que llevan a cabo funciones especializadas.",
-                " El cuerpo humano contiene trillones de células, cada una con su propio papel único en mantener la homeostasis y llevar a cabo procesos esenciales.",
-                " Algunos organismos, como las bacterias y los protistas, existen como células individuales llamadas monadas, mientras que otros forman colonias o tejidos a través de la división celular y la diferenciación.",
-                " El estudio de la biología celular ha llevado a importantes avances en la medicina, permitiendo el desarrollo de nuevas terapias y tratamientos para una variedad de enfermedades."
-            ]
+        },
+        "eng-30-00006484-n_cell": {
+            "Sense index": "2",
+            "English gloss": "(biology) the basic structural and functional unit of all organisms; they may exist as independent units of life (as in monads) or may form colonies or tissues as in higher plants and animals.",
+            "Spanish gloss": "(biología) la unidad estructural y funcional básica de todas las entidades vivientes; pueden existir como unidades independientes de la vida (como en los monadas), o pueden formar colonias o tejidos, como en las plantas y animales superiores.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The cell is the fundamental building block of all living organisms, providing a protective environment for genetic material and facilitating essential metabolic processes.\n\n2. In multicellular organisms, cells work together to form complex tissues and organs, allowing for specialized functions and coordinated responses to environmental stimuli.\n\n3. The human body contains trillions of cells, each with its own unique set of characteristics and functions, yet all working in harmony to maintain homeostasis and promote overall health.\n\n4. Some organisms, such as bacteria and protists, exist as single cells or colonies of identical cells, known as monads. These unicellular organisms are capable of independent survival and reproduction.\n\n5. In higher plants and animals, cells may form tissues through the process of differentiation, whereby they specialize in specific functions such as photosynthesis, muscle contraction, or nerve condu",
+                [
+                    " La célula es la unidad estructural y funcional básica de todos los seres vivos, proporcionando un entorno protector para el material genético y facilitando procesos metabólicos esenciales.",
+                    " En seres multicelulares, las células trabajan juntas para formar tejidos complejos y órganos, permitiendo funciones especializadas y respuestas coordinadas a estimulaciones ambientales.",
+                    " El cuerpo humano contiene trillones de células, cada una con su propio conjunto único de características y funciones, sin embargo, todas trabajan en armonía para mantener la homeostasis y promover la salud global.",
+                    " Algunos organismos, como las bacterias y los protistas, existen como células individuales o colonias de células idénticas, conocidas como monadas. Estas unicelulares son capaces de la supervivencia e reproducción independientes.",
+                    " En las plantas y animales superiores, las células pueden formar tejidos a través del proceso de diferenciación, en el que se especializan en funciones específicas como la fotosíntesis, la contracción muscular o la conducción nerviosa."
+                ]
             ],
-            "células",
-            [
-            " 1. Las células son el bloque básico de la vida.\n2. Cada organismo está compuesto por millones de células.\n3. La división celular es un proceso fundamental en la biología.\n4. Los científicos están investigando cómo las células se comunican entre sí.\n5. Las células cancerosas son una amenaza para la salud humana.",
-            [
-                " 'Cells are the basic building block of life.'",
-                " 'Each organism is composed of millions of cells.'",
-                " 'Cell division is a fundamental process in biology.'",
-                " The scientists are investigating how cells communicate with each other.",
-                " Cancerous cells are a threat to human health."
-            ]
+            "Validation LLM answers": [
+            " 1. La célula es el bloque básico de la vida.\n2. Cada célula tiene su propia estructura y funciones.\n3. Las células cooperan para formar organismos complejos.\n4. En los monadas, las células son unidades independientes.\n5. En los animales superiores, las células forman tejidos complejos.",
+                [
+                    "La célula es el bloque básico de la vida.",
+                    "Cada célula tiene su propia estructura y funciones.",
+                    "Las células cooperan para formar organismos complejos.",
+                    "En los monadas, las células son unidades independientes.",
+                    "En los animales superiores, las células forman tejidos complejos."
+                ]
             ],
-            "células"
-        ],
-        "eng-30-00007347-n_cause": [
-            "4",
-            "Any entity that produces an effect or is responsible for events or results.",
-            "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados.'.",
-            "n",
-            "eng",
-            [
-            " 1. The cause of the accident was a malfunctioning brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the fire was an electrical fault in the wiring.\n5. The cause of the financial crisis was a combination of factors, including excessive borrowing and risky investments.",
-            [
-                " La causa del accidente fue un sistema de frenos defectuoso.",
-                " La falta de precipitaciones es la causa principal de la sequía.",
-                " La causa de la salida de la enfermedad se puede rastrear hasta el alimento contaminado.",
-                " La causa del incendio fue una falla eléctrica en la instalación de cables.",
-                " La causa de la crisis financiera fue una combinación de factores, incluyendo el exceso de préstamos y las inversiones riesgosas."
-            ]
+            "Extraction translation": "célula",
+            "Validation translation": "célula",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        },
+        "eng-30-00007347-n_cause": {
+            "Sense index": "4",
+            "English gloss": "Any entity that produces an effect or is responsible for events or results.",
+            "Spanish gloss": "Cualquier entidad que produce un efecto o es responsable de los eventos o resultados'.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The cause of the accident was a faulty brake system.\n2. The lack of rainfall is the primary cause of the drought.\n3. The cause of the disease outbreak can be traced back to contaminated food.\n4. The cause of the fire was an electrical malfunction in the building's wiring.\n5. The cause of the financial crisis was a combination of factors, including risky investments and lax regulation.",
+                [
+                    " La causa del accidente fue un sistema de frenos defectuoso.",
+                    " La falta de precipitaciones es la causa principal de la sequía.",
+                    " La causa de la salida de la enfermedad se puede rastrear hasta el alimento contaminado.",
+                    " La causa del incendio fue una falla eléctrica en la instalación eléctrica de los edificios.",
+                    " La causa de la crisis financiera fue una combinación de factores, incluyendo inversiones riesgosas y regulación poca."
+                ]
             ],
-            "causa",
-            [
-            " 1. La causa de la epidemia fue una mutación genética.\n2. El cambio climático es la causa principal del deshielo polar.\n3. La falta de educación es la causa principal de la pobreza en muchas partes del mundo.\n4. El estrés es la causa más común de enfermedades mentales.\n5. La corrupción política es la causa principal de la desconfianza en el gobierno.",
-            [
-                " The cause of the epidemic was a genetic mutation.\n\n",
-                " The primary cause of polar ice melting is climate change.",
-                " The lack of education is the main cause of poverty in many parts of the world.",
-                " Stress is the most common cause of mental illnesses.\n\n",
-                " Political corruption is the main cause of distrust in government."
-            ]
+            "Validation LLM answers": [
+                " 1) La causa de la epidemia fue una virus mutante.\n2) El cambio climático es la causa principal de la erosión costera.\n3) La falta de educación es la causa principal del desempleo.\n4) La corrupción política es la causa principal de la pérdida de confianza en el gobierno.\n5) El abuso de drogas es la causa principal de la violencia en las calles.",
+                [
+                    "La causa de la epidemia fue una virus mutante.",
+                    "El cambio climático es la causa principal de la erosión costera.",
+                    "La falta de educación es la causa principal del desempleo.",
+                    "La corrupción política es la causa principal de la pérdida de confianza en el gobierno.",
+                    "El abuso de drogas es la causa principal de la violencia en las calles."
+                ]
             ],
-            "causa"
-        ],
-        "eng-30-00007846-n_person": [
-            "1",
-            "A human being.",
-            "Una persona'.",
-            "n",
-            "eng",
-            [
-            " 1. The person sitting next to me on the bus is reading a book.\n2. The person who helped me with my project was very kind.\n3. The person I met at the party last night had an interesting accent.\n4. The person in charge of the event is making sure everything runs smoothly.\n5. The person who won the race set a new world record.",
-            [
-                " La persona que está sentada al lado mío en el autobús está leyendo un libro.",
-                " La persona que me ayudó con mi proyecto fue muy amable.",
-                " La persona que conocí en la fiesta de anoche tenía un acento interesante.",
-                " La persona encargada del evento está asegurándose de que todo fluya sin problemas.",
-                " La persona que ganó la carrera estableció un nuevo récord mundial."
-            ]
+            "Extraction translation": "causa",
+            "Validation translation": "causa",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        },
+        "eng-30-00007846-n_person": {
+            "Sense index": "1",
+            "English gloss": "A human being.",
+            "Spanish gloss": "Una persona humana'.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The person sitting next to me on the bus is reading a book.\n2. The person who won the race was a professional athlete.\n3. The person I met at the party last night was very friendly.\n4. The person who invented the light bulb changed the world forever.\n5. The person who wrote this article has a degree in linguistics.",
+                [
+                    " La persona que está sentada al lado mío en el autobús está leyendo un libro.",
+                    " La persona que ganó la carrera era un atleta profesional.",
+                    " La persona que conocí en la fiesta de anoche era muy amable.",
+                    " La persona que inventó la lámpara incandescente cambió el mundo por siempre. ",
+                    " La persona que escribió este artículo tiene un grado en lingüística.\n"
+                ]
             ],
-            "persona",
-            [
-            " 1) La mujer que estaba sentada a mi lado era una persona muy amable. 2) El hombre que leyó el libro es una persona muy inteligente. 3) La niña que cantó la canción es una persona muy talentosa. 4) El hombre que ganó el premio es una persona muy exitosa. 5) La mujer que ayudó a los necesitados es una persona muy generosa.",
-            [
-                " The woman who was sitting next to me was very kind.",
-                " The man who read the book is a very intelligent person.\n\n",
-                " The girl who sang the song is a very talented person.",
-                " The man who won the prize is a very successful person.\n\n",
-                " The woman who helped those in need is a very generous person."
-            ]
+            "Validation LLM answers": [
+                " 1) La persona más importante en mi vida es mi madre.\n2) La persona que me ayudó a superar mis problemas es mi psicólogo.\n3) La persona que inventó la radio fue Guglielmo Marconi.\n4) La persona que ganó el premio Nobel de Química en 2015 fue Ada Yonath.\n5) La persona que escribió \"Hamlet\" es William Shakespeare.",
+                [
+                    "La persona más importante en mi vida es mi madre.",
+                    "La persona que me ayudó a superar mis problemas es mi psicólogo.",
+                    "La persona que inventó la radio fue Guglielmo Marconi.",
+                    "La persona que ganó el premio Nobel de Química en 2015 fue Ada Yonath.",
+                    "La persona que escribió Hamlet es William Shakespeare."
+                ]
             ],
-            "persona"
-        ],
-        "eng-30-00015388-n_animal": [
-            "1",
-            "A living organism characterized by voluntary movement.",
-            "Un ser vivo que se mueve de manera voluntaria.",
-            "n",
-            "eng",
-            [
-            " 1. The lion is an animal that roams the savannah in search of prey.\n2. The elephant is the largest land animal and can weigh up to six tons.\n3. The cheetah is a fast-running animal that can reach speeds of over 70 miles per hour.\n4. The gorilla is an intelligent animal that lives in groups called troops.\n5. The kangaroo is a marsupial animal that has powerful hind legs for jumping long distances.",
-            [
-                " El león es un animal que pasea la sabana en busca de presas.",
-                " El elefante es el mayor animal terrestre y puede pesar hasta seis toneladas.",
-                " La gueparda es un animal rápido que puede alcanzar velocidades superiores a los 70 millas por hora.",
-                " El gorila es un animal inteligente que vive en bandadas llamadas tropas.",
-                " El kanguro es un animal marsupial que tiene patas traseras poderosas para saltar largas distancias."
-            ]
+            "Extraction translation": "persona",
+            "Validation translation": "persona",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        },
+        "eng-30-00015388-n_animal": {
+            "Sense index": "1",
+            "English gloss": "A living organism characterized by voluntary movement.",
+            "Spanish gloss": "Un ser vivo con movimiento voluntario'.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The lion is an animal that roams the African savannahs in search of prey.\n2. The elephant is the largest land animal and can weigh up to six tons.\n3. The cheetah is a fast-running animal that can reach speeds of over 70 miles per hour.\n4. The gorilla is an endangered animal that lives in dense forests in Central Africa.\n5. The dolphin is a highly intelligent marine mammal that communicates with clicks and whistles.",
+                [
+                    " El león es un animal que pasea las sabana africanas en busca de presas.",
+                    " El elefante es el mayor animal terrestre y puede pesar hasta seis toneladas.",
+                    " La guepardo es un animal rápido que puede alcanzar velocidades superiores a los 70 millas por hora.",
+                    " El gorila es un animal en peligro de extinción que vive en bosques densos en la región central de África.",
+                    " El delfín es un mamífero marino de gran inteligencia que comúnmente se comunica con clics y silbidos."
+                ]
             ],
-            "animal",
-            [
-            " 1. El leopardo es un animal grande y poderoso que habita en los bosques tropicales.\n2. Los elefantes son animales herbívoros que pueden pesar hasta tres toneladas.\n3. La gacela es un animal rápido y ágil que corre a velocidades de hasta 80 kilómetros por hora.\n4. El panda rojo es un animal en peligro de extinción que habita en los bosques de China.\n5. La orca es un animal inteligente y social que vive en grupos llamados podas.",
-            [
-                " The leopard is a large and powerful animal that lives in tropical forests.",
-                " Elephants are herbivorous animals that can weigh up to three tons.",
-                " The gazelle is a fast and agile animal that runs at speeds up to 80 kilometers per hour.",
-                " The red panda is an endangered animal that lives in the forests of China.",
-                " The killer whale is an intelligent and social animal that lives in groups called pods."
-            ]
+            "Validation LLM answers": [
+                " 1. El leopardo es un animal grande y poderoso.\n2. La gacela es un animal rápido y delicado.\n3. El elefante es un animal herbívoro de gran tamaño.\n4. La jirafa es un animal con el cuello muy largo.\n5. El panda rojo es un animal en peligro de extinción.",
+                [
+                    "El leopardo es un animal grande y poderoso.",
+                    "La gacela es un animal rápido y delicado.",
+                    "El elefante es un animal herbívoro de gran tamaño.",
+                    "La jirafa es un animal con el cuello muy largo.",
+                    "El panda rojo es un animal en peligro de extinción."
+                ]
             ],
-            "animal"
-        ]
+            "Extraction translation": "animal",
+            "Validation translation": "animal",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        },
+        "eng-30-00017222-n_plant": {
+            "Sense index": "2",
+            "English gloss": "(botany) a living organism lacking the power of locomotion.",
+            "Spanish gloss": "(botánica) una entidad viviente que no posee la capacidad de movimiento.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The plant's roots absorb water and nutrients from the soil.\n2. The flowering plant produces beautiful blooms in the spring.\n3. The succulent plant can survive for long periods without water.\n4. The carnivorous plant traps insects to obtain protein.\n5. The parasitic plant attaches itself to a host plant and steals its nutrients.",
+                [
+                    " Las raíces de las plantas absorben agua y nutrientes del suelo.",
+                    " La planta florífera produce hermosas flores en la primavera.",
+                    " La planta succulenta puede sobrevivir durante largos periodos sin agua.",
+                    " La planta carnívora atrapa insectos para obtener proteína.",
+                    " La planta parásita se adhiere a una planta huésped y roba sus nutrientes."
+                ]
+            ],
+            "Validation LLM answers": [
+                " 1. La planta de rosas es muy bonita.\n2. El jardín está lleno de plantas exóticas.\n3. Las plantas de cereales se cultivan en gran escala.\n4. La planta de bambú crece rápidamente.\n5. La planta de cactus es muy resistente al calor y a la sequía.",
+                [
+                    "La planta de rosas es muy bonita.",
+                    "El jardín está lleno de plantas exóticas.",
+                    "Las plantas de cereales se cultivan en gran escala.",
+                    "La planta de bambú crece rápidamente.",
+                    "La planta de cactus es muy resistente al calor y a la sequía."
+                ]
+            ],
+            "Extraction translation": "planta",
+            "Validation translation": "planta",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        },
+        "eng-30-00019613-n_substance": {
+            "Sense index": "1",
+            "English gloss": "The real physical matter of which a person or thing consists.",
+            "Spanish gloss": "La materia física real de la que consta una persona o cosa.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The substance of the rock is primarily composed of granite.\n2. The substance of the metal was found to be iron.\n3. The substance of the plant is mostly made up of water and nutrients.\n4. The substance of the human body is a complex mixture of cells, tissues, and organs.\n5. The substance of the diamond is pure carbon in its crystalline form.",
+                [
+                    " La sustancia de la roca está principalmente compuesta de granito.",
+                    " La sustancia del metal fue encontrada ser hierro.",
+                    " La sustancia de la planta está principalmente compuesta por agua y nutrientes.",
+                    " La sustancia del cuerpo humano es una compleja mezcla de células, tejidos y órganos.",
+                    " La sustancia del diamante es carbono puro en su forma cristalina."
+                ]
+            ],
+            "Validation LLM answers": [
+                " 1. La sustancia del agua es hidrógeno y oxígeno.\n2. El sustancia del aire está compuesta principalmente por nitrógeno y oxígeno.\n3. La sustancia de la piedra caliza es carbonato de calcio.\n4. El sustancia del metal es un elemento químico.\n5. La sustancia del cuerpo humano está formada por tejidos, huesos, y otros componentes biológicos.",
+                [
+                    "La sustancia del agua es hidrógeno y oxígeno.",
+                    "El sustancia del aire está compuesta principalmente por nitrógeno y oxígeno.",
+                    "La sustancia de la piedra caliza es carbonato de calcio.",
+                    "El sustancia del metal es un elemento químico.",
+                    "La sustancia del cuerpo humano está formada por tejidos, huesos, y otros componentes biológicos."
+                ]
+            ],
+            "Extraction translation": "sustancia",
+            "Validation translation": "sustancia",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        },
+        "eng-30-00020827-n_matter": {
+            "Sense index": "3",
+            "English gloss": "That which has mass and occupies space.",
+            "Spanish gloss": "Eso que tiene masa y ocupa espacio..",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The matter in this room is mostly composed of air molecules, but there are also some solid particles like dust and fibers.\n2. The matter that makes up a star is primarily hydrogen gas, which undergoes nuclear fusion to produce energy.\n3. The matter on Earth's surface is mostly made up of rocks, soil, and water, with varying amounts of organic material.\n4. The matter in the universe is not evenly distributed; it forms galaxies, clusters, and superclusters that are separated by vast empty spaces.\n5. The matter in a living organism is constantly being broken down and rebuilt through metabolic processes, which maintain its structure and function over time.",
+                [
+                    " La materia en esta habitación está principalmente compuesta de moléculas de aire, pero también hay algunas partículas sólidas como polvo y fibras.",
+                    " La materia que constituye una estrella es principalmente gas de hidrógeno, el cual sufre fusión nuclear para producir energía.",
+                    " La materia en la superficie de los planetas es principalmente compuesta por rocas, tierra y agua, con cantidades variables de materia orgánica.",
+                    " La materia en el universo no se distribuye de manera uniforme; forma galaxias, agrupaciones y superagrupaciones que están separadas por espacios vacíos enormes.",
+                    " La materia en un organismo vivo se descompone y se reconstruye constantemente a través de procesos metabólicos, que mantienen su estructura y función a lo largo del tiempo."
+                ]
+            ],
+            "Validation LLM answers": [
+                " 1. La materia es la sustancia que constituye todo lo visible y tangible del universo.\n2. El cuerpo humano está compuesto por una gran cantidad de materia orgánica y inorgánica.\n3. La materia se divide en tres estados: sólido, líquido y gaseoso.\n4. La materia es la base de todo lo que existe en el universo, desde las rocas más duras hasta los seres vivos más complejos.\n5. El conocimiento de la materia ha sido una preocupación humana desde tiempos antiguos y sigue siendo una prioridad en la investigación científica moderna.",
+                [
+                    "La materia es la sustancia que constituye todo lo visible y tangible del universo.",
+                    "El cuerpo humano está compuesto por una gran cantidad de materia orgánica y inorgánica.",
+                    "La materia se divide en tres estados: sólido, líquido y gaseoso.",
+                    "La materia es la base de todo lo que existe en el universo, desde las rocas más duras hasta los seres vivos más complejos.",
+                    "El conocimiento de la materia ha sido una preocupación humana desde tiempos antiguos y sigue siendo una prioridad en la investigación científica moderna."
+                ]
+            ],
+            "Extraction translation": "materia",
+            "Validation translation": "materia",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        },
+        "eng-30-00021265-n_food": {
+            "Sense index": "1",
+            "English gloss": "Any substance that can be metabolized by an animal to give energy and build tissue.",
+            "Spanish gloss": "Cualquier sustancia que pueda ser metabolizada por un animal para dar energía y construir tejido'.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The food we consume is essential for our survival as it provides us with the necessary nutrients to maintain a healthy body.\n2. The farmer's crops are a vital source of food for his community, ensuring that they have access to nourishing sustenance.\n3. The food industry plays a significant role in the global economy, providing employment opportunities and contributing to economic growth.\n4. The food chain is an essential concept in ecology as it illustrates how energy flows through different organisms, from producers to consumers.\n5. Food insecurity is a major issue affecting millions of people worldwide, with many struggling to access sufficient nutritious food to meet their basic needs.",
+                [
+                    " La comida que consumimos es fundamental para nuestra supervivencia, ya que proporciona las nutrientes necesarias para mantener un cuerpo saludable.",
+                    " Las cosechas de los agricultores son una fuente vital de alimentos para su comunidad, asegurando que tengan acceso a la nutrición necesaria.",
+                    " La industria alimentaria desempeña un papel significativo en la economía mundial, proporcionando oportunidades de empleo y contribuyendo al crecimiento económico.",
+                    " La cadena alimentaria es un concepto fundamental en la ecología ya que ilustra cómo fluye la energía a través de diferentes organismos, desde los productores hasta los consumidores.",
+                    " La inseguridad alimentaria es un problema importante que afecta millones de personas en todo el mundo, con muchas personas luchando para acceder a la cantidad suficiente de comida nutritiva para satisfacer sus necesidades básicas."
+                ]
+            ],
+            "Validation LLM answers": [
+                " 1) La comida es una mezcla de nutrientes que los animales necesitan para su supervivencia.\n2) El cuerpo humano necesita comida para obtener la energía y los nutrientes necesarios para funcionar correctamente.\n3) La comida es un producto natural que se consume por los seres vivos para obtener energía y nutrientes.\n4) La comida es una sustancia alimenticia que contiene carbohidratos, proteínas y grasas, necesarias para la salud y el crecimiento de los animales.\n5) La comida es un elemento básico en la dieta de cualquier animal, sin la cual no podría sobrevivir.",
+                [
+                    "La comida es una mezcla de nutrientes que los animales necesitan para su supervivencia.",
+                    "El cuerpo humano necesita comida para obtener la energía y los nutrientes necesarios para funcionar correctamente.",
+                    "La comida es un producto natural que se consume por los seres vivos para obtener energía y nutrientes.",
+                    "La comida es una sustancia alimenticia que contiene carbohidratos, proteínas y grasas, necesarias para la salud y el crecimiento de los animales.",
+                    "La comida es un elemento básico en la dieta de cualquier animal, sin la cual no podría sobrevivir."
+                ]
+            ],
+            "Extraction translation": "comida",
+            "Validation translation": "comida",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
+        },
+        "eng-30-00023271-n_knowledge": {
+            "Sense index": "1",
+            "English gloss": "The psychological result of perception and learning and reasoning.",
+            "Spanish gloss": "El resultado psicológico de la percepción y el aprendizaje y la razón.",
+            "Part of speech": "n",
+            "Language": "eng",
+            "Extraction LLM answers": [
+                " 1. The acquisition of knowledge through reading and research has been a lifelong pursuit for this individual.\n\n2. The accumulation of knowledge over time has led to significant advancements in various fields, such as medicine and technology.\n\n3. Knowledge is the foundation upon which all other skills and abilities are built, making it an essential component of personal growth and development.\n\n4. The dissemination of knowledge through education and communication has been instrumental in shaping societies and cultures throughout history.\n\n5. The pursuit of knowledge for its own sake, rather than for practical applications or financial gain, is a noble and admirable endeavor that has enriched the human experience for centuries.",
+                [
+                    " La adquisición del conocimiento a través de la lectura y la investigación ha sido una búsqueda vital para esta persona.",
+                    " La acumulación del conocimiento a lo largo del tiempo ha llevado a importantes avances en diversas áreas, como la medicina y la tecnología.",
+                    " El conocimiento es la base sobre la que se construyen todas las otras habilidades y capacidades, lo que lo convierte en un componente esencial para el crecimiento y desarrollo personal.",
+                    " La difusión del conocimiento a través de la educación y la comunicación ha sido fundamental en la conformación de las sociedades y culturas a lo largo de la historia.",
+                    " La búsqueda del conocimiento por su propio interés, en lugar de buscar aplicaciones prácticas o ganancias financieras, es una noble y admirable empresa que ha enriquecido la experiencia humana durante siglos."
+                ]
+            ],
+            "Validation LLM answers": [
+                " 1. La experiencia educativa ha mejorado su conocimiento sobre la historia.\n2. El estudio científico ha ampliado nuestro conocimiento sobre la biología celular.\n3. Su viaje a Europa le ha dado un conocimiento más profundo de las artes y la cultura.\n4. La investigación médica ha aumentado nuestro conocimiento sobre el tratamiento del cáncer.\n5. El estudio lingüístico ha mejorado nuestra comprensión de la gramática y la sintaxis en inglés.",
+                [
+                    "La experiencia educativa ha mejorado su conocimiento sobre la historia.",
+                    "El estudio científico ha ampliado nuestro conocimiento sobre la biología celular.",
+                    "Su viaje a Europa le ha dado un conocimiento más profundo de las artes y la cultura.",
+                    "La investigación médica ha aumentado nuestro conocimiento sobre el tratamiento del cáncer.",
+                    "El estudio lingüístico ha mejorado nuestra comprensión de la gramática y la sintaxis en inglés."
+                ]
+            ],
+            "Extraction translation": "conocimiento",
+            "Validation translation": "conocimiento",
+            "Correctas": 0,
+            "Incorrectas de tipo 1: Generación de palabras con otro part of speech. la palabra a analizarno está como sustantivo en la frase": 0,
+            "Incorrectas de tipo 2: la palabra a analizar no aparece en la frase": 0,
+            "Incorrectas de tipo 3: La relación obtenida no corresponde con un sustantivo": 0,
+            "Mensaje de información": "NULL"
         }
+    }
     
     config = ConfigParser()
     config.read('./config.ini')
     
-    componenteExporter = ComponenteExporter(config['file_path']['exploited_information_file_path'])
+    componenteExporter = ComponenteExporter(config['file_path']['knowledge_table_file_path'])
     
-    componenteExporter.export_knowledge(exploited_information)
+    componenteExporter.export_knowledge(knowledge_table)
     
     # Abrir el archivo en modo lectura
     try:
-        with open(config['file_path']['exploited_information_file_path'], 'r') as archivo:
+        with open(config['file_path']['knowledge_table_file_path'], 'r') as archivo:
             # Leer el archivo línea por línea
             for linea in archivo:
                 # Comprobar si la línea cumple con los criterios
@@ -870,7 +1647,7 @@ def component_exporter_test():
                 else:
                     assert False
     except FileNotFoundError:
-        print(f'Archivo "{config["file_path"]["exploited_information_file_path"]}" no encontrado. Vuelve a introducir una nueva ruta')
+        print(f'Archivo "{config["file_path"]["knowledge_table_file_path"]}" no encontrado. Vuelve a introducir una nueva ruta')
         
 def validar_linea(linea):
     # Patrón de expresión regular para verificar cada elemento de la línea
@@ -927,7 +1704,7 @@ def auxiliar_functions_test():
     
     print('Testing extract_nouns_with_positions_spanish() function')
     
-    phrase_5 = "La fábrica de papel había estado en funcionamiento durante más de un siglo, proporcionando oportunidades de empleo a generaciones de familias en la zona."
+    phrase_5 = "La fábrica de papel había estado en funcionamiento durante más de un siglo, proporcionando oportunidades de empleo a Generaciónes de familias en la zona."
     expected_output_5 = [('fábrica', 1), ('papel', 3), ('funcionamiento', 7), ('siglo', 12), ('oportunidades', 15), ('empleo', 17), ('generaciones', 19), ('familias', 21), ('zona', 24)]
     assert expected_output_5 == auxFunctions.extract_nouns_with_positions_spanish(phrase_5), "Should be true"
 
@@ -1292,7 +2069,7 @@ def auxiliar_functions_test():
     
     print('Testing extract_llm_answers_set_of_phrases() function')
     
-    elemento_prueba_piloto_masculino = "\n1. El gran desafío que enfrenta la tierra es combatir la erosión y mantener su fertilidad.\n2. La tierra está siendo devastada por los cambios climáticos y la deforestación.\n3. La tierra necesita que los humanos cambien su manera de pensar y actuar para protegerla.\n4. El hombre ha estado explotando y devastando la tierra durante siglos.\n5. La tierra ha sido la fuente de vida y prosperidad para millones de personas durante milenios.\n6. La tierra es un recurso limitado que necesita ser utilizado y preservado con cuidado.\n7. La tierra es un regalo de la naturaleza que ha sido y seguirá siendo vital para la supervivencia humana.\n8. La tierra es más que un lugar, es un sistema complejo que afecta a todas las formas de vida.\n9. La tierra es la fuente de todos los recursos que necesitamos para sobrevivir y prosperar.\n10. La tierra es un legado que debemos preservar para las generaciones futuras."
+    elemento_prueba_piloto_masculino = "\n1. El gran desafío que enfrenta la tierra es combatir la erosión y mantener su fertilidad.\n2. La tierra está siendo devastada por los cambios climáticos y la deforestación.\n3. La tierra necesita que los humanos cambien su manera de pensar y actuar para protegerla.\n4. El hombre ha estado explotando y devastando la tierra durante siglos.\n5. La tierra ha sido la fuente de vida y prosperidad para millones de personas durante milenios.\n6. La tierra es un recurso limitado que necesita ser utilizado y preservado con cuidado.\n7. La tierra es un regalo de la naturaleza que ha sido y seguirá siendo vital para la supervivencia humana.\n8. La tierra es más que un lugar, es un sistema complejo que afecta a todas las formas de vida.\n9. La tierra es la fuente de todos los recursos que necesitamos para sobrevivir y prosperar.\n10. La tierra es un legado que debemos preservar para las Generaciónes futuras."
 
     expected_output_piloto_masculino = ["El gran desafío que enfrenta la tierra es combatir la erosión y mantener su fertilidad.",
                               "La tierra está siendo devastada por los cambios climáticos y la deforestación.",
@@ -1303,7 +2080,7 @@ def auxiliar_functions_test():
                               "La tierra es un regalo de la naturaleza que ha sido y seguirá siendo vital para la supervivencia humana.",
                               "La tierra es más que un lugar, es un sistema complejo que afecta a todas las formas de vida.",
                               "La tierra es la fuente de todos los recursos que necesitamos para sobrevivir y prosperar.",
-                              "La tierra es un legado que debemos preservar para las generaciones futuras."]
+                              "La tierra es un legado que debemos preservar para las Generaciónes futuras."]
     
     assert expected_output_piloto_masculino == auxFunctions.extract_llm_answers_set_of_phrases(elemento_prueba_piloto_masculino), "Should be true"
     
@@ -1353,7 +2130,7 @@ if __name__ == "__main__":
     component_question_maker_traduccion_ingles_español_test() # Tested correctly
     print("Everything in Question Maker traduccion inglés español component passed")
     print("Testing over Question Maker traduccion español inglés component...")
-    component_question_maker_traduccion_españolingles_test() # Tested correctly
+    component_question_maker_traduccion_español_ingles_test() # Tested correctly
     print("Everything in Question Maker traduccion español inglés component passed")
     print("Testing over Question Maker extraccion component...")
     component_question_maker_extraccion_test() # Tested correctly
@@ -1364,12 +2141,18 @@ if __name__ == "__main__":
     print("Testing over LLM Communicator component...")
     component_llm_communicator_test() # Tested correctly
     print("Everything in LLM Communicator component passed")
-    print("Testing over Extractor component...")
-    component_extractor_test() # Tested correctly
-    print("Everything in Extractor component passed")
-    print("Testing over Validator component...")
-    # component_validator_test() # Tested correctly
-    print("Everything in Validator component passed")
+    print("Testing over Extractor translation component...")
+    component_extractor_translation_test() # Tested correctly
+    print("Everything in Extractor translation component passed")
+    print("Testing over Extractor set of phrases component...")
+    component_extractor_set_of_phrases_test() # Tested correctly
+    print("Everything in Extractor  set of phrases component passed")
+    print("Testing over Extractor extraccion component...")
+    component_extractor_extraccion_test() # Tested correctly
+    print("Everything in Extractor extraccion component passed")
+    print("Testing over Extractor validacion component...")
+    component_extractor_validacion_test() # Tested correctly
+    print("Everything in Extractor validacion component passed")
     print("Testing over Exporter component...")
     component_exporter_test() # Tested correctly
     print("Everything in Exporter component passed")
