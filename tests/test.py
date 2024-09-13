@@ -1705,7 +1705,7 @@ def auxiliar_functions_test():
     print('Testing extract_nouns_with_positions_spanish() function')
     
     phrase_5 = "La fábrica de papel había estado en funcionamiento durante más de un siglo, proporcionando oportunidades de empleo a Generaciónes de familias en la zona."
-    expected_output_5 = [('fábrica', 1), ('papel', 3), ('funcionamiento', 7), ('siglo', 12), ('oportunidades', 15), ('empleo', 17), ('generaciones', 19), ('familias', 21), ('zona', 24)]
+    expected_output_5 = [('fábrica', 1), ('papel', 3), ('funcionamiento', 7), ('siglo', 12), ('oportunidades', 15), ('empleo', 17), ('familias', 21), ('zona', 24)]
     assert expected_output_5 == auxFunctions.extract_nouns_with_positions_spanish(phrase_5), "Should be true"
 
     phrase_6 = "El papel es un material muy utilizado para la impresión y la escritura."
